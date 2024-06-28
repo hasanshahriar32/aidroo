@@ -1,13 +1,16 @@
 import Banner from "@/components/Banner";
+import Business from "@/components/Business/Business";
 import Category from "@/components/Category/Category";
-import Header from "@/components/Header/Header";
+import Consumer from "@/components/Consumer/Consumer";
+import Layout from "@/components/Layout/Layout";
 
 export default function Home() {
   return (
-    <div>
-      <Header />
+    <Layout title="Home">
       <Banner />
       <Category />
-    </div>
+      <Business />
+      <Consumer />
+    </Layout>
   );
 }

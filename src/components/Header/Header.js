@@ -1,101 +1,278 @@
 "use client";
 import logo from "@/asserts/aidroo-logo.svg";
 import filter from "@/asserts/filter.svg";
+import humber from "@/asserts/mobile-icons/Hamburger-l1.svg";
+import category from "@/asserts/mobile-icons/categories.svg";
+import pageIcon from "@/asserts/mobile-icons/page_icon.svg";
+import businessIcon from "@/asserts/mobile-icons/pricing-plan.svg";
+import helpIcon from "@/asserts/mobile-icons/support.svg";
 import search from "@/asserts/search.svg";
+import businessCase from "@/public/icons/businessbriefcase.svg";
+import messageIcon from "@/public/icons/messages.svg";
+import notificationIcon from "@/public/icons/notifications.svg";
+import profilePic from "@/public/images/profile.jpg";
 import Image from "next/image";
 
 import Link from "next/link";
-import Input from "../Input";
 
-import { useState } from "react";
-import Button from "../Button";
+import { useEffect, useState } from "react";
+
+import { useAuth } from "@/hooks/useAuth.js";
+
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import IconImage from "../IconImage/IconImage";
+import ResponsiveImage from "../ResponsiveImage/ResponsiveImage";
+import { ThemeToggle } from "../ThemeToggle";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../ui/accordion";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 export default function Header() {
   const [searchText, setSearchText] = useState("");
+  const [open, setOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const { currentUser, login, logout } = useAuth();
 
   const handleInputChange = (event) => {
     setSearchText(event.target.value);
   };
-  return (
-    <div className="bg-primary-A200   ">
-      {/* desktop view */}
-      <div className="hidden lg:block">
-        <div className="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 min-h-20  items-center justify-center max-w-[1260px] mx-auto ">
-          {/* logo */}
-          <div className=" col-span-1">
-            <Link href="/">
-              <Image
-                src={logo}
-                alt="aidroo logo image"
-                className="h-10 max-w-[50%] "
-              />
-            </Link>
-          </div>
+  useEffect(() => {
+    if (window.innerWidth >= 640) {
+      setSidebarOpen(false);
+    }
+  }, [open, setOpen]);
 
-          {/* searching bar */}
-          <div className="flex   items-center  col-span-2  text-lg text-gray-700">
-            <form className="flex gap-4">
+  const inputFieldHowHide = open ? "block" : "hidden";
+  return (
+    <div className="w-full">
+      <div className="bg-[#002A64] sticky top-0 z-20 ">
+        {/* desktop view */}
+        <div className="hidden lg:block">
+          <div className="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6  h-[72px]  items-center justify-center max-w-[1260px] mx-auto ">
+            {/* logo */}
+            <div className=" col-span-1">
+              <Link href="/">
+                <Image
+                  src={logo}
+                  alt="aidroo logo image"
+                  className="h-10 max-w-[50%] "
+                />
+              </Link>
+            </div>
+
+            {/* searching bar */}
+            <div className="flex   items-center  col-span-2  text-lg text-gray-700">
+              <form className="flex gap-4">
+                <Input
+                  type="text"
+                  name="search"
+                  placeholder="Search"
+                  className="bg-white dark:bg-dark h-10 min-w-80"
+                />
+
+                <div className=" flex items-center justify-center  bg-primary_color p-1 rounded-md   cursor-pointer w-[3.7rem] ">
+                  <IconImage src={filter} alt="Icon 1" size={30} />
+                </div>
+                <div className=" flex items-center justify-center  bg-primary_color p-1 rounded-md   cursor-pointer w-[4rem] ">
+                  <IconImage src={search} alt="Icon 1" size={30} />
+                </div>
+              </form>
+            </div>
+            <div className="col-span-2 mx-auto flex justify-between items-center gap-10">
+              <Popover>
+                <PopoverTrigger className="text-white">
+                  For Business
+                </PopoverTrigger>
+                <PopoverContent className="mt-7 flex flex-col gap-4">
+                  Please provide your information
+                  <ThemeToggle />
+                </PopoverContent>
+              </Popover>
+            </div>
+            <div className="flex gap-8 col-span-1 items-center ">
+              {!currentUser ? (
+                <>
+                  <Link href="/login">
+                    <Button variant="hover">Login</Button>
+                  </Link>
+                  <Link href="/signup">
+                    <Button variant="hover">Signup</Button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <IconImage src={messageIcon} size={32} alt="message icon" />
+                  <IconImage
+                    src={notificationIcon}
+                    size={28}
+                    alt="message icon"
+                  />
+                  <Popover>
+                    <PopoverTrigger>
+                      <Avatar>
+                        <AvatarImage src={profilePic} alt="@shadcn" />
+                        <AvatarFallback>CN</AvatarFallback>
+                      </Avatar>
+                    </PopoverTrigger>
+                    <PopoverContent className=" flex flex-col gap-4 mt-5">
+                      <Link href="/public_profile">Public Profile</Link>
+                      <Link href="/login">login</Link>
+                      <Link href="/signup">signup</Link>
+                      <Link href="/business_dashboard/business_info">
+                        Business Dashboard
+                      </Link>
+                      <Link href="">Public Profile</Link>
+                    </PopoverContent>
+                  </Popover>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* mobile view */}
+
+        <div className=" w-full  block lg:hidden bg-[#002A64]    space-y-4  z-50">
+          {/* sidebar */}
+
+          <Sheet>
+            <div className="flex   justify-between  h-24 items-center text-lg  mx-4 max-h-[72px] ">
+              <div className=" w-24 ">
+                <Link href="/">
+                  <ResponsiveImage
+                    src={logo}
+                    alt="aidroo logo image"
+                    width={500}
+                    height={300}
+                  />
+                </Link>
+              </div>
+
+              <div className="flex gap-4 items-center ">
+                <div className="w-9 h-9 relative bg-[#002A64] rounded-md cursor-pointer p-1">
+                  <ResponsiveImage
+                    src={search}
+                    alt="Icon 1"
+                    width={500}
+                    height={300}
+                    onClick={() => setOpen(!open)}
+                  />
+                </div>
+
+                <SheetTrigger asChild>
+                  <div className="w-8 h-8 relative  ring rounded-md cursor-pointer">
+                    <ResponsiveImage
+                      src={humber}
+                      width={500}
+                      height={300}
+                      alt="Icon 1"
+                    />
+                  </div>
+                </SheetTrigger>
+              </div>
+            </div>
+
+            <form
+              className={` flex gap-4 ${inputFieldHowHide} justify-center pb-4 transform duration-500`}
+            >
               <Input
                 type="text"
                 name="search"
                 placeholder="Search"
-                className=" gap-2 text-gray-600 font-bold rounded-xl border w-full outline-none"
+                className="bg-white dark:bg-dark"
               />
 
-              <div className=" flex items-center justify-center  bg-primary-A100 p-1 rounded-md   cursor-pointer w-[3.7rem] ">
-                <IconImage src={filter} alt="Icon 1" size={40} />
+              <div className=" flex items-center justify-center  bg-primary_color p-1 rounded-md   cursor-pointer w-[3.2rem] ">
+                <IconImage src={filter} alt="Icon 1" size={30} />
               </div>
-              <div className=" flex items-center justify-center  bg-primary-A100 p-1 rounded-md   cursor-pointer w-[4rem] ">
-                <IconImage src={search} alt="Icon 1" size={32} />
+              <div className=" flex items-center justify-center  bg-primary_color p-1 rounded-md   cursor-pointer w-[3.2rem] ">
+                <IconImage src={search} alt="Icon 1" size={24} />
               </div>
             </form>
-          </div>
-          <div className="col-span-2 mx-auto">
-            <h1 className="text-gray-200 ">Aidroo for Business</h1>
-          </div>
-          <div className="flex gap-8 col-span-1">
-            <Button className=" bg-white  max-w-fit px-4 ">Login</Button>
-            <Button className=" bg-white  max-w-fit px-4 ">Signup</Button>
-          </div>
-        </div>
-      </div>
+            <SheetContent>
+              <SheetHeader className=" w-full flex justify-center items-center h-24 bg-[#002A64]">
+                <div className="w-32">
+                  <Link href="/">
+                    <ResponsiveImage
+                      src={logo}
+                      alt="aidroo logo image"
+                      width={500}
+                      height={300}
+                    />
+                  </Link>
+                </div>
+              </SheetHeader>
+              {/* menu */}
 
-      {/* mobile view */}
-
-      <div className="  block lg:hidden  mx-8 space-y-4">
-        <div className="flex w-full   justify-between  min-h-16 items-center text-lg text-gray-700">
-          <div className=" ">
-            <Link href="/" className=" ">
-              <Image
-                src={logo}
-                alt="aidroo logo image"
-                width={100}
-                height={100}
-              />
-            </Link>
-          </div>
-          <div className="flex gap-2">
-            <Button className=" bg-white  max-w-fit px-4 ">Login</Button>
-            <Button className=" bg-white  max-w-fit px-4 ">Signup</Button>
-          </div>
-        </div>
-        <form className="flex gap-4  justify-center">
-          <Input
-            type="text"
-            name="search"
-            placeholder="Search"
-            className=" gap-2 text-gray-600 font-bold rounded-xl border max-w-96 w-full outline-none"
-          />
-
-          <div className=" flex items-center justify-center  bg-primary-A100 p-1 rounded-md   cursor-pointer w-[3.2rem] ">
-            <IconImage src={filter} alt="Icon 1" size={30} />
-          </div>
-          <div className=" flex items-center justify-center  bg-primary-A100 p-1 rounded-md   cursor-pointer w-[3.2rem] ">
-            <IconImage src={search} alt="Icon 1" size={24} />
-          </div>
-        </form>
-        <div className="flex justify-center mx-auto pb-8">
-          <h1 className="text-gray-200 ">Aidroo for Business</h1>
+              <Accordion
+                type="single"
+                collapsible
+                className="w-full px-8 space-y-4 mt-4 text-sm"
+              >
+                <div className="flex justify-center items-center">
+                  <Button
+                    variant="hover"
+                    className="w-1/2 mx-auto ring-2 ring-primary_color ring-offset-2 h-8  md:h-auto lg:h-auto"
+                  >
+                    {/* <IconImage src={jobHiring} size={24} /> */}
+                    <span> Explore Job</span>
+                  </Button>
+                </div>
+                <div className="flex items-center gap-4 border-b pb-4">
+                  <IconImage src={businessCase} size={28} alt="icon" />
+                  <span>For Business</span>
+                </div>
+                <div className="flex items-center gap-4 border-b pb-4">
+                  <IconImage src={category} size={24} alt="icon" />
+                  <span>Categories</span>
+                </div>
+                <AccordionItem value="item-1">
+                  <AccordionTrigger>
+                    <div className="flex items-center gap-4 no-underline  ">
+                      <IconImage src={pageIcon} size={24} alt="icon" />
+                      <span>Pages</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-10">
+                    <ul className="collapse-content space-y-2   ">
+                      <li> Terms of service</li>
+                      <li> Privacy Policy </li>
+                      <li> Events</li>
+                      <li>Blogs</li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+                <div className="flex items-center gap-4 border-b pb-4 ">
+                  <IconImage src={businessIcon} size={24} alt="icon" />
+                  <span className=""> Business Pricing Plan</span>
+                </div>
+                <div className="flex items-center gap-4 collapse-content border-b pb-4 ">
+                  <IconImage src={helpIcon} size={24} alt="icon" />
+                  <span> Help and Support</span>
+                </div>
+                <div className="flex  gap-4  pt-40">
+                  <Button
+                    variant="hover"
+                    className=" w-1/2  mx-auto ring-2 ring-primary_color ring-offset-2 h-8  md:h-auto lg:h-auto"
+                  >
+                    Login
+                  </Button>
+                </div>
+              </Accordion>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </div>
