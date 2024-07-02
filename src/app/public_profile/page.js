@@ -1,5 +1,4 @@
 "use client";
-import { AccordionComponent } from "@/components/Accordion/AccordionComponent";
 import IconImage from "@/components/IconImage/IconImage";
 import Layout from "@/components/Layout/Layout";
 import { GoogleMap } from "@/components/Map/Map";
@@ -9,11 +8,12 @@ import Rating from "@/components/Rating/Rating";
 import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
 import ThumbSlider from "@/components/ThumbSlider/ThumbSlider";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
-import { businessOur, faqContent, options } from "@/constant";
+import { businessOur, options } from "@/constant";
 import claimedIcon from "@/public/icons/claimed.svg";
 import verifiedIcon from "@/public/icons/verified.svg";
 import profileImage from "@/public/images/profile.jpg";
@@ -28,7 +28,6 @@ import {
   CiStar,
 } from "react-icons/ci";
 import { FaImage, FaPlus, FaRegEdit } from "react-icons/fa";
-import { GrUserWorker } from "react-icons/gr";
 import { LiaSmsSolid } from "react-icons/lia";
 import { RiRefund2Fill } from "react-icons/ri";
 
@@ -49,7 +48,7 @@ export default function PublicProfile() {
                 </div>
                 <div>
                   <div className="flex gap-8 items-center">
-                    <h1 className="  text-24 font-semibold">Safari Biz</h1>
+                    <h1 className="text-xl font-semibold">Safari Biz</h1>
                     <IconImage src={verifiedIcon} size={24} alt="" />
                   </div>
                   <div className="flex gap-6 items-center">
@@ -90,7 +89,7 @@ export default function PublicProfile() {
         </div>
 
         <Tabs
-          defaultValue="review"
+          defaultValue="job"
           className="max-w-[1280px] mx-auto px-8 space-y-6 "
         >
           <TabsList className="grid w-3/4   grid-cols-3 h-12  ">
@@ -181,9 +180,9 @@ export default function PublicProfile() {
                     <div className="flex flex-col items-center justify-center">
                       <p className="text-justify text-gray-400 tracking-tight">
                         I had a seamless experience with Panacea. Other
-                        companies denied me credit due to "not providing
-                        evidence of income". Other financial institutions that
-                        are supposedly for medical professionals.
+                        companies denied me credit due to not providing evidence
+                        of income. Other financial institutions that are
+                        supposedly for medical professionals.
                       </p>
                     </div>
 
@@ -227,24 +226,51 @@ export default function PublicProfile() {
                 </div>
                 {/* report this review */}
 
-                <div className="border-2 p-6 rounded-md space-y-2 ">
+                <form className="border-2 p-6 rounded-md space-y-4 ">
                   <h1 className="text-xl">Report this review?</h1>
                   <div className="border-2" />
                   <h1 className="text-md mt-8">Please choose a reson</h1>
                   <ul className="ms-4 space-y-1 mt-6">
-                    <li>Competitor’s fake review</li>
-                    <li>Suspicious Review Patterns</li>
-                    <li>Offensive or Inappropriate Content</li>
-                    <li>Spam or Advertising</li>
-                    <OptionSelect options={options} className="w-28" />
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="terms" />
+                      <Label htmlFor="terms">Competitor’s fake review</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="terms" />
+                      <Label htmlFor="terms">Suspicious Review Patterns</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="terms" />
+                      <Label htmlFor="terms">
+                        Offensive or Inappropriate Content
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="terms" />
+                      <Label htmlFor="terms"> </Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="terms" />
+                      <Label htmlFor="terms">Spam or Advertising</Label>
+                    </div>
+
+                    <OptionSelect options={options} className="w-64" />
                   </ul>
-                </div>
+
+                  <div className="flex gap-4 max-w-64 ">
+                    <Button variant="hoverButton">Submit</Button>
+                    <Button variant="hoverButton">Close</Button>
+                  </div>
+                </form>
               </TabsContent>
               <TabsContent value="more" className="space-y-8">
                 <div className=" border-2 rounded-md p-10 mx-auto  ">
                   <ThumbSlider />
                 </div>
                 {/* business Our */}
+                <h1 className="text-primary_color text-xl text-center pt-10 pb-2">
+                  Business Our
+                </h1>
                 <div className="border-2 rounded-md">
                   {businessOur.map((our) => (
                     <div
@@ -254,31 +280,13 @@ export default function PublicProfile() {
                       <h1 className="w-24">{our.day}</h1>
                       <div className="flex items-center space-x-2 w-24">
                         <Switch id={our.day} disabled={!our.open} />
-                        {our.open ? (
-                          <Label htmlFor={our.day}>Open</Label>
-                        ) : (
-                          <Label htmlFor={our.day}>Closed</Label>
-                        )}
                       </div>
 
                       <span>9.00 AM -10.00 PM</span>
                     </div>
                   ))}
                 </div>
-                {/* FAQ */}
-                <div className="">
-                  <h1 className="text-primary_color text-xl text-center pt-10 pb-2">
-                    Business Our
-                  </h1>
-                  <div className="border-2 p-10 rounded-md space-y-4">
-                    {faqContent.map((content) => (
-                      <AccordionComponent
-                        key={content.title}
-                        content={content}
-                      />
-                    ))}
-                  </div>
-                </div>
+
                 {/* map */}
                 <div className="   h-[440px] w-full p-4 border-2 rounded-md">
                   <GoogleMap
@@ -286,35 +294,78 @@ export default function PublicProfile() {
                     className="h-[400px] w-full rounded-md"
                   />
                 </div>
-                <div className="border-2 rounded-md p-8 space-y-4">
-                  <div className="flex items-center gap-6">
-                    <RiRefund2Fill className="text-5xl text-primary_color" />
+              </TabsContent>{" "}
+            </div>
+            <div className="col-span-1">
+              <div className="w-full  space-y-4  ">
+                {/* business name */}
+                <div className="border rounded-md shadow p-4 space-y-4 ">
+                  <h1 className="text-xl text-center border-b pb-1 ">
+                    Business Name
+                  </h1>
+                  <p className="tracking-tight leading-6 border-b-2 pb-2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque sit neque natus quidem aperiam iste, deleniti,
+                    voluptatem doloribus totam quam quaerat molestiae vero
+                    sapiente dignissimos minima optio. Repellendus, sunt
+                    tempora.
+                  </p>
+                  <div className="border-2 rounded-md p-8 space-y-4">
+                    <div className="flex items-center gap-6">
+                      <RiRefund2Fill className="text-xl text-primary_color" />
+                      <div className="">
+                        <h1 className="text-md text-primary_color">
+                          Total Fundings
+                        </h1>
+                        <p className="text-gray-500">10B - 20B</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* contact */}
+                {/* deals on aidroo */}
+                <div className="border rounded-md shadow p-4 space-y-4 ">
+                  <div className="bg-primary_color/20 text-center flex items-center  gap-2 p-2 justify-center rounded-md">
+                    <h1>Deals</h1>
+                    <h1 className="text-xl text-primary_color">
+                      Deals on Aidroo
+                    </h1>
+                  </div>
+                  <div className="flex items-center gap-6 p-8">
+                    <RiRefund2Fill className="text-xl text-primary_color" />
                     <div className="">
-                      <h1 className="text-xl text-primary_color">
+                      <h1 className="text-md text-primary_color">
                         Total Fundings
                       </h1>
                       <p className="text-gray-500">10B -20B</p>
                     </div>
-                  </div>{" "}
-                  <div className="flex items-center gap-6">
-                    <RiRefund2Fill className="text-5xl text-primary_color" />
-                    <div className="">
-                      <h1 className="text-xl text-primary_color">Investors</h1>
-                      <p className="text-gray-500">7</p>
-                    </div>
-                  </div>{" "}
-                  <div className="flex items-center gap-6">
-                    <GrUserWorker className="text-5xl text-primary_color" />
-                    <div className="">
-                      <h1 className="text-xl text-primary_color">Workers</h1>
-                      <p className="text-gray-500">100 - 200</p>
-                    </div>
                   </div>
                 </div>
-              </TabsContent>{" "}
-            </div>
-            <div className="col-span-1">
-              <div className="w-full border-2 border-gray-400">content</div>
+
+                {/* BUSINESS OUR */}
+                <div>
+                  {" "}
+                  <h1 className="text-primary_color text-xl text-center pt-10 pb-2">
+                    Business Our
+                  </h1>
+                  <div className="border-2 rounded-md">
+                    {businessOur.map((our) => (
+                      <div
+                        key={our.day}
+                        className="flex    place-content-center justify-between p-4  "
+                      >
+                        <h1 className="w-fit">{our.day}</h1>
+                        <div className="flex items-center space-x-2 fit">
+                          <Switch id={our.day} disabled={!our.open} />
+                        </div>
+
+                        <span>9.00 AM -10.00 PM</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </Tabs>

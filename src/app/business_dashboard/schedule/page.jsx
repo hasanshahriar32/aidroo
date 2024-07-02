@@ -68,7 +68,7 @@ export default function Schedule() {
             </div>
             <div>
               {openStatus[our.day] ? (
-                <div className="flex gap-8">
+                <div className="flex gap-8 min-w-24">
                   <OptionSelect label="srikanto" options={options} />
                   <OptionSelect label="srikanto" options={options} />
                 </div>

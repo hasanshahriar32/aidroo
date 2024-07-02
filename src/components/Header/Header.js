@@ -91,9 +91,27 @@ export default function Header() {
               </form>
             </div>
             <div className="col-span-2 mx-auto flex justify-between items-center gap-10">
+              <Button variant="hoverButton" size="md">
+                <div className="absolute -top-2 -right-1">
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+                  </span>
+                </div>
+
+                <span className="relative">Explore Job</span>
+              </Button>
               <Popover>
                 <PopoverTrigger className="text-white">
-                  For Business
+                  <a
+                    href="#"
+                    className="px-4 mt-2 py-2 relative rounded group overflow-hidden font-medium bg-[#1E56AD] text-white inline-block"
+                  >
+                    <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-primary_color group-hover:h-full opacity-90"></span>
+                    <span className="relative group-hover:text-white">
+                      For Business
+                    </span>
+                  </a>
                 </PopoverTrigger>
                 <PopoverContent className="mt-7 flex flex-col gap-4">
                   Please provide your information

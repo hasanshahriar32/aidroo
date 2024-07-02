@@ -12,6 +12,8 @@ const buttonVariants = cva(
         fillButton: "w-full bg-primary_color text-white",
         hover:
           " w-full bg-white text-gray-600 border shadow hover:bg-primary_color hover:text-white ",
+        hoverButton:
+          " rounded px-5 py-2.5  group bg-[#1E56AD] relative hover:bg-gradient-to-r hover:from-[#0084FF] hover:to-[#0084FF] text-white hover:ring-2 hover:ring-offset-2 hover:ring-[#0084FF] transition-all ease-out duration-300",
         default:
           "bg-primary text-primary-foreground shadow hover:bg-primary/90",
         destructive:

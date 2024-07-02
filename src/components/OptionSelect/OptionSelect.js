@@ -10,7 +10,9 @@ import {
 export default function OptionSelect({ className, label = "", options = [] }) {
   return (
     <Select className={className}>
-      <SelectTrigger className="w-full bg-white dark:bg-gray-800  h-12">
+      <SelectTrigger
+        className={` min-w-32  bg-white dark:bg-gray-800  h-12 ${className}`}
+      >
         <SelectValue placeholder={label} />
       </SelectTrigger>
       <SelectContent>

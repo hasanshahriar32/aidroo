@@ -153,70 +153,70 @@ export const footerLinks = [
 
 export const businessOur = [
   {
-    day: "Saturday",
+    day: "Sat",
     time: " 9.00 AM - 10.00 PM",
     open: false,
   },
   {
-    day: "Sunday",
+    day: "Sun",
     time: " 9.00 AM - 10.00 PM",
     open: true,
   },
   {
-    day: "Monday",
+    day: "Mon",
     time: " 9.00 AM - 10.00 PM",
     open: true,
   },
   {
-    day: "Tuesday",
+    day: "Tues",
     time: " 9.00 AM - 10.00 PM",
     open: true,
   },
   {
-    day: "Wednesday",
+    day: "Wed",
     time: " 9.00 AM - 10.00 PM",
     open: true,
   },
   {
-    day: "Thursday",
+    day: "Thur",
     time: " 9.00 AM - 10.00 PM",
     open: true,
   },
   {
-    day: "Friday",
+    day: "Fri",
     time: " 9.00 AM - 10.00 PM",
     open: false,
   },
 ];
 export const faqContent = [
   {
-    title: "Saturday",
+    title: "Satur",
 
     description: " 9.00 AM - 10.00 PM",
   },
   {
-    title: "Sunday",
+    title: "Sun",
     description: " 9.00 AM - 10.00 PM",
     open: true,
   },
   {
-    title: "Monday",
+    title: "Mon",
     description: " 9.00 AM - 10.00 PM",
   },
   {
-    title: "Tuesday",
+    title: "Tues",
     description: " 9.00 AM - 10.00 PM",
   },
   {
-    title: "Wednesday",
+    title: "Wednes",
     description: " 9.00 AM - 10.00 PM",
   },
   {
-    title: "Thursday",
+    title: "Thurs",
     description: " 9.00 AM - 10.00 PM",
   },
   {
-    title: "Friday",
+    title: "Fri",
     description: " 9.00 AM - 10.00 PM",
   },
 ];
