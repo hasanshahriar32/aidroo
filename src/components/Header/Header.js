@@ -27,7 +27,6 @@ import {
 } from "@/components/ui/sheet";
 import IconImage from "../IconImage/IconImage";
 import ResponsiveImage from "../ResponsiveImage/ResponsiveImage";
-import { ThemeToggle } from "../ThemeToggle";
 import {
   Accordion,
   AccordionContent,
@@ -41,8 +40,10 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 export default function Header() {
   const [searchText, setSearchText] = useState("");
   const [open, setOpen] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered2, setIsHovered2] = useState(false);
   const { currentUser, login, logout } = useAuth();
 
   const handleInputChange = (event) => {
@@ -56,8 +57,8 @@ export default function Header() {
 
   const inputFieldHowHide = open ? "block" : "hidden";
   return (
-    <div className="w-full">
-      <div className="bg-[#002A64] sticky top-0 z-20 ">
+    <div className="w-full sticky top-0 z-20">
+      <div className="bg-[#002A64]  ">
         {/* desktop view */}
         <div className="hidden lg:block">
           <div className="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6  h-[72px]  items-center justify-center max-w-[1260px] mx-auto ">
@@ -73,25 +74,39 @@ export default function Header() {
             </div>
 
             {/* searching bar */}
-            <div className="flex   items-center  col-span-2  text-lg text-gray-700">
+            <div className="flex   items-center  col-span-2  text-lg text-gray-700  ">
               <form className="flex gap-4">
                 <Input
                   type="text"
                   name="search"
                   placeholder="Search"
-                  className="bg-white dark:bg-dark h-10 min-w-80"
+                  className="bg-white dark:bg-dark h-10 max-w-72 w-[280px]"
                 />
 
-                <div className=" flex items-center justify-center  bg-primary_color p-1 rounded-md   cursor-pointer w-[3.7rem] ">
-                  <IconImage src={filter} alt="Icon 1" size={30} />
+                <div
+                  className="relative"
+                  onMouseEnter={() => setIsHovered2(true)}
+                  onMouseLeave={() => setIsHovered2(false)}
+                >
+                  <div className=" flex items-center justify-center     bg-primary_color p-1 rounded-md   cursor-pointer w-[50px] h-11">
+                    <Image src={filter} alt="Icon 1" className="w-7 " />
+                  </div>
+                  {isHovered2 && (
+                    <div className="absolute  shadow rounded-md    top-[42px] pt-4 -right-6 ">
+                      <div className=" file:selection: z-50  border-2 rounded   p-8 ">
+                        <input type="checkbox" />
+                        <Button variant="hoverButton">submit</Button>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <div className=" flex items-center justify-center  bg-primary_color p-1 rounded-md   cursor-pointer w-[4rem] ">
-                  <IconImage src={search} alt="Icon 1" size={30} />
+                <div className=" flex items-center justify-center  bg-primary_color p-1 rounded-md   cursor-pointer w-[50px] h-11">
+                  <Image src={search} alt="Icon 1" className="w-7 " />
                 </div>
               </form>
             </div>
-            <div className="col-span-2 mx-auto flex justify-between items-center gap-10">
-              <Button variant="hoverButton" size="md">
+            <div className="col-span-2  mr-8 flex justify-end items-center gap-4   ">
+              <Button variant="hoverButton" size="lg">
                 <div className="absolute -top-2 -right-1">
                   <span className="relative flex h-3 w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
@@ -101,25 +116,33 @@ export default function Header() {
 
                 <span className="relative">Explore Job</span>
               </Button>
-              <Popover>
-                <PopoverTrigger className="text-white">
+              <div
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                <div className="relative h-11">
                   <a
                     href="#"
-                    className="px-4 mt-2 py-2 relative rounded group overflow-hidden font-medium bg-[#1E56AD] text-white inline-block"
+                    className="px-4 h-11 py-2   relative rounded group overflow-hidden font-medium bg-[#1E56AD] text-white inline-block"
                   >
                     <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-primary_color group-hover:h-full opacity-90"></span>
                     <span className="relative group-hover:text-white">
                       For Business
                     </span>
                   </a>
-                </PopoverTrigger>
-                <PopoverContent className="mt-7 flex flex-col gap-4">
-                  Please provide your information
-                  <ThemeToggle />
-                </PopoverContent>
-              </Popover>
+
+                  {isHovered && (
+                    <div className="absolute  shadow rounded-md    top-11 pt-4 ">
+                      <div className=" file:selection: z-50  border-2 rounded   p-8 ">
+                        <input type="checkbox" />
+                        <Button variant="hoverButton">submit</Button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
-            <div className="flex gap-8 col-span-1 items-center ">
+            <div className="flex gap-8 col-span-1/2 items-center   ">
               {!currentUser ? (
                 <>
                   <Link href="/login">

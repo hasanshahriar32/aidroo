@@ -1,4 +1,3 @@
-"use client";
 import IconImage from "@/components/IconImage/IconImage";
 import Layout from "@/components/Layout/Layout";
 import { GoogleMap } from "@/components/Map/Map";
@@ -14,9 +13,18 @@ import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { businessOur, options } from "@/constant";
+import bagIcon from "@/public/icons/bag.svg";
+import ceoIcon from "@/public/icons/ceo.svg";
 import claimedIcon from "@/public/icons/claimed.svg";
+import claimWithBusiness from "@/public/icons/claimthisbusiness.svg";
+import dealonIcon from "@/public/icons/dealon.svg";
+import earningIcon from "@/public/icons/usd.svg";
 import verifiedIcon from "@/public/icons/verified.svg";
+import workerIcon from "@/public/icons/worker.svg";
+import google from "@/public/images/google.svg";
 import profileImage from "@/public/images/profile.jpg";
+import srsoft from "@/public/images/srsoft.svg";
+import tesla from "@/public/images/tesla.svg";
 import { Label } from "@radix-ui/react-dropdown-menu";
 
 import { BsBagDash } from "react-icons/bs";
@@ -29,7 +37,6 @@ import {
 } from "react-icons/ci";
 import { FaImage, FaPlus, FaRegEdit } from "react-icons/fa";
 import { LiaSmsSolid } from "react-icons/lia";
-import { RiRefund2Fill } from "react-icons/ri";
 
 export default function PublicProfile() {
   return (
@@ -92,7 +99,7 @@ export default function PublicProfile() {
           defaultValue="job"
           className="max-w-[1280px] mx-auto px-8 space-y-6 "
         >
-          <TabsList className="grid w-3/4   grid-cols-3 h-12  ">
+          <TabsList className="grid lg:w-4/6   grid-cols-3 h-12  ">
             <TabsTrigger value="review" className="h-10 flex gap-4 text-xl">
               <CiStar className="text-24   " />
               <span> Reviews</span>
@@ -107,8 +114,8 @@ export default function PublicProfile() {
             </TabsTrigger>
           </TabsList>
           {/* review  tab content  */}
-          <div className=" full  mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 space-y-6  ">
-            <div className="col-span-3">
+          <div className=" full  mx-auto grid grid-cols-1   lg:grid-cols-7 gap-8 space-y-6  ">
+            <div className=" lg:col-span-5">
               <TabsContent value="review">
                 <PublicReview />
               </TabsContent>
@@ -233,7 +240,7 @@ export default function PublicProfile() {
                   <ul className="ms-4 space-y-1 mt-6">
                     <div className="flex items-center space-x-2">
                       <Checkbox id="terms" />
-                      <Label htmlFor="terms">Competitor’s fake review</Label>
+                      <Label htmlFor="terms">Competitors fake review</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Checkbox id="terms" />
@@ -282,7 +289,7 @@ export default function PublicProfile() {
                         <Switch id={our.day} disabled={!our.open} />
                       </div>
 
-                      <span>9.00 AM -10.00 PM</span>
+                      <span>9.00 AM - 10.00 PM</span>
                     </div>
                   ))}
                 </div>
@@ -296,14 +303,14 @@ export default function PublicProfile() {
                 </div>
               </TabsContent>{" "}
             </div>
-            <div className="col-span-1">
+            <div className=" w-full lg:col-span-2 ">
               <div className="w-full  space-y-4  ">
                 {/* business name */}
                 <div className="border rounded-md shadow p-4 space-y-4 ">
                   <h1 className="text-xl text-center border-b pb-1 ">
                     Business Name
                   </h1>
-                  <p className="tracking-tight leading-6 border-b-2 pb-2">
+                  <p className="tracking-tight leading-6   pb-2">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Itaque sit neque natus quidem aperiam iste, deleniti,
                     voluptatem doloribus totam quam quaerat molestiae vero
@@ -311,8 +318,8 @@ export default function PublicProfile() {
                     tempora.
                   </p>
                   <div className="border-2 rounded-md p-8 space-y-4">
-                    <div className="flex items-center gap-6">
-                      <RiRefund2Fill className="text-xl text-primary_color" />
+                    <div className="flex items-center gap-2">
+                      <IconImage src={earningIcon} size={64} alt="dolar icon" />
                       <div className="">
                         <h1 className="text-md text-primary_color">
                           Total Fundings
@@ -320,32 +327,73 @@ export default function PublicProfile() {
                         <p className="text-gray-500">10B - 20B</p>
                       </div>
                     </div>
+                    <div className="flex items-center gap-2">
+                      <IconImage
+                        src={workerIcon}
+                        size={64}
+                        alt="worker"
+                        className=" "
+                      />
+                      <div className="">
+                        <h1 className="text-md text-primary_color">Worker</h1>
+                        <p className="text-gray-500">700+</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 {/* contact */}
                 {/* deals on aidroo */}
-                <div className="border rounded-md shadow p-4 space-y-4 ">
-                  <div className="bg-primary_color/20 text-center flex items-center  gap-2 p-2 justify-center rounded-md">
-                    <h1>Deals</h1>
+                <div className="border rounded-md shadow p-4 space-y-6 ">
+                  <div className="bg-primary_color/20 text-center flex items-center  gap-2  justify-center rounded-md">
+                    <IconImage src={dealonIcon} alt="" />
                     <h1 className="text-xl text-primary_color">
                       Deals on Aidroo
                     </h1>
                   </div>
-                  <div className="flex items-center gap-6 p-8">
-                    <RiRefund2Fill className="text-xl text-primary_color" />
+                  <div className="flex items-center gap-2 px-8">
+                    <IconImage src={bagIcon} alt="bag icon" size={64} />
                     <div className="">
                       <h1 className="text-md text-primary_color">
-                        Total Fundings
+                        Total Posted Job
                       </h1>
-                      <p className="text-gray-500">10B -20B</p>
+                      <p className="text-gray-500">0 Job posted</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 px-8">
+                    <IconImage src={workerIcon} alt="worker icon" size={64} />
+                    <div className="">
+                      <h1 className="text-md text-primary_color">
+                        Total Posted Job
+                      </h1>
+                      <p className="text-gray-500">2 Hires</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 px-8">
+                    <IconImage
+                      src={earningIcon}
+                      alt="total spent icon"
+                      size={64}
+                    />
+                    <div className="">
+                      <h1 className="text-md text-primary_color">
+                        Total Spent
+                      </h1>
+                      <p className="text-gray-500">1200 $</p>
+                    </div>
+                  </div>
+                  <div className="border" />
+                  <div className="flex items-center gap-2 px-8">
+                    <IconImage src={ceoIcon} alt="bag icon" size={64} />
+                    <div className="">
+                      <h1 className="text-md text-primary_color">Work With</h1>
+                      <p className="text-gray-500">7 Profile</p>
                     </div>
                   </div>
                 </div>
 
                 {/* BUSINESS OUR */}
                 <div>
-                  {" "}
                   <h1 className="text-primary_color text-xl text-center pt-10 pb-2">
                     Business Our
                   </h1>
@@ -355,14 +403,96 @@ export default function PublicProfile() {
                         key={our.day}
                         className="flex    place-content-center justify-between p-4  "
                       >
-                        <h1 className="w-fit">{our.day}</h1>
-                        <div className="flex items-center space-x-2 fit">
+                        <h1 className="w-10 ">{our.day}</h1>
+                        <div className="flex items-center space-x-1 fit">
                           <Switch id={our.day} disabled={!our.open} />
                         </div>
 
                         <span>9.00 AM -10.00 PM</span>
                       </div>
                     ))}
+                  </div>
+                </div>
+                {/* claim business */}
+                <div className="border rounded-md p-8 space-y-4">
+                  <IconImage src={claimWithBusiness} />
+                  <div className="">
+                    <h1 className="text-xl text-primary_color ">
+                      In this Your Business
+                    </h1>
+                    <p className="tracking-tighter">
+                      Claim listing is the best way to manage and protect your
+                      business.
+                    </p>
+                    <a
+                      href="#_"
+                      className="relative inline-flex items-center justify-center h-12 px-4 py-3 mt-4 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-primary_color rounded-full shadow-md group"
+                    >
+                      <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-primary_color  group-hover:translate-x-0 ease">
+                        <svg
+                          className="w-6 h-6"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          ></path>
+                        </svg>
+                      </span>
+                      <span className="absolute flex items-center justify-center w-full h-full text-primary_color transition-all duration-300 transform group-hover:translate-x-full ease">
+                        Access your Business
+                      </span>
+                      <span className="relative invisible">
+                        Access your Business
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                {/* popular listing  */}
+                <div className="border rounded-md p-8 space-y-10">
+                  <div className="flex gap-4 items-center">
+                    <IconImage src={google} size={84} className="rounded-md" />
+                    <div className="space-y-1">
+                      <div className="flex gap-10">
+                        <h1 className="text-xl">Google</h1>
+                        <IconImage src={verifiedIcon} size={24} />
+                      </div>
+                      <h1>Tech Company</h1>
+                      <div className="flex gap-1">
+                        <Rating value={5} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex gap-4 items-center">
+                    <IconImage src={tesla} size={84} className="rounded-md" />
+                    <div className="space-y-1">
+                      <div className="flex gap-10">
+                        <h1 className="text-xl">Tesla</h1>
+                        <IconImage src={verifiedIcon} size={24} />
+                      </div>
+                      <h1>Tech Company</h1>
+                      <div className="flex gap-1">
+                        <Rating value={5} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex gap-4  items-center">
+                    <IconImage src={srsoft} size={84} className="rounded-md" />
+                    <div className="space-y-1">
+                      <div className="flex gap-10">
+                        <h1 className="text-xl">Srsoft</h1>
+                        <IconImage src={verifiedIcon} size={24} />
+                      </div>
+                      <h1>Tech Company</h1>
+                      <div className="flex gap-1">
+                        <Rating value={5} />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

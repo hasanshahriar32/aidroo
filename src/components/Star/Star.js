@@ -16,8 +16,8 @@ const Star = ({
       y="0px"
       viewBox="0 0 512 512"
       xmlSpace="preserve"
-      width="24px"
-      height="24px"
+      width="20px"
+      height="20px"
       onClick={isEditable ? () => onClick(index) : undefined}
       onMouseEnter={isEditable ? () => onMouseEnter(index) : undefined}
       onMouseLeave={isEditable ? onMouseLeave : undefined}
