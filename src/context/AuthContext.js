@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 // Create the AuthContext with default values
 export const AuthContext = createContext({
-  currentUser: { user: true },
+  currentUser: true,
   login: () => {},
   logout: () => {},
 });

@@ -8,9 +8,9 @@ import Link from "next/link";
 export default function Login() {
   return (
     <Layout title="Login">
-      <div className="bg-light dark:bg-dark p-8   space-y-4 w-1/2 mx-auto border-2 my-10 rounded-lg">
+      <div className=" border shadow dark:bg-dark p-8   space-y-4 max-w-xl mx-auto  my-10 rounded-lg">
         <form className="  space-y-8 ">
-          <div className=" w-44 mx-auto ">
+          <div className=" w-32 mx-auto ">
             <Link href="/">
               <ResponsiveImage
                 src={logo}
@@ -48,13 +48,19 @@ export default function Login() {
           </Button>
         </form>
         <div className=" w-full flex flex-col items-center justify-center ">
-          <h1 className="text-xl">
+          {/* <h1 className="text-lg">
             Forgot password?
-            <span className="text-2xl text-primary_color"> Reset</span>
-          </h1>
-          <h1 className="text-xl">
+            <Link href="/signup" className="text-lg text-primary_color">
+              {" "}
+              Reset
+            </Link>
+          </h1> */}
+          <h1 className="text-lg">
             Not signed up?
-            <span className="text-2xl text-primary_color"> Sign Up</span>
+            <Link href="/signup" className="text-lg text-primary_color">
+              {" "}
+              Sign Up
+            </Link>
           </h1>
         </div>
       </div>

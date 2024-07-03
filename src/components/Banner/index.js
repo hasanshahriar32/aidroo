@@ -1,6 +1,6 @@
 import filter from "@/asserts/filter.svg";
-import hero from "@/asserts/hero-image.svg";
 import search from "@/asserts/search.svg";
+import hero from "@/public/images/heroimage.svg";
 
 import IconImage from "../IconImage/IconImage";
 import ResponsiveImage from "../ResponsiveImage/ResponsiveImage";
@@ -29,10 +29,10 @@ export default function Banner() {
                 className="bg-white dark:bg-dark md:w-96 "
               />
 
-              <div className=" flex items-center justify-center  bg-primary_color p-1 rounded-md   cursor-pointer w-[3.2rem] ">
-                <IconImage src={filter} alt="Icon 1" size={30} />
+              <div className=" flex items-center justify-center  bg-primary_color p-1 rounded-md   cursor-pointer w-[42px] ">
+                <IconImage src={filter} alt="Icon 1" size={24} />
               </div>
-              <div className=" flex items-center justify-center  bg-primary_color p-1 rounded-md   cursor-pointer w-[3.2rem] ">
+              <div className=" flex items-center justify-center  bg-primary_color p-1 rounded-md   cursor-pointer w-[42px] ">
                 <IconImage src={search} alt="Icon 1" size={24} />
               </div>
             </form>

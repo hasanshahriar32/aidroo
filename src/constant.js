@@ -239,6 +239,25 @@ export const businessSidebarOptions = [
     href: "/business_dashboard/business_plan",
   },
 ];
+export const adminDashboardSidebarLinks = [
+  {
+    name: "Categories",
+    href: "/admin_dashboard/categories",
+  },
+
+  {
+    name: "Business Profile",
+    href: "/admin_dashboard/business_profile",
+  },
+  {
+    name: "Personal Profile",
+    href: "/admin_dashboard/personal_profile",
+  },
+  {
+    name: "Review",
+    href: "/admin_dashboard/reviews",
+  },
+];
 export const options = [
   {
     value: "default",

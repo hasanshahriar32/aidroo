@@ -13,13 +13,14 @@ import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { businessOur, options } from "@/constant";
-import bagIcon from "@/public/icons/bag.svg";
+import { bagIcon, verifiedIcon } from "@/exportImage";
+
 import ceoIcon from "@/public/icons/ceo.svg";
 import claimedIcon from "@/public/icons/claimed.svg";
 import claimWithBusiness from "@/public/icons/claimthisbusiness.svg";
 import dealonIcon from "@/public/icons/dealon.svg";
 import earningIcon from "@/public/icons/usd.svg";
-import verifiedIcon from "@/public/icons/verified.svg";
+
 import workerIcon from "@/public/icons/worker.svg";
 import google from "@/public/images/google.svg";
 import profileImage from "@/public/images/profile.jpg";
@@ -60,6 +61,7 @@ export default function PublicProfile() {
                   </div>
                   <div className="flex gap-6 items-center">
                     <div className="text-14  ">
+                      ser
                       <span>Reviews </span>
                       <span>3124</span>
                     </div>
@@ -352,7 +354,7 @@ export default function PublicProfile() {
                     </h1>
                   </div>
                   <div className="flex items-center gap-2 px-8">
-                    <IconImage src={bagIcon} alt="bag icon" size={64} />
+                    <IconImage src={bagIcon} alt="bag icon" size={4} />
                     <div className="">
                       <h1 className="text-md text-primary_color">
                         Total Posted Job
