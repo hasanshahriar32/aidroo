@@ -1,4 +1,3 @@
-import applePlay from "@/asserts/apple.svg";
 import categoryIcon8 from "@/asserts/categories-icons/Automotive.svg";
 import categoryIcon1 from "@/asserts/categories-icons/Beauty.svg";
 import categoryIcon9 from "@/asserts/categories-icons/Education.svg";
@@ -17,7 +16,8 @@ import {
   default as categoryIcon12,
   default as categoryIcon5,
 } from "@/asserts/categories-icons/pet.svg";
-import googlePlay from "@/asserts/google-play.svg";
+import applePlay from "@/public/icons/apple.svg";
+import googlePlay from "@/public/icons/google.svg";
 
 export const categories = [
   categoryIcon1,
@@ -131,20 +131,15 @@ export const footerLinks = [
     ],
   },
   {
-    title: "Aidroo for Business",
+    title: "Aidroo for Mobile",
     links: [
       {
-        title:
-          "Download the Aidroo app today so you can find your events anytime anywhere",
+        title: "Download the Aidroo app to manage your business",
 
         link: "#",
       },
       {
-        image: applePlay,
-        link: "#",
-      },
-      {
-        image: googlePlay,
+        image: " ",
         link: "#",
       },
     ],
@@ -280,3 +275,5 @@ export const options = [
     label: "Top Rated",
   },
 ];
+
+export { applePlay, googlePlay };

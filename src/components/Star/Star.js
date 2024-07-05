@@ -5,6 +5,7 @@ const Star = ({
   onMouseLeave,
   index,
   isEditable,
+  size = 18,
 }) => {
   return (
     <svg
@@ -16,8 +17,8 @@ const Star = ({
       y="0px"
       viewBox="0 0 512 512"
       xmlSpace="preserve"
-      width="20px"
-      height="20px"
+      width={`${size}px`}
+      height={`${size}px`}
       onClick={isEditable ? () => onClick(index) : undefined}
       onMouseEnter={isEditable ? () => onMouseEnter(index) : undefined}
       onMouseLeave={isEditable ? onMouseLeave : undefined}

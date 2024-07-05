@@ -14,6 +14,7 @@ import {
   default as businessCase,
 } from "@/public/icons/businessbriefcase.svg";
 import loginIcon from "@/public/icons/loginicon.svg";
+import logoutIcon from "@/public/icons/logouticon.svg";
 import messageIcon from "@/public/icons/messages.svg";
 import notificationIcon from "@/public/icons/notifications.svg";
 import addyourbusiness from "@/public/icons/profile/addyourbusiness.svg";
@@ -24,6 +25,11 @@ import pricingPlan from "@/public/icons/profile/pricingPlan.svg";
 import signout from "@/public/icons/profile/signout.svg";
 import userdashboard from "@/public/icons/profile/userdashboard.svg";
 import singoutIcon from "@/public/icons/signout.svg";
+import facebook from "@/public/icons/social/facebook.svg";
+import instagram from "@/public/icons/social/instagram.svg";
+import linkedin from "@/public/icons/social/linkedin.svg";
+import twitter from "@/public/icons/social/twitter.svg";
+import youtube from "@/public/icons/social/youtube.svg";
 import user from "@/public/icons/user.svg";
 import verifiedIcon from "@/public/icons/verified.svg";
 import profilePic from "@/public/images/profile.jpg";
@@ -35,11 +41,15 @@ export {
   businessCase,
   businessIcon,
   category,
+  facebook,
   filter,
   helpIcon,
   humber,
+  instagram,
+  linkedin,
   loginIcon,
   logo,
+  logoutIcon,
   messageIcon,
   myorder,
   myprofile,
@@ -51,7 +61,9 @@ export {
   search,
   signout,
   singoutIcon,
+  twitter,
   user,
   userdashboard,
   verifiedIcon,
+  youtube,
 };

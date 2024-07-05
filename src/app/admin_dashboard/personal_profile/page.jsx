@@ -1,83 +1,89 @@
-"use client";
-import OptionSelect from "@/components/OptionSelect/OptionSelect";
-import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { businessOur, options } from "@/constant";
-import profileImage from "@/public/images/profile.jpg";
-import { useState } from "react";
-import { CiCirclePlus } from "react-icons/ci";
+import PaginationComponent from "@/components/Pagination/PaginationComponent";
+import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import WriteReview from "@/components/WriteReview/WriteReview";
+import { search } from "@/exportImage";
+import Image from "next/image";
+function shortenString(str, maxLength) {
+  if (str.length > maxLength) {
+    return str.slice(0, maxLength - 3) + "...";
+  }
+  return str;
+}
 
-export default function Schedule() {
-  const [openStatus, setOpenStatus] = useState(
-    businessOur.reduce((acc, our) => {
-      acc[our.day] = our.open;
-      return acc;
-    }, {})
-  );
-
-  const handleChange = (day) => {
-    setOpenStatus((prevState) => ({
-      ...prevState,
-      [day]: !prevState[day],
-    }));
-  };
-
+let str =
+  "Lorem ipsum dolor sit amet consectetur  Lorem ipsum dolor sit amet consectetur";
+export default function PersonalProfile() {
   return (
-    <div className="border rounded-lg p-10 space-y-6">
-      <div className="p-8 border rounded-lg">
-        <div className="flex gap-4 h-32">
-          <div className="dark:ring-offset-slate-700 rounded w-32 shrink-0 overflow-hidden">
-            <ResponsiveImage
-              src={profileImage}
-              alt="profile image"
-              width={500}
-              height={300}
-              className="rounded-lg"
-            />
-          </div>
-          <div className="w-32 h-32 border-2 border-dashed rounded-lg place-content-center">
-            <label
-              htmlFor="uploadFile1"
-              className="font-semibold text-base rounded p-1 flex flex-col items-center justify-center cursor-pointer mx-auto font-[sans-serif]"
-            >
-              <CiCirclePlus className="text-6xl text-primary_color" />
-              <input type="file" id="uploadFile1" className="hidden" />
-            </label>
-          </div>
+    <div className="  rounded-lg  space-y-6">
+      <div className=" flex flex-col justify-center items-center space-y-8  ">
+        <div className=" border flex overflow-hidden h-14 p-1 rounded-md w-96 ">
+          <input
+            type="text"
+            placeholder="Search your business"
+            className="h-12 focus:outline-none  px-4 w-full "
+          />
+          <Image
+            src={search}
+            width={500}
+            height={300}
+            className="bg-primary_color w-[42px] p-2 rounded-md"
+            alt=""
+          />
         </div>
-      </div>
-      <div className="border-2 rounded-md p-8">
-        {businessOur.map((our) => (
-          <div
-            key={our.day}
-            className="flex   justify-between px-4 h-14 items-center"
-          >
-            <div className="  flex  items-center gap-32">
-              <h1 className="w-14">{our.day}</h1>
-              <div className="flex items-center space-x-2 w-10">
-                <Switch
-                  id={our.day}
-                  checked={openStatus[our.day]}
-                  onCheckedChange={() => handleChange(our.day)}
-                />
-                <Label htmlFor={our.day}>
-                  {openStatus[our.day] ? "Open" : "Closed"}
-                </Label>
-              </div>
-            </div>
-            <div>
-              {openStatus[our.day] ? (
-                <div className="flex gap-8 min-w-24">
-                  <OptionSelect label="srikanto" options={options} />
-                  <OptionSelect label="srikanto" options={options} />
-                </div>
-              ) : (
-                ""
-              )}
-            </div>
-          </div>
-        ))}
+
+        <div className="w-[450px] lg:w-[800px] overflow-hidden   overflow-x-auto space-y-6">
+          <Table className="w-[790px]  ">
+            <TableHeader className="w-fit h-14 ">
+              <TableRow>
+                <TableHead className="w-fit"> Profile Name </TableHead>
+                <TableHead>Country</TableHead>
+
+                <TableHead>Status</TableHead>
+                <TableHead>Hiring</TableHead>
+                <TableHead>Varified</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell className="font-medium max-w-44">
+                  Microsoft comapany ,Microsoft comapany
+                </TableCell>
+                <TableCell className="max-w-44 overflow-auto">
+                  Bangladesh
+                </TableCell>
+
+                <TableCell className=" ">
+                  <div className="flex flex-col gap-4">
+                    <Badge>Approved</Badge>
+                    <Badge>Delete</Badge>
+                  </div>
+                </TableCell>
+                <TableCell className="text-center">
+                  <div>
+                    <h1>Total Hires :5</h1>
+                    <h1>Active : 2</h1>
+                  </div>
+                </TableCell>
+                <TableCell className="text-center">
+                  <Checkbox className="h-6 w-6" />
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          <PaginationComponent />
+          {/* write review and create user */}
+          <WriteReview />
+        </div>
       </div>
     </div>
   );

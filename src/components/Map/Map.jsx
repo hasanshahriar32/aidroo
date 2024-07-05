@@ -37,7 +37,7 @@ const GoogleMap = ({
       }
     );
   }, []);
-  const apiKey = import.meta.env?.VITE_GOOGLE_MAP_ID || " ";
+  const apiKey = "AIzaSyCPo7xQ2DW44T6OV_pj2DCnaSuTXRrzVZY";
   return (
     <Wrapper apiKey={apiKey}>
       <Map

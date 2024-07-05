@@ -1,12 +1,18 @@
 "use client";
-import logo from "@/asserts/aidroo-logo.svg";
-import { footerLinks } from "@/constant";
+import { applePlay, footerLinks, googlePlay } from "@/constant";
 
+import {
+  facebook,
+  instagram,
+  linkedin,
+  logo,
+  twitter,
+  youtube,
+} from "@/exportImage";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import IconImage from "../IconImage/IconImage";
-import { ThemeToggle } from "../ThemeToggle";
 import {
   Accordion,
   AccordionContent,
@@ -61,13 +67,44 @@ export default function Footer() {
                                 {link.title}
                               </Link>
                             ) : link.image ? (
-                              <Image
-                                src={link.image}
-                                width={150}
-                                height={75}
-                                alt={link.image}
-                                className="mt-4"
-                              />
+                              <>
+                                <div className="flex gap-4 mt-8">
+                                  <a
+                                    href="#_"
+                                    class="relative inline-flex items-center  px-2 py-3 border w-64 h-12 overflow-hidden font-medium transition-all bg-[#002A64] rounded-xl group"
+                                  >
+                                    <span class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-[#002A64]rounded group-hover:-mr-4 group-hover:-mt-4">
+                                      <span class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-primary_color"></span>
+                                    </span>
+                                    <span class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-primary_color/20 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
+                                    <span class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white flex items-center justify-center gap-4">
+                                      <IconImage
+                                        src={googlePlay}
+                                        alt=""
+                                        size={24}
+                                      />
+                                      <h1>Play Store</h1>
+                                    </span>
+                                  </a>
+                                  <a
+                                    href="#_"
+                                    class="relative inline-flex items-center  px-2 py-3 border w-64 h-12 overflow-hidden font-medium transition-all bg-[#002A64] rounded-xl group"
+                                  >
+                                    <span class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-[#002A64]rounded group-hover:-mr-4 group-hover:-mt-4">
+                                      <span class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-primary_color"></span>
+                                    </span>
+                                    <span class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-primary_color/20 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
+                                    <span class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white flex items-center justify-center gap-4">
+                                      <IconImage
+                                        src={applePlay}
+                                        alt=""
+                                        size={24}
+                                      />
+                                      <h1>Apple App</h1>
+                                    </span>
+                                  </a>
+                                </div>
+                              </>
                             ) : null}
                           </li>
                         ))}
@@ -91,19 +128,9 @@ export default function Footer() {
                           <ul className=" space-y-2">
                             {footerLink.links.map((link, linkIndex) => (
                               <li key={linkIndex}>
-                                {link.title ? (
-                                  <Link href={link.link} className="  text-sm">
-                                    {link.title}
-                                  </Link>
-                                ) : link.image ? (
-                                  <Image
-                                    src={link.image}
-                                    width={150}
-                                    height={75}
-                                    alt={link.image}
-                                    className="mt-4"
-                                  />
-                                ) : null}
+                                <Link href={link.link} className="  text-sm">
+                                  {link.title}
+                                </Link>
                               </li>
                             ))}
                           </ul>
@@ -116,17 +143,51 @@ export default function Footer() {
             ))}
         </div>
       </div>
-      <div className=" flex-col md:flex items-center   max-w-[1280px] mx-auto px-8  ">
-        <IconImage
-          src={logo}
-          size={84}
-          alt="aidroo logo"
-          className="ms-32 md:ms-0 "
-        />
-        <ThemeToggle />
+      <div className="flex gap-4 w-72   mt-8 mx-auto md:hidden">
+        <a
+          href="#_"
+          class="relative inline-flex items-center  px-2 py-3 border w-64 h-12 overflow-hidden font-medium transition-all bg-[#002A64] rounded-xl group"
+        >
+          <span class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-[#002A64]rounded group-hover:-mr-4 group-hover:-mt-4">
+            <span class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-primary_color"></span>
+          </span>
+          <span class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-primary_color/20 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
+          <span class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white flex items-center justify-center gap-4">
+            <IconImage src={googlePlay} alt="" size={24} />
+            <h1>Play Store</h1>
+          </span>
+        </a>
+        <a
+          href="#_"
+          class="relative inline-flex items-center  px-2 py-3 border w-64 h-12 overflow-hidden font-medium transition-all bg-[#002A64] rounded-xl group"
+        >
+          <span class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-[#002A64]rounded group-hover:-mr-4 group-hover:-mt-4">
+            <span class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-primary_color"></span>
+          </span>
+          <span class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-primary_color/20 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
+          <span class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white flex items-center justify-center gap-4">
+            <IconImage src={applePlay} alt="" size={24} />
+            <h1>Apple App</h1>
+          </span>
+        </a>
+      </div>
+      {/* social link */}
+      <div className="flex flex-col justify-center items-center space-y-2 py-10">
+        <h1 className="text-xl font-bold text-gray-600">Follow us on</h1>
+        <div className="flex gap-2">
+          <IconImage src={facebook} size={40} />
+          <IconImage src={twitter} size={40} />
+          <IconImage src={instagram} size={40} />
+          <IconImage src={youtube} size={40} />
+          <IconImage src={linkedin} size={40} />
+        </div>
+      </div>
+      <div className=" flex flex-col justify-center items-center space-y-4  ">
+        <div className="w-32  ">
+          <Image src={logo} />
+        </div>
         <p className="font-semibold text-center">
-          `Copyrights Allrights Reserved `
-          <span className="text-secondary-A100"> Aidroo</span> 2023-2024
+          Copyrights © Aidroo All rights reserved 2024
         </p>
       </div>
     </div>

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Star from "../Star/Star";
 
-const Rating = ({ isEditable = false, value }) => {
+const Rating = ({ isEditable = false, value, size }) => {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
 
@@ -50,6 +50,7 @@ const Rating = ({ isEditable = false, value }) => {
           onMouseLeave={handleMouseLeave}
           index={index}
           isEditable={isEditable}
+          size={size}
         />
       ))}
     </>

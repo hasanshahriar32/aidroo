@@ -9,11 +9,17 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import userIcon from "@/public/icons/customer-review.gif";
 
+import { options } from "@/constant";
 import { useState } from "react";
 import { FaImage } from "react-icons/fa6";
+import OptionSelect from "../OptionSelect/OptionSelect";
+import PhoneNumberInput from "../PhoneNumberInput/PhoneNumberInput";
 
 export default function WriteReview() {
   const [isOpen, setIsOpen] = useState(false);
+  const currentUser = {
+    role: "admin",
+  };
 
   const handleOpenChange = () => {
     setIsOpen(!isOpen);
@@ -43,21 +49,21 @@ export default function WriteReview() {
             </Button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center space-y-4 ">
+          <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center      h-24">
             <div>
-              <h1 className="mb-2">Service</h1>
+              <h1>Service</h1>
               <div className="flex gap-1">
                 <Rating value={1} isEditable />
               </div>
             </div>
             <div>
-              <h1 className="mb-2">Value</h1>
+              <h1>Value</h1>
               <div className="flex gap-1">
                 <Rating value={3} isEditable />
               </div>
             </div>
             <div>
-              <h1 className="mb-2">Recommended</h1>
+              <h1>Recommended</h1>
               <div className="flex gap-1">
                 <Rating value={5} isEditable />
               </div>
@@ -92,6 +98,62 @@ export default function WriteReview() {
               </label>
             </div>
           </div>
+          {/* personal user create */}
+          {currentUser.role === "admin" && (
+            <div className="space-y-6">
+              <h1>Provide Personal Profile Information </h1>
+              <Input
+                type="text"
+                placeholder="Business Name"
+                className="bg-white dark:bg-gray-800  h-12"
+              />
+              <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Input
+                  type="text"
+                  placeholder="username"
+                  className="bg-white dark:bg-gray-800  h-12"
+                />
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  className="bg-white dark:bg-gray-800  h-12"
+                />
+              </div>
+              <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
+                <PhoneNumberInput />
+                <OptionSelect label="country" options={options} />
+              </div>
+              <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Input
+                  type="password"
+                  placeholder="Create Password"
+                  className="bg-white dark:bg-gray-800  h-12"
+                />
+                <Input
+                  type="password"
+                  placeholder="Confirm Password"
+                  className="bg-white dark:bg-gray-800  h-12"
+                />
+              </div>
+              <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
+                <OptionSelect label="country" options={options} />
+                <OptionSelect label="country" options={options} />
+              </div>
+              <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Input
+                  type="text"
+                  placeholder="City"
+                  className="bg-white dark:bg-gray-800  h-12"
+                />
+                <Input
+                  type="text"
+                  placeholder="Address"
+                  className="bg-white dark:bg-gray-800  h-12"
+                />
+              </div>
+            </div>
+          )}
+          {/* personal user create end */}
           <div className="  flex justify-center items-center">
             <Button variant="hover" size="lg">
               Submit

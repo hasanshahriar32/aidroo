@@ -1,16 +1,15 @@
 "use client";
 
 import filter from "@/asserts/filter.svg";
-import humber from "@/asserts/mobile-icons/Hamburger-l1.svg";
 import category from "@/asserts/mobile-icons/categories.svg";
 import pageIcon from "@/asserts/mobile-icons/page_icon.svg";
 import businessIcon from "@/asserts/mobile-icons/pricing-plan.svg";
 import helpIcon from "@/asserts/mobile-icons/support.svg";
-import search from "@/asserts/search.svg";
 import businessCase from "@/public/icons/businessbriefcase.svg";
 import messageIcon from "@/public/icons/messages.svg";
 import notificationIcon from "@/public/icons/notifications.svg";
-import singoutIcon from "@/public/icons/signout.svg";
+import search from "@/public/icons/search.svg";
+import whitesearch from "@/public/icons/whitesearch.svg";
 import profilePic from "@/public/images/profile.jpg";
 import Image from "next/image";
 
@@ -32,12 +31,13 @@ import {
   myorder,
   myprofile,
   myreview,
-  signout,
+  singoutIcon,
   user,
   userdashboard,
   verifiedIcon,
 } from "@/exportImage";
 import IconImage from "../IconImage/IconImage";
+import LogOutSvg from "../logoutIcon/LogOutSvg";
 import ResponsiveImage from "../ResponsiveImage/ResponsiveImage";
 import {
   Accordion,
@@ -51,7 +51,8 @@ import { Input } from "../ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 export default function Header() {
   const [searchText, setSearchText] = useState("");
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [humberOpen, setHumberOpen] = useState(false);
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -61,14 +62,13 @@ export default function Header() {
   const handleInputChange = (event) => {
     setSearchText(event.target.value);
   };
-  console.log(open);
+
   useEffect(() => {
     if (window.innerWidth >= 640) {
       setSidebarOpen(false);
     }
   }, [open]);
 
-  const inputFieldHowHide = open ? "block" : "hidden";
   return (
     <div className="w-full sticky top-0 z-20">
       <div className="bg-[#002A64]  ">
@@ -116,7 +116,7 @@ export default function Header() {
                   )}
                 </div>
                 <div className=" flex items-center justify-center  bg-primary_color p-1 rounded-md   cursor-pointer w-[42px] h-10">
-                  <Image src={search} alt="Icon 1" className="w-6 " />
+                  <Image src={whitesearch} alt="Icon 1" className="w-6 " />
                 </div>
               </form>
             </div>
@@ -138,7 +138,7 @@ export default function Header() {
                 <div className="relative h-11 p-[2px]">
                   <a
                     href="#"
-                    className="px-4  py-2   relative rounded group overflow-hidden font-medium bg-[#1E56AD] text-white inline-block"
+                    className="px-4  py-2   relative rounded group overflow-hidden font-medium bg-[rgb(45,45,46)] text-white inline-block"
                   >
                     <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-primary_color group-hover:h-full opacity-90"></span>
                     <span className="relative group-hover:text-white">
@@ -284,7 +284,7 @@ export default function Header() {
         <div className=" w-full  block lg:hidden bg-[#002A64]    space-y-4  z-50">
           {/* sidebar */}
 
-          <Sheet>
+          <Sheet onOpenChange={() => setHumberOpen(!humberOpen)}>
             <div className="flex   justify-between  h-24 items-center text-lg  mx-4 max-h-[72px] ">
               <div className=" w-24 ">
                 <Link href="/">
@@ -299,25 +299,51 @@ export default function Header() {
 
               <div className="flex gap-4 items-center ">
                 <div
-                  className="w-9 h-9 relative bg-[#002A64] rounded-md cursor-pointer p-1"
+                  className="  relative bg-[#002A64] rounded-md cursor-pointer p-1"
                   onClick={() => setOpen(!open)}
                 >
-                  <ResponsiveImage
-                    src={search}
-                    alt="Icon 1"
-                    width={500}
-                    height={300}
-                  />
+                  {!open ? (
+                    <Image
+                      src={search}
+                      alt="Icon 1"
+                      width={500}
+                      height={300}
+                      className="h-9 w-9"
+                    />
+                  ) : (
+                    <div onClick={() => setOpen(!open)}>
+                      <button className="relative group">
+                        <div className="relative flex overflow-hidden items-center justify-center rounded-md w-[36px] h-[36px] transform transition-all     ring-[#1E56AD]  ring-2 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+                          <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
+                            <div className="w-6 h-6  flex items-center   group-focus:translate-x-0   ">
+                              <div className=" absolute bg-primary_color h-[2px] w-5  transform transition-all duration-500 rotate-45 delay-300 group-focus:-rotate-45"></div>
+                              <div className=" absolute bg-primary_color h-[2px] w-5  transform transition-all duration-500 -rotate-45 delay-300 group-focus:-rotate-45"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 <SheetTrigger asChild>
-                  <div className="w-8 h-8 relative  ring rounded-md cursor-pointer">
-                    <ResponsiveImage
-                      src={humber}
-                      width={500}
-                      height={300}
-                      alt="Icon 1"
-                    />
+                  <div className={`${!humberOpen ? "-mt-2" : ""}`}>
+                    <button className="relative group  ">
+                      <div className="relative flex overflow-hidden items-center justify-center rounded-md w-[36px] h-[36px] transform transition-all     ring-[#1E56AD]  ring-2 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+                        {!humberOpen ? (
+                          <div className="flex flex-col justify-between w-[20px] h-[20px]  transform transition-all duration-300 origin-center overflow-hidden">
+                            <div className="bg-primary_color h-[2px] w-6 transform transition-all duration-300 origin-left group-focus:translate-y-6 delay-100"></div>
+                            <div className="bg-primary_color  h-[2px] w-6 rounded transform transition-all duration-300 group-focus:translate-y-6 delay-75"></div>
+                            <div className="bg-primary_color  h-[2px] w-6 transform transition-all duration-300 origin-left group-focus:translate-y-6"></div>
+                          </div>
+                        ) : (
+                          <div className="w-6 h-6  flex items-center justify-center group-focus:translate-x-0 ">
+                            <div className=" absolute bg-primary_color h-[2px] w-6  transform transition-all duration-500 rotate-45 delay-300 group-focus:-rotate-45"></div>
+                            <div className=" absolute bg-primary_color h-[2px] w-6  transform transition-all duration-500 -rotate-45 delay-300 group-focus:-rotate-45"></div>
+                          </div>
+                        )}
+                      </div>
+                    </button>
                   </div>
                 </SheetTrigger>
               </div>
@@ -338,7 +364,7 @@ export default function Header() {
                   <IconImage src={filter} alt="Icon 1" size={30} />
                 </div>
                 <div className=" flex items-center justify-center  bg-primary_color p-1 rounded-md   cursor-pointer w-[3.2rem] ">
-                  <IconImage src={search} alt="Icon 1" size={24} />
+                  <IconImage src={whitesearch} alt="Icon 1" size={24} />
                 </div>
               </form>
             )}
@@ -383,18 +409,16 @@ export default function Header() {
                 className="w-full px-8 space-y-4 mt-4 text-sm"
               >
                 <div className="flex justify-center items-center">
-                  {!currentUser && (
-                    <Button variant="hoverButton" size="lg">
-                      <div className="absolute -top-2 -right-1">
-                        <span className="relative flex h-3 w-3">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
-                        </span>
-                      </div>
+                  <Button variant="hoverButton" size="lg">
+                    <div className="absolute -top-2 -right-1">
+                      <span className="relative flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+                      </span>
+                    </div>
 
-                      <span className="relative">Explore Job</span>
-                    </Button>
-                  )}
+                    <span className="relative">Explore Job</span>
+                  </Button>
                 </div>
                 <div className="flex items-center gap-4 border-b pb-4">
                   <IconImage src={businessCase} size={28} alt="icon" />
@@ -439,9 +463,9 @@ export default function Header() {
                   ) : (
                     <Button
                       variant="hover"
-                      className=" w-32  mx-auto ring-2 ring-primary_color ring-offset-2 h-8 flex gap-2 md:h-auto lg:h-auto"
+                      className=" w-32 text-lg  mx-auto ring-2 ring-primary_color ring-offset-2 h-8 flex gap-2 md:h-auto lg:h-auto"
                     >
-                      <IconImage src={signout} size={25} className="" />
+                      <LogOutSvg />
                       Logout
                     </Button>
                   )}
