@@ -1,12 +1,30 @@
+import category from "@/asserts/mobile-icons/categories.svg";
 import IconImage from "@/components/IconImage/IconImage";
 import OptionSelect from "@/components/OptionSelect/OptionSelect";
 import Rating from "@/components/Rating/Rating";
+
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import reportIcon from "@/public/icons/report-icon.svg";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { profilePic, verifiedIcon } from "@/exportImage";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import {
+  brifcaseIcon,
+  myReview,
+  profilePic,
+  verifiedIcon,
+} from "@/exportImage";
 import { AiOutlineClockCircle } from "react-icons/ai";
 
+import { shortenString } from "@/lib/utils";
 import { FaRegPaperPlane } from "react-icons/fa6";
 
 export const options = [
@@ -23,12 +41,27 @@ export const options = [
     label: "Top Guarented",
   },
 ];
+export const works = [
+  {
+    artist: "Ornella Binni",
+    art: "https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Tom Byrom",
+    art: "https://images.unsplash.com/photo-1548516173-3cabfa4607e9?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Vladimir Malyavko",
+    art: "https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80",
+  },
+];
 
+let str = ` I had a seamless experience with Panacea.professionals do not understand our process.`;
 export default function Categories() {
   return (
-    <div className="max-w-7xl mx-auto  px-6  ">
+    <div className="max-w-7xl mx-auto  px-6  py-10   ">
       <div>
-        <h1 className="text-primary_color text-2xl text-center font-semi-bold ">
+        <h1 className="text-primary_color text-2xl text-center font-semi-bold  py-8">
           Find your best company
         </h1>
       </div>
@@ -118,12 +151,12 @@ export default function Categories() {
             />
           </div>
 
-          <div className="border p-4 rounded-md  ">
-            <div className="flex gap-4 items-center ">
+          <div className="border rounded-md  ">
+            <div className="flex gap-4 items-center  p-4  ">
               <IconImage
                 src={profilePic}
                 alt="profile pic"
-                size={100}
+                size={80}
                 className="rounded-sm"
               />
               <div className="flex flex-col space-y-2 ">
@@ -141,12 +174,73 @@ export default function Categories() {
                   </h1>
                 </div>
                 <div className="flex gap-2 items-center  text-gray-600">
-                  <FaRegPaperPlane />
-                  <h1 className=" text-sm md:text-lg ">
-                    Newyork , United States
-                  </h1>
+                  <FaRegPaperPlane className="text-[12px]" />
+                  <h1 className=" text-sm  ">Newyork , United States</h1>
                 </div>
               </div>
+            </div>
+            <div className=" border-t px-4 py-2">
+              <Accordion type="single" collapsible className="">
+                <AccordionItem value="item-1" className="border-b-0">
+                  <div className="flex justify-between">
+                    <div className=" grid grid-cols-3  w-full gap-4">
+                      <div className="flex gap-2 items-center ">
+                        <IconImage src={category} size={20} />
+                        <h1 className="text-xs">Digital Agency</h1>
+                      </div>
+                      <div className="flex gap-2 items-center ">
+                        <IconImage src={brifcaseIcon} size={20} />
+                        <h1 className="text-xs">Job feed</h1>
+                      </div>
+                      <AccordionTrigger className="w-fit">
+                        <div className="flex gap-2 items-center">
+                          <IconImage src={myReview} size={20} />
+                          <h1 className="text-xs">Latest reviews</h1>
+                        </div>
+                      </AccordionTrigger>
+                    </div>
+                    <div className="flex justify-end mt-2   w-fit">
+                      <IconImage src={reportIcon} size={20} />
+                    </div>
+                  </div>
+                  <AccordionContent className="border  ">
+                    <ScrollArea className="w-full whitespace-nowrap rounded-md border">
+                      <div className="flex w-max space-x-4 p-4">
+                        {works.map((artwork) => (
+                          <Card className=" max-w-52">
+                            <CardHeader className="flex">
+                              <div className="flex flex-col gap-2">
+                                <div>
+                                  <IconImage
+                                    src={profilePic}
+                                    size={20}
+                                    className="rounded-full ring-1 ring-offset-2"
+                                    alt="profile
+                                                 pic"
+                                  />
+                                </div>
+                                <div className="flex gap-1">
+                                  <Rating value={4} size={14} />
+                                </div>
+                              </div>
+
+                              <div className=" w-full md:w-64 border" />
+                            </CardHeader>
+                            <CardContent className="  mt-2">
+                              <div className=" ">
+                                <p className="text-gray-500 text-sm tracking-tight leading-5 ">
+                                  {shortenString(str, 50)}
+                                </p>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ))}
+                      </div>
+                      <ScrollBar orientation="horizontal" />
+                    </ScrollArea>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
           </div>
         </div>
