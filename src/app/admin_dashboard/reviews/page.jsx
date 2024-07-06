@@ -10,13 +10,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { search } from "@/exportImage";
+import { shortenString } from "@/lib/utils";
 import Image from "next/image";
-function shortenString(str, maxLength) {
-  if (str.length > maxLength) {
-    return str.slice(0, maxLength - 3) + "...";
-  }
-  return str;
-}
 
 let str =
   "Lorem ipsum dolor sit amet consectetur  Lorem ipsum dolor sit amet consectetur";

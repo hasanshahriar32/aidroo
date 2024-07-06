@@ -12,7 +12,7 @@ const Pagination = ({ className, ...props }) => (
   <nav
     role="navigation"
     aria-label="pagination"
-    className={cn("mx-auto flex w-full justify-center", className)}
+    className={cn("mx-auto flex w-full justify-center text-[10px]", className)}
     {...props}
   />
 );
@@ -51,7 +51,7 @@ const PaginationPrevious = ({ className, ...props }) => (
   <PaginationLink
     aria-label="Go to previous page"
     size="default"
-    className={cn("gap-1 pl-2.5", className)}
+    className={cn("gap-1 pl-2.5  ", className)}
     {...props}
   >
     <ChevronLeftIcon className="h-4 w-4" />

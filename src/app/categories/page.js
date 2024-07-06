@@ -1,10 +1,8 @@
 import category from "@/asserts/mobile-icons/categories.svg";
 import IconImage from "@/components/IconImage/IconImage";
 import OptionSelect from "@/components/OptionSelect/OptionSelect";
+import PaginationComponent from "@/components/Pagination/PaginationComponent";
 import Rating from "@/components/Rating/Rating";
-
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import reportIcon from "@/public/icons/report-icon.svg";
 
 import {
   Accordion,
@@ -14,17 +12,22 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
   brifcaseIcon,
+  categories,
+  locationIcon,
+  moneyBag,
   myReview,
   profilePic,
+  schedule,
   verifiedIcon,
 } from "@/exportImage";
+import { shortenString } from "@/lib/utils";
 import { AiOutlineClockCircle } from "react-icons/ai";
 
-import { shortenString } from "@/lib/utils";
 import { FaRegPaperPlane } from "react-icons/fa6";
 
 export const options = [
@@ -41,22 +44,18 @@ export const options = [
     label: "Top Guarented",
   },
 ];
-export const works = [
-  {
-    artist: "Ornella Binni",
-    art: "https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?auto=format&fit=crop&w=300&q=80",
-  },
-  {
-    artist: "Tom Byrom",
-    art: "https://images.unsplash.com/photo-1548516173-3cabfa4607e9?auto=format&fit=crop&w=300&q=80",
-  },
-  {
-    artist: "Vladimir Malyavko",
-    art: "https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80",
-  },
-];
+export const works = [1, 2, 3, 4, 5, 6];
 
-let str = ` I had a seamless experience with Panacea.professionals do not understand our process.`;
+let str = ` I had a seamless experience with Panacea.professionals do not understand our process.  Lorem ipsum dolor sit amet consectetur
+                                      adipisicing elit. Amet, explicabo! Lorem
+                                      ipsum dolor, sit amet consectetur
+                                      adipisicing elit. Distinctio ratione velit
+                                      doloribus quasi neque magnam facilis eius,
+                                      repellat ipsa veniam, expedita itaque
+                                      optio obcaecati nisi a porro dolorum
+                                      eveniet provident deleniti mollitia
+                                      adipisci quis! Similique asperiores
+                                      quisquam deleniti neque cum?`;
 export default function Categories() {
   return (
     <div className="max-w-7xl mx-auto  px-6  py-10   ">
@@ -69,38 +68,50 @@ export default function Categories() {
         {/* filter section */}
         <div className="min-w-[350px] col-span-3 border-2 rounded-md shadow p-4  space-y-4">
           <div>
-            <h1 className="text-lg font-bold">Searchig Listing </h1>
+            <h1 className=" text-sm md:text-[16px] font-bold ">
+              Searchig Listing
+            </h1>
           </div>
 
-          <div className="space-y-6">
+          <div className=" space-y-3 md:space-y-6">
             <Input
               type="text"
               placeholder="What are you looking for?"
-              className="text-gray-600 h-12"
+              className="text-gray-600 text-xs md:h-10 "
             />
-            <OptionSelect label="Select a category" options={options} />
-            <OptionSelect label="Select a sub category" options={options} />
+            <OptionSelect
+              label="Select a category"
+              options={options}
+              className="text-gray-600 text-xs md:h-12 "
+            />
+            <OptionSelect
+              label="Select a sub category"
+              options={options}
+              className="text-gray-600 text-xs md:h-12 "
+            />
           </div>
           <div>
-            <h1 className="text-lg font-bold">Rating</h1>
+            <h1 className=" text-sm md:text-[16px] font-bold ">Rating</h1>
             <div>
-              <div className="border h-14 rounded-md"></div>
+              <div className=" text-sm md:text-[16px] font-bold "></div>
             </div>
           </div>
           <div className=" ">
-            <h1 className="text-lg font-bold">Locations</h1>
+            <h1 className=" text-sm md:text-[16px] font-bold ">Locations</h1>
 
             <div className="  flex  gap-4 items-center">
               <OptionSelect label="Country" options={options} />
               <Input
                 placeholder="City or Zip code"
-                className="text-gray-600 h-12"
+                className="text-gray-600 h-10"
               />
             </div>
           </div>
           <div className="flex gap-4   justify-between">
             <div className="space-y-2">
-              <h1 className="font-bold text-gray-700">Profile status</h1>
+              <h1 className=" text-sm md:text-[16px] font-bold ">
+                Profile status
+              </h1>
 
               <div className="space-y-2">
                 <div className="flex items-center justify-between space-x-2 w-44">
@@ -133,10 +144,12 @@ export default function Categories() {
               </div>
             </div>
             <div className="space-y-2">
-              <h1 className="font-bold text-gray-700">Open Now</h1>
-              <Button>
-                <AiOutlineClockCircle className="mr-2 text-lg" />
-                Open Now
+              <h1 className=" text-sm md:text-[16px] font-bold ">Open Now</h1>
+              <Button className=" gap-1  flex items-center justify-center">
+                <AiOutlineClockCircle className=" text-sm md:text-lg font-bold " />
+                <span className=" text-sm md:text-[16px] font-bold ">
+                  Open Now
+                </span>
               </Button>
             </div>
           </div>
@@ -161,79 +174,253 @@ export default function Categories() {
               />
               <div className="flex flex-col space-y-2 ">
                 <div className="flex gap-2 items-center ">
-                  <h1 className="text-xl">Aidroo</h1>
-                  <IconImage src={verifiedIcon} size={24} />
+                  <h1 className=" md:text-xl ">Aidroo</h1>
+                  <IconImage src={verifiedIcon} size={18} />
                 </div>
                 {/*rating */}
                 <div className="md:flex gap-4  items-center  space-y-2 md:space-y-0 ">
                   <div className="flex gap-1 ">
-                    <Rating value={5} size={16} />
+                    <Rating value={5} size={14} />
                   </div>
-                  <h1 className="text-gray-600  text-sm  ">
+                  <h1 className="text-gray-600 text-xs md:text-sm  ">
                     <span>4.5 | 102 Reviews</span>
                   </h1>
                 </div>
                 <div className="flex gap-2 items-center  text-gray-600">
                   <FaRegPaperPlane className="text-[12px]" />
-                  <h1 className=" text-sm  ">Newyork , United States</h1>
+                  <h1 className=" text-xs md:text-sm  ">
+                    Newyork , United States
+                  </h1>
                 </div>
+                {/* 
+                category
+                */}
+              </div>
+            </div>
+            <div className="px-4 py-1 flex justify-between md:hidden">
+              <div className="flex gap-1 items-center ">
+                <IconImage src={category} size={15} />
+                <h1 className="text-xs">Digital Agency</h1>
+              </div>
+              <div className="flex gap-1 items-center ">
+                <IconImage src={category} size={15} />
+                <h1 className="text-xs">Digital Agency</h1>
               </div>
             </div>
             <div className=" border-t px-4 py-2">
               <Accordion type="single" collapsible className="">
                 <AccordionItem value="item-1" className="border-b-0">
-                  <div className="flex justify-between">
-                    <div className=" grid grid-cols-3  w-full gap-4">
+                  <div className="flex justify-between  ">
+                    <div className=" hidden md:grid grid-cols-1 md:grid-cols-3  w-full gap-4">
                       <div className="flex gap-2 items-center ">
                         <IconImage src={category} size={20} />
                         <h1 className="text-xs">Digital Agency</h1>
                       </div>
-                      <div className="flex gap-2 items-center ">
-                        <IconImage src={brifcaseIcon} size={20} />
-                        <h1 className="text-xs">Job feed</h1>
-                      </div>
-                      <AccordionTrigger className="w-fit">
-                        <div className="flex gap-2 items-center">
-                          <IconImage src={myReview} size={20} />
-                          <h1 className="text-xs">Latest reviews</h1>
-                        </div>
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <div className="flex gap-2 items-center cursor-pointer text-primary_color ">
+                            <IconImage src={brifcaseIcon} size={20} />
+                            <h1 className="text-xs">Job feed</h1>
+                          </div>
+                        </DialogTrigger>
+
+                        <DialogContent className="  sm:h-2/3 overflow-hidden overflow-y-auto ">
+                          <ScrollArea className="w-full whitespace-nowrap rounded-md ">
+                            <div className="flex w-max space-x-4 p-4">
+                              {works.map((artwork) => (
+                                <div className="w-[330px] md:w-52 overflow-hidden  p-3 border rounded-md ">
+                                  <div>
+                                    <h1 className="text-sm text-primary_color text-wrap">
+                                      Looking for Sales Manager
+                                    </h1>
+
+                                    <p className="text-xs text-wrap">
+                                      {shortenString(str, 250)}
+                                    </p>
+                                    <div className=" mt-2">
+                                      <div>
+                                        <div className="flex items-center text-sm gap-4">
+                                          <IconImage src={moneyBag} size={32} />
+                                          <div>
+                                            <h1 className="text-xs">1624 $</h1>
+                                            <p className="text-[10px]">
+                                              Price is{" "}
+                                              <span className="text-primary_color">
+                                                Negotiable
+                                              </span>
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <div className="flex items-center text-sm gap-4">
+                                          <IconImage
+                                            src={categories}
+                                            size={32}
+                                          />
+                                          <h1 className="text-xs">
+                                            Appliance Service
+                                          </h1>
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <div className="flex items-center text-sm gap-4">
+                                          <IconImage src={schedule} size={32} />
+                                          <h1 className="text-xs">
+                                            10--09-2024
+                                          </h1>
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <div className="flex items-center text-sm gap-4">
+                                          <IconImage
+                                            src={locationIcon}
+                                            size={32}
+                                          />
+                                          <h1 className="text-xs">
+                                            Az 2031 ,Ariziba ,Usa
+                                          </h1>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                            <ScrollBar orientation="horizontal" />
+                          </ScrollArea>
+                          <PaginationComponent className=" text-xs md:text-sm" />
+                        </DialogContent>
+                      </Dialog>
+                      <AccordionTrigger className=" w-fit flex  -mt-3 ">
+                        <IconImage src={myReview} size={20} />
+                        <span className="text-xs text-primary_color">
+                          Latest reviews
+                        </span>
                       </AccordionTrigger>
                     </div>
-                    <div className="flex justify-end mt-2   w-fit">
-                      <IconImage src={reportIcon} size={20} />
+
+                    {/* mobile view */}
+                    <div className="  flex-1 flex justify-between items-center md:hidden  ">
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <div className="flex gap-2 items-center cursor-pointer text-primary_color ">
+                            <IconImage src={brifcaseIcon} size={20} />
+                            <h1 className="text-xs">Job feed</h1>
+                          </div>
+                        </DialogTrigger>
+
+                        <DialogContent className="  sm:h-2/3 overflow-hidden overflow-y-auto ">
+                          <ScrollArea className="w-full whitespace-nowrap rounded-md ">
+                            <div className="flex w-max space-x-4 p-4">
+                              {works.map((artwork) => (
+                                <div className="w-[330px] md:w-52 overflow-hidden  p-3 border rounded-md ">
+                                  <div>
+                                    <h1 className="text-sm text-primary_color text-wrap">
+                                      Looking for Sales Manager
+                                    </h1>
+
+                                    <p className="text-xs text-wrap">
+                                      {shortenString(str, 250)}
+                                    </p>
+                                    <div className=" mt-2">
+                                      <div>
+                                        <div className="flex items-center text-sm gap-4">
+                                          <IconImage src={moneyBag} size={32} />
+                                          <div>
+                                            <h1 className="text-xs">1624 $</h1>
+                                            <p className="text-[10px]">
+                                              Price is{" "}
+                                              <span className="text-primary_color">
+                                                Negotiable
+                                              </span>
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <div className="flex items-center text-sm gap-4">
+                                          <IconImage
+                                            src={categories}
+                                            size={32}
+                                          />
+                                          <h1 className="text-xs">
+                                            Appliance Service
+                                          </h1>
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <div className="flex items-center text-sm gap-4">
+                                          <IconImage src={schedule} size={32} />
+                                          <h1 className="text-xs">
+                                            10--09-2024
+                                          </h1>
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <div className="flex items-center text-sm gap-4">
+                                          <IconImage
+                                            src={locationIcon}
+                                            size={32}
+                                          />
+                                          <h1 className="text-xs">
+                                            Az 2031 ,Ariziba ,Usa
+                                          </h1>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                            <ScrollBar orientation="horizontal" />
+                          </ScrollArea>
+                          <PaginationComponent className=" text-xs md:text-sm" />
+                        </DialogContent>
+                      </Dialog>
+                      <AccordionTrigger className=" w-fit flex    ">
+                        <IconImage src={myReview} size={20} />
+                        <span className="text-xs text-primary_color">
+                          Latest reviews
+                        </span>
+                      </AccordionTrigger>
                     </div>
                   </div>
-                  <AccordionContent className="border  ">
-                    <ScrollArea className="w-full whitespace-nowrap rounded-md border">
+                  <AccordionContent className="  ">
+                    <ScrollArea className="w-full whitespace-nowrap rounded-md ">
                       <div className="flex w-max space-x-4 p-4">
                         {works.map((artwork) => (
-                          <Card className=" max-w-52">
-                            <CardHeader className="flex">
-                              <div className="flex flex-col gap-2">
-                                <div>
-                                  <IconImage
-                                    src={profilePic}
-                                    size={20}
-                                    className="rounded-full ring-1 ring-offset-2"
-                                    alt="profile
+                          <div className="w-[230px] md:w-52 max-h-44  overflow-hidden  p-2 border rounded-md ">
+                            <div className="flex flex-col gap-3">
+                              <span className="text-xs text-gray-400">
+                                5 day ago
+                              </span>
+                              <div className="flex gap-4">
+                                <IconImage
+                                  src={profilePic}
+                                  size={40}
+                                  className="rounded-full ring-1 ring-offset-2"
+                                  alt="profile
                                                  pic"
-                                  />
-                                </div>
-                                <div className="flex gap-1">
-                                  <Rating value={4} size={14} />
+                                />
+                                <div className="space-y-2">
+                                  <h1>Jhon Doe</h1>
+                                  <div className="flex gap-1">
+                                    <Rating value={4} size={14} />
+                                  </div>
                                 </div>
                               </div>
+                            </div>
 
-                              <div className=" w-full md:w-64 border" />
-                            </CardHeader>
-                            <CardContent className="  mt-2">
-                              <div className=" ">
-                                <p className="text-gray-500 text-sm tracking-tight leading-5 ">
-                                  {shortenString(str, 50)}
-                                </p>
-                              </div>
-                            </CardContent>
-                          </Card>
+                            <div className=" w-full border my-2   " />
+
+                            <div className="px-1">
+                              <p className="text-wrap text-xs text-gray-500 ">
+                                Lorem ipsum dolor sit amet conse ctetur adipi
+                                sicing elit. Dignissimos, magnam.
+                              </p>
+                            </div>
+                          </div>
                         ))}
                       </div>
                       <ScrollBar orientation="horizontal" />

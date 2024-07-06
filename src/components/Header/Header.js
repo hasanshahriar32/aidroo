@@ -136,15 +136,15 @@ export default function Header() {
                 onMouseLeave={() => setIsHovered(false)}
               >
                 <div className="relative h-11 p-[2px]">
-                  <a
+                  <button
                     href="#"
-                    className="px-4  py-2   relative rounded group overflow-hidden font-medium bg-[rgb(45,45,46)] text-white inline-block"
+                    className="px-4  py-2   relative rounded group overflow-hidden font-medium bg-[#1E56AD] text-white inline-block"
                   >
                     <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-primary_color group-hover:h-full opacity-90"></span>
                     <span className="relative group-hover:text-white">
                       For Business
                     </span>
-                  </a>
+                  </button>
 
                   {isHovered && (
                     <div className="absolute  shadow rounded-md    top-11 pt-4 ">

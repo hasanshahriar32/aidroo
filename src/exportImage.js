@@ -20,10 +20,19 @@ import notificationIcon from "@/public/icons/notifications.svg";
 import addyourbusiness from "@/public/icons/profile/addyourbusiness.svg";
 import myorder from "@/public/icons/profile/myorder.svg";
 import myprofile from "@/public/icons/profile/myprofile.svg";
-import myreview from "@/public/icons/profile/myreviews.svg";
+
+import categories from "@/public/icons/jobposticons/categories.svg";
+import hashtag from "@/public/icons/jobposticons/hashtag.svg";
+import locationIcon from "@/public/icons/jobposticons/locationIcon.svg";
+import moneyBag from "@/public/icons/jobposticons/moneybag.svg";
+import photoadd from "@/public/icons/jobposticons/photoadd.svg";
+import schedule from "@/public/icons/jobposticons/schedule.svg";
+import myReview from "@/public/icons/profile/myreviews.svg";
 import pricingPlan from "@/public/icons/profile/pricingPlan.svg";
 import signout from "@/public/icons/profile/signout.svg";
 import userdashboard from "@/public/icons/profile/userdashboard.svg";
+import reportIcon from "@/public/icons/report-icon.svg";
+import reviewIcon from "@/public/icons/reviews.svg";
 import singoutIcon from "@/public/icons/signout.svg";
 import facebook from "@/public/icons/social/facebook.svg";
 import instagram from "@/public/icons/social/instagram.svg";
@@ -40,24 +49,32 @@ export {
   brifcaseIcon,
   businessCase,
   businessIcon,
+  categories,
   category,
   facebook,
   filter,
+  hashtag,
   helpIcon,
   humber,
   instagram,
   linkedin,
+  locationIcon,
   loginIcon,
   logo,
   logoutIcon,
   messageIcon,
+  moneyBag,
   myorder,
   myprofile,
-  myreview,
+  myReview,
   notificationIcon,
   pageIcon,
+  photoadd,
   pricingPlan,
   profilePic,
+  reportIcon,
+  reviewIcon,
+  schedule,
   search,
   signout,
   singoutIcon,

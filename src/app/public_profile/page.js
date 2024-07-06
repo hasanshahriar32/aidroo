@@ -13,7 +13,7 @@ import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { businessOur, options } from "@/constant";
-import { bagIcon, verifiedIcon } from "@/exportImage";
+import { bagIcon, brifcaseIcon, verifiedIcon } from "@/exportImage";
 
 import ceoIcon from "@/public/icons/ceo.svg";
 import claimedIcon from "@/public/icons/claimed.svg";
@@ -28,7 +28,6 @@ import srsoft from "@/public/images/srsoft.svg";
 import tesla from "@/public/images/tesla.svg";
 import { Label } from "@radix-ui/react-dropdown-menu";
 
-import { BsBagDash } from "react-icons/bs";
 import {
   CiCircleChevRight,
   CiCirclePlus,
@@ -98,21 +97,21 @@ export default function PublicProfile() {
         </div>
 
         <Tabs
-          defaultValue="job"
+          defaultValue="review"
           className="max-w-[1280px] mx-auto px-8 space-y-6 "
         >
           <TabsList className="grid lg:w-4/6   grid-cols-3 h-12  ">
-            <TabsTrigger value="review" className="h-10 flex gap-4 text-xl">
+            <TabsTrigger value="review" className="h-10 flex gap-4 text-lg">
               <CiStar className="text-24   " />
-              <span> Reviews</span>
+              <span className="text-sm"> Reviews</span>
             </TabsTrigger>
             <TabsTrigger value="job" className="h-10 flex gap-4 text-xl">
-              <BsBagDash className=" text-24 " />
-              <span> Jobs</span>
+              <IconImage src={brifcaseIcon} size={20} />
+              <span className="text-sm"> Jobs</span>
             </TabsTrigger>
             <TabsTrigger value="more" className="h-10 flex gap-4 text-xl">
-              <CiCircleChevRight className=" text-24 " />
-              <span> More</span>
+              <CiCircleChevRight className=" text-lg " />
+              <span className="text-sm"> More</span>
             </TabsTrigger>
           </TabsList>
           {/* review  tab content  */}

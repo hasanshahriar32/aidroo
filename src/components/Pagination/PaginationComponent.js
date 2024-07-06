@@ -8,16 +8,16 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-export default function PaginationComponent() {
+export default function PaginationComponent({ className }) {
   return (
-    <div className=" ">
+    <div className="  ">
       <Pagination className="border w-fit p-2 rounded-md ">
-        <PaginationContent>
+        <PaginationContent className="text-sm">
           <PaginationItem>
-            <PaginationPrevious href="#" className="border" />
+            <PaginationPrevious href="#" className={className} />
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href="#" className="border">
+            <PaginationLink href="#" className={className}>
               1
             </PaginationLink>
           </PaginationItem>
@@ -27,7 +27,7 @@ export default function PaginationComponent() {
             </PaginationLink>
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href="#" className="border">
+            <PaginationLink href="#" className={className}>
               3
             </PaginationLink>
           </PaginationItem>
@@ -35,7 +35,7 @@ export default function PaginationComponent() {
             <PaginationEllipsis />
           </PaginationItem>
           <PaginationItem>
-            <PaginationNext href="#" className="border" />
+            <PaginationNext href="#" className={className} />
           </PaginationItem>
         </PaginationContent>
       </Pagination>
