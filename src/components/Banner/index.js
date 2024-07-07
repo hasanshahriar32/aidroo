@@ -2,6 +2,7 @@ import filter from "@/asserts/filter.svg";
 import search from "@/asserts/search.svg";
 import hero from "@/public/images/heroimage.svg";
 
+import Heading from "../Heading";
 import IconImage from "../IconImage/IconImage";
 import ResponsiveImage from "../ResponsiveImage/ResponsiveImage";
 import { Input } from "../ui/input";
@@ -11,15 +12,14 @@ export default function Banner() {
       <div className="  max-w-[1280px]  mx-auto mt-14 lg:mt-0  ">
         <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 sm:px-8 items-center mx-8">
           <div className="flex flex-col gap-6 text-center justify-center ">
-            <h1 className=" font-semibold text-4xl">
-              Explore Reviews
-              <br className="block lg:hidden" />
+            <Heading Heading className=" font-semibold  " size="xl">
+              Explore Reviews <br className="block lg:hidden" />
               Share Feedback
               <br />
               <span className="   hidden md:block">
                 Connect with Reliable Companies
               </span>
-            </h1>
+            </Heading>
 
             <form className="flex gap-4">
               <Input

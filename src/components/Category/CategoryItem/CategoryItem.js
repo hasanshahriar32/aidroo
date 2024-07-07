@@ -1,10 +1,11 @@
+import Heading from "@/components/Heading";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function CategoryItem({ category }) {
   return (
     <Link
-      className="slide_card bg-[#d4e5ff] dark:bg-[#0b1120] shadow-md min-w-[100px] h-[120px] before:bg-[#ccd9ff] dark:before:bg-dark dark:border"
+      className="slide_card bg-[#d4e5ff] dark:bg-[#0b1120] shadow-md min-w-[85px] h-20  md:h-[120px] before:bg-[#ccd9ff] dark:before:bg-dark dark:border"
       href="#"
     >
       <div className="relative flex justify-center">
@@ -16,6 +17,7 @@ export default function CategoryItem({ category }) {
             xmlnsXlink="http://www.w3.org/1999/xlink"
             x="0px"
             y="0px"
+            className=" hidden opacity-20 md:block"
             viewBox="0 0 512 512"
             style={{ enableBackground: "new 0 0 512 512" }}
             xmlSpace="preserve"
@@ -60,9 +62,14 @@ export default function CategoryItem({ category }) {
             width={40}
             height={40}
             alt="Category icon"
-            className="absolute top-[35px] p-1 shrink-0"
+            className="absolute top-7 md:top-[35px] p-1 shrink-0"
           />
-          <h1 className="absolute top-[77px]  ">Finance</h1>
+          <Heading
+            className="absolute top-2 md:top-[77px] text-gray-500   "
+            size="xs"
+          >
+            Finance
+          </Heading>
         </div>
       </div>
     </Link>

@@ -142,7 +142,7 @@ export default function Header() {
                     className="px-4  py-2   relative rounded group overflow-hidden font-medium bg-[#1E56AD] text-white inline-block"
                   >
                     <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-primary_color group-hover:h-full opacity-90"></span>
-                    <span className="relative group-hover:text-white">
+                    <span className="relative group-hover:text-white text-sm">
                       For Business
                     </span>
                   </button>

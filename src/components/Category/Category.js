@@ -3,6 +3,8 @@
 import { categories } from "@/constant";
 import { Poppins } from "next/font/google";
 import { useEffect, useState } from "react";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import Heading from "../Heading";
 import CategoryItem from "./CategoryItem/CategoryItem";
 
 const poppins = Poppins({
@@ -30,7 +32,7 @@ export default function Category() {
     } else if (window.innerWidth > 600) {
       setItemsPerSlide(4);
     } else if (window.innerWidth < 600) {
-      setItemsPerSlide(2);
+      setItemsPerSlide(4);
     }
   };
 
@@ -58,22 +60,23 @@ export default function Category() {
   };
   const prvDisabledColor =
     currentSlide === 0
-      ? "bg-gray-600 ring-0 ring-offset-0"
-      : "hover:bg-primary_color dark:hover:bg-dark ";
+      ? " text-gray-200 ring-0 ring-offset-0"
+      : "   text-primary_color  ring  ring-[#D2E8FF] ring-offset-1  ";
 
   const nextDisabledColor =
     totalSlides - 1 === currentSlide
-      ? "bg-gray-600 ring-0 ring-offset-0"
-      : "hover:bg-primary_color dark:hover:bg-dark";
+      ? " text-gray-200 ring-0 ring-offset-0"
+      : "   text-primary_color  ring  ring-[#D2E8FF] ring-offset-1  ";
 
   return (
-    <div className="bg-light dark:bg-dark py-20">
-      <div className="max-w-[1360px] mx-auto sm:px-8 flex items-center flex-col space-y-12">
-        <h1
-          className={`text-center text-3xl  font-semibold   ${poppins.variable}`}
+    <div className="bg-light dark:bg-dark py-10">
+      <div className="max-w-[1360px] mx-auto sm:px-8 flex items-center flex-col space-y-6">
+        <Heading
+          className={`text-center  font-semibold  ${poppins.variable}`}
+          size="md"
         >
           Browse Categories
-        </h1>
+        </Heading>
         <div className=" px-14 relative mx-8">
           <div className=" w-fit lg:max-w-[900px]  flex justify-center overflow-hidden">
             <div
@@ -88,8 +91,8 @@ export default function Category() {
                       ? "grid-cols-1 sm:grid-cols-3   md:grid-cols-4  "
                       : itemsPerSlide === 4
                       ? "grid-cols-2  "
-                      : itemsPerSlide === 2
-                      ? "grid-cols-1"
+                      : itemsPerSlide === 4
+                      ? "grid-cols-2"
                       : ""
                   }`}
                 >
@@ -101,19 +104,19 @@ export default function Category() {
             </div>
             <button
               disabled={currentSlide === 0}
-              className={`absolute left-0 top-1/2 transform -translate-y-1/2 bg-[#CCD9FF] ${prvDisabledColor}    w-8 h-8 rounded-full ring  ring-offset-2 flex justify-center items-center
-              overflow-hidden    text-4xl`}
+              className={`absolute left-0 top-1/2 transform -translate-y-1/2 bg-[#CCD9FF] ${prvDisabledColor}   w-6 h-6  rounded-full     flex justify-center items-center
+              overflow-hidden    text-2xl  `}
               onClick={prevSlide}
             >
-              ‹
+              <IoIosArrowBack className="text-sm -ms-[2px]" />
             </button>
             <button
               disabled={totalSlides - 1 === currentSlide}
-              className={`absolute right-0 top-1/2 transform -translate-y-1/2 bg-[#CCD9FF]  ${nextDisabledColor}    w-8 h-8 rounded-full ring ring-offset-2 flex justify-center items-center
-              overflow-hidden    text-4xl`}
+              className={`absolute right-0 top-1/2 -mt-4  ${nextDisabledColor}   w-6 h-6  rounded-full     flex justify-center items-center
+              overflow-hidden    text-2xl  `}
               onClick={nextSlide}
             >
-              ›
+              <IoIosArrowForward className="text-sm ms-[2px]" />
             </button>
           </div>
         </div>
