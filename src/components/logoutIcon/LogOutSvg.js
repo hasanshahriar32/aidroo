@@ -2,8 +2,8 @@
 import { useState } from "react";
 
 export default function LogOutSvg({
-  initialColor = "white",
-  hoverColor = "skyblue",
+  initialColor = "#002A64",
+  hoverColor = "",
   size = 24,
 }) {
   const [isHovered, setIsHovered] = useState(false);

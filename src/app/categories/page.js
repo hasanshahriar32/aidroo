@@ -1,4 +1,5 @@
 import category from "@/asserts/mobile-icons/categories.svg";
+import Filtering from "@/components/FilterRating/Filtering";
 import IconImage from "@/components/IconImage/IconImage";
 import OptionSelect from "@/components/OptionSelect/OptionSelect";
 import PaginationComponent from "@/components/Pagination/PaginationComponent";
@@ -10,10 +11,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
   brifcaseIcon,
@@ -26,7 +24,6 @@ import {
   verifiedIcon,
 } from "@/exportImage";
 import { shortenString } from "@/lib/utils";
-import { AiOutlineClockCircle } from "react-icons/ai";
 
 import { FaRegPaperPlane } from "react-icons/fa6";
 
@@ -66,94 +63,7 @@ export default function Categories() {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-8  gap-y-4 md:gap-x-4  ">
         {/* filter section */}
-        <div className="min-w-[350px] col-span-3 border-2 rounded-md shadow p-4  space-y-4">
-          <div>
-            <h1 className=" text-sm md:text-[16px] font-bold ">
-              Searchig Listing
-            </h1>
-          </div>
-
-          <div className=" space-y-3 md:space-y-6">
-            <Input
-              type="text"
-              placeholder="What are you looking for?"
-              className="text-gray-600 text-xs md:h-10 "
-            />
-            <OptionSelect
-              label="Select a category"
-              options={options}
-              className="text-gray-600 text-xs md:h-12 "
-            />
-            <OptionSelect
-              label="Select a sub category"
-              options={options}
-              className="text-gray-600 text-xs md:h-12 "
-            />
-          </div>
-          <div>
-            <h1 className=" text-sm md:text-[16px] font-bold ">Rating</h1>
-            <div>
-              <div className=" text-sm md:text-[16px] font-bold "></div>
-            </div>
-          </div>
-          <div className=" ">
-            <h1 className=" text-sm md:text-[16px] font-bold ">Locations</h1>
-
-            <div className="  flex  gap-4 items-center">
-              <OptionSelect label="Country" options={options} />
-              <Input
-                placeholder="City or Zip code"
-                className="text-gray-600 h-10"
-              />
-            </div>
-          </div>
-          <div className="flex gap-4   justify-between">
-            <div className="space-y-2">
-              <h1 className=" text-sm md:text-[16px] font-bold ">
-                Profile status
-              </h1>
-
-              <div className="space-y-2">
-                <div className="flex items-center justify-between space-x-2 w-44">
-                  <label
-                    htmlFor="terms"
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Claimed
-                  </label>
-                  <Checkbox className="w-6 h-6 rounded-full" id="terms" />
-                </div>
-                <div className="flex items-center justify-between space-x-2 w-44">
-                  <label
-                    htmlFor="terms"
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Claimed
-                  </label>
-                  <Checkbox className="w-6 h-6 rounded-full" id="terms" />
-                </div>
-                <div className="flex items-center justify-between space-x-2 w-44">
-                  <label
-                    htmlFor="terms"
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Claimed
-                  </label>
-                  <Checkbox className="w-6 h-6 rounded-full" id="terms" />
-                </div>
-              </div>
-            </div>
-            <div className="space-y-2">
-              <h1 className=" text-sm md:text-[16px] font-bold ">Open Now</h1>
-              <Button className=" gap-1  flex items-center justify-center">
-                <AiOutlineClockCircle className=" text-sm md:text-lg font-bold " />
-                <span className=" text-sm md:text-[16px] font-bold ">
-                  Open Now
-                </span>
-              </Button>
-            </div>
-          </div>
-        </div>
+        <Filtering />
         {/*  business  profile section */}
         <div className=" col-span-5 border-2 rounded-md   p-6 space-y-4  ">
           <div className="flex justify-end">
