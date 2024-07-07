@@ -30,7 +30,7 @@ import {
   logo,
   myorder,
   myprofile,
-  myreview,
+  myReview,
   singoutIcon,
   user,
   userdashboard,
@@ -49,6 +49,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 export default function Header() {
   const [searchText, setSearchText] = useState("");
   const [open, setOpen] = useState(false);
@@ -225,7 +226,7 @@ export default function Header() {
                         <Link href="/notifications">
                           <span className="flex items-center gap-6  border-b pb-2   ">
                             <IconImage
-                              src={myreview}
+                              src={myReview}
                               size={30}
                               alt="notification icon"
                             />
@@ -308,12 +309,12 @@ export default function Header() {
                       alt="Icon 1"
                       width={500}
                       height={300}
-                      className="h-9 w-9"
+                      className=" w-7"
                     />
                   ) : (
                     <div onClick={() => setOpen(!open)}>
                       <button className="relative group">
-                        <div className="relative flex overflow-hidden items-center justify-center rounded-md w-[36px] h-[36px] transform transition-all     ring-[#1E56AD]  ring-2 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+                        <div className="relative flex overflow-hidden items-center justify-center rounded-md w-[36px] h-[36px] transform transition-all     ring-[#1E56AD]     duration-200 shadow-md">
                           <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
                             <div className="w-6 h-6  flex items-center   group-focus:translate-x-0   ">
                               <div className=" absolute bg-primary_color h-[2px] w-5  transform transition-all duration-500 rotate-45 delay-300 group-focus:-rotate-45"></div>
@@ -327,32 +328,33 @@ export default function Header() {
                 </div>
 
                 <SheetTrigger asChild>
-                  <div className={`${!humberOpen ? "-mt-2" : ""}`}>
-                    <button className="relative group  ">
-                      <div className="relative flex overflow-hidden items-center justify-center rounded-md w-[36px] h-[36px] transform transition-all     ring-[#1E56AD]  ring-2 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
-                        {!humberOpen ? (
-                          <div className="flex flex-col justify-between w-[20px] h-[20px]  transform transition-all duration-300 origin-center overflow-hidden">
-                            <div className="bg-primary_color h-[2px] w-6 transform transition-all duration-300 origin-left group-focus:translate-y-6 delay-100"></div>
-                            <div className="bg-primary_color  h-[2px] w-6 rounded transform transition-all duration-300 group-focus:translate-y-6 delay-75"></div>
-                            <div className="bg-primary_color  h-[2px] w-6 transform transition-all duration-300 origin-left group-focus:translate-y-6"></div>
-                          </div>
-                        ) : (
-                          <div className="w-6 h-6  flex items-center justify-center group-focus:translate-x-0 ">
-                            <div className=" absolute bg-primary_color h-[2px] w-6  transform transition-all duration-500 rotate-45 delay-300 group-focus:-rotate-45"></div>
-                            <div className=" absolute bg-primary_color h-[2px] w-6  transform transition-all duration-500 -rotate-45 delay-300 group-focus:-rotate-45"></div>
-                          </div>
-                        )}
-                      </div>
-                    </button>
+                  <div>
+                    <div className="border w-7 h-7 rounded-md border-gray-500 relative  flex justify-center items-center group">
+                      {!humberOpen ? (
+                        <div className="w-4 flex gap-1 flex-col ">
+                          <div className=" border-primary_color border transform transition-all duration-300" />
+                          <div className=" border-primary_color border transform transition-all duration-300" />
+                          <div className=" border-primary_color border transform transition-all duration-300" />
+                        </div>
+                      ) : (
+                        <div className="w-6 h-6  flex items-center     ms-[3px]  ">
+                          <div className=" absolute bg-primary_color h-[2px] w-5  transform transition-all duration-300 rotate-45 delay-300 group-focus:-rotate-45"></div>
+                          <div className=" absolute bg-primary_color h-[2px] w-5  transform transition-all duration-300 -rotate-45 delay-300 group-focus:-rotate-45"></div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </SheetTrigger>
               </div>
             </div>
-
-            {open && (
-              <form
-                className={` flex gap-4 w-full  justify-center pb-4 transform duration-500   mx-auto px-8  `}
-              >
+            <div
+              className={`absolute top-[48px] w-full transition-all duration-500 bg-[#002A64] p-4 ${
+                open
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 -translate-y-20 pointer-events-none "
+              }`}
+            >
+              <form className=" flex gap-4 max-w-96 mx-auto  ">
                 <Input
                   type="text"
                   name="search"
@@ -367,7 +369,8 @@ export default function Header() {
                   <IconImage src={whitesearch} alt="Icon 1" size={24} />
                 </div>
               </form>
-            )}
+            </div>
+
             <SheetContent>
               <SheetHeader className=" w-full flex justify-center items-center h-24 bg-[#002A64]">
                 {!currentUser ? (
@@ -403,73 +406,74 @@ export default function Header() {
               </SheetHeader>
               {/* menu */}
 
-              <Accordion
-                type="single"
-                collapsible
-                className="w-full px-8 space-y-4 mt-4 text-sm"
-              >
-                <div className="flex justify-center items-center">
-                  <Button variant="hoverButton" size="lg">
-                    <div className="absolute -top-2 -right-1">
-                      <span className="relative flex h-3 w-3">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
-                      </span>
-                    </div>
+              <Accordion type="single" collapsible>
+                <ScrollArea className="  h-screen">
+                  <div className="w-full px-8 space-y-4 mt-4 text-sm  pb-96 ">
+                    <div className="flex justify-center items-center">
+                      <Button variant="hoverButton" size="lg">
+                        <div className="absolute -top-2 -right-1">
+                          <span className="relative flex h-3 w-3">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+                          </span>
+                        </div>
 
-                    <span className="relative">Explore Job</span>
-                  </Button>
-                </div>
-                <div className="flex items-center gap-4 border-b pb-4">
-                  <IconImage src={businessCase} size={28} alt="icon" />
-                  <span>For Business</span>
-                </div>
-                <div className="flex items-center gap-4 border-b pb-4">
-                  <IconImage src={category} size={24} alt="icon" />
-                  <span>Categories</span>
-                </div>
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>
-                    <div className="flex items-center gap-4 no-underline  ">
-                      <IconImage src={pageIcon} size={24} alt="icon" />
-                      <span>Pages</span>
+                        <span className="relative">Explore Job</span>
+                      </Button>
                     </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-10">
-                    <ul className="collapse-content space-y-2   ">
-                      <li> Terms of service</li>
-                      <li> Privacy Policy </li>
-                      <li> Events</li>
-                      <li>Blogs</li>
-                    </ul>
-                  </AccordionContent>
-                </AccordionItem>
-                <div className="flex items-center gap-4 border-b pb-4 ">
-                  <IconImage src={businessIcon} size={24} alt="icon" />
-                  <span className=""> Business Pricing Plan</span>
-                </div>
-                <div className="flex items-center gap-4 collapse-content border-b pb-4 ">
-                  <IconImage src={helpIcon} size={24} alt="icon" />
-                  <span> Help and Support</span>
-                </div>
-                <div className="flex  gap-4  pt-40">
-                  {!currentUser ? (
-                    <Button
-                      variant="hover"
-                      className=" w-1/2  mx-auto ring-2 ring-primary_color ring-offset-2 h-8  md:h-auto lg:h-auto"
-                    >
-                      Login
-                    </Button>
-                  ) : (
-                    <Button
-                      variant="hover"
-                      className=" w-32 text-lg  mx-auto ring-2 ring-primary_color ring-offset-2 h-8 flex gap-2 md:h-auto lg:h-auto"
-                    >
-                      <LogOutSvg />
-                      Logout
-                    </Button>
-                  )}
-                </div>
+                    <div className="flex items-center gap-4 border-b pb-4">
+                      <IconImage src={businessCase} size={28} alt="icon" />
+                      <span>For Business</span>
+                    </div>
+                    <div className="flex items-center gap-4 border-b pb-4">
+                      <IconImage src={category} size={24} alt="icon" />
+                      <span>Categories</span>
+                    </div>
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>
+                        <div className="flex items-center gap-4 no-underline  ">
+                          <IconImage src={pageIcon} size={24} alt="icon" />
+                          <span>Pages</span>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent className="px-10">
+                        <ul className="collapse-content space-y-2   ">
+                          <li> Terms of service</li>
+                          <li> Privacy Policy </li>
+                          <li> Events</li>
+                          <li>Blogs</li>
+                        </ul>
+                      </AccordionContent>
+                    </AccordionItem>
+                    <div className="flex items-center gap-4 border-b pb-4 ">
+                      <IconImage src={businessIcon} size={24} alt="icon" />
+                      <span className=""> Business Pricing Plan</span>
+                    </div>
+                    <div className="flex items-center gap-4 collapse-content border-b pb-4 ">
+                      <IconImage src={helpIcon} size={24} alt="icon" />
+                      <span> Help and Support</span>
+                    </div>
+                    <div className="flex pt-14  ">
+                      {!currentUser ? (
+                        <Button
+                          variant="hover"
+                          className="   w-32 gap-4     first:ring-2 ring-primary_color ring-offset-2 h-8  md:h-auto lg:h-auto"
+                        >
+                          Login
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="hover"
+                          className="   text-lg  w-32         ring-2 ring-primary_color ring-offset-2 h-8 flex gap-2    "
+                        >
+                          <LogOutSvg />
+                          Logout
+                        </Button>
+                      )}
+                    </div>
+                  </div>
+                  <ScrollBar orientation="vertical" />
+                </ScrollArea>
               </Accordion>
             </SheetContent>
           </Sheet>
