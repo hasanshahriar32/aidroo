@@ -23,7 +23,7 @@ import myprofile from "@/public/icons/profile/myprofile.svg";
 
 import categories from "@/public/icons/jobposticons/categories.svg";
 import hashtag from "@/public/icons/jobposticons/hashtag.svg";
-import locationIcon from "@/public/icons/jobposticons/locationIcon.svg";
+import locationIcon from "@/public/icons/jobposticons/locationicon.svg";
 import moneyBag from "@/public/icons/jobposticons/moneybag.svg";
 import photoadd from "@/public/icons/jobposticons/photoadd.svg";
 import schedule from "@/public/icons/jobposticons/schedule.svg";
