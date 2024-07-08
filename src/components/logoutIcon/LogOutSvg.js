@@ -1,16 +1,14 @@
 "use client";
-import { useState } from "react";
 
 export default function LogOutSvg({
-  initialColor = "#002A64",
-  hoverColor = "",
+  isHovered,
+  initialColor = "#00000",
+  hoverColor = "white",
   size = 24,
 }) {
-  const [isHovered, setIsHovered] = useState(false);
-
   const styles = {
     svg: {
-      fill: isHovered ? initialColor : hoverColor, // gray-700 color code
+      fill: !isHovered ? "black" : hoverColor, // gray-700 color code
       transition: "fill 0.3s ease",
     },
   };

@@ -141,3 +141,9 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+.app {
+  display: flex;
+  align-items: center;
+  padding-top: 10%;
+  justify-content: center;
+}

@@ -276,4 +276,27 @@ export const options = [
   },
 ];
 
+export const country = [
+  "at", // Austria
+  "au", // Australia
+  "bd", // Bangladesh
+  "be", // Belgium
+  "ca", // Canada
+  "dk", // Denmark
+  "ee", // Estonia
+  "fi", // Finland
+  "fr", // France
+  "de", // Germany
+  "in", // India
+  "lu", // Luxembourg
+  "mx", // Mexico
+  "nl", // Netherlands
+  "sa", // Saudi Arabia
+  "es", // Spain
+  "se", // Sweden
+  "ch", // Switzerland
+  "tr", // Turkey
+  "us", // United States
+  "gb", // United Kingdom
+];
 export { applePlay, googlePlay };

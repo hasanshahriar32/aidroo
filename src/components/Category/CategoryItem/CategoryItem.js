@@ -62,10 +62,10 @@ export default function CategoryItem({ category }) {
             width={40}
             height={40}
             alt="Category icon"
-            className="absolute top-7 md:top-[35px] p-1 shrink-0"
+            className="absolute top-4   md:top-[35px] p-1 shrink-0"
           />
           <Heading
-            className="absolute top-2 md:top-[77px] text-gray-500   "
+            className="absolute top-14 md:top-[77px] text-gray-500   "
             size="xs"
           >
             Finance

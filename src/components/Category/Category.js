@@ -69,7 +69,7 @@ export default function Category() {
       : "   text-primary_color  ring  ring-[#D2E8FF] ring-offset-1  ";
 
   return (
-    <div className="bg-light dark:bg-dark py-10">
+    <div className="bg-[#d4e5ff] dark:bg-dark py-10">
       <div className="max-w-[1360px] mx-auto sm:px-8 flex items-center flex-col space-y-6">
         <Heading
           className={`text-center  font-semibold  ${poppins.variable}`}

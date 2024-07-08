@@ -4,7 +4,7 @@ import PhoneInput from "react-phone-input-2";
 
 import "react-phone-input-2/lib/style.css";
 
-export default function PhoneNumberInput() {
+export default function PhoneNumberInput({ onlyCountries }) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [valid, setValid] = useState(false);
 
@@ -20,6 +20,7 @@ export default function PhoneNumberInput() {
         value={phoneNumber}
         onChange={handleChange}
         placeholder="Input Number"
+        onlyCountries={onlyCountries}
         country={"us"}
         inputProps={{ required: true }}
       />

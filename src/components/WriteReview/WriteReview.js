@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import userIcon from "@/public/icons/customer-review.gif";
 
-import { options } from "@/constant";
+import { country, options } from "@/constant";
 import { useState } from "react";
 import { FaImage } from "react-icons/fa6";
 import OptionSelect from "../OptionSelect/OptionSelect";
@@ -120,7 +120,7 @@ export default function WriteReview() {
                 />
               </div>
               <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                <PhoneNumberInput />
+                <PhoneNumberInput country={country} />
                 <OptionSelect label="country" options={options} />
               </div>
               <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">

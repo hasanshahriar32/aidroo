@@ -5,15 +5,13 @@ import category from "@/asserts/mobile-icons/categories.svg";
 import pageIcon from "@/asserts/mobile-icons/page_icon.svg";
 import businessIcon from "@/asserts/mobile-icons/pricing-plan.svg";
 import helpIcon from "@/asserts/mobile-icons/support.svg";
-import businessCase from "@/public/icons/businessbriefcase.svg";
 import messageIcon from "@/public/icons/messages.svg";
 import notificationIcon from "@/public/icons/notifications.svg";
-import search from "@/public/icons/search.svg";
 import whitesearch from "@/public/icons/whitesearch.svg";
 import profilePic from "@/public/images/profile.jpg";
 import Image from "next/image";
-
 import Link from "next/link";
+import { IoClose } from "react-icons/io5";
 
 import { useEffect, useState } from "react";
 
@@ -26,6 +24,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import {
+  brifcaseIcon,
   loginIcon,
   logo,
   myorder,
@@ -36,6 +35,8 @@ import {
   userdashboard,
   verifiedIcon,
 } from "@/exportImage";
+import { IoMenu } from "react-icons/io5";
+import Heading from "../Heading";
 import IconImage from "../IconImage/IconImage";
 import LogOutSvg from "../logoutIcon/LogOutSvg";
 import ResponsiveImage from "../ResponsiveImage/ResponsiveImage";
@@ -53,6 +54,7 @@ import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 export default function Header() {
   const [searchText, setSearchText] = useState("");
   const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
   const [humberOpen, setHumberOpen] = useState(false);
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -298,49 +300,56 @@ export default function Header() {
                 </Link>
               </div>
 
-              <div className="flex gap-4 items-center ">
+              <div className="flex gap-4 items-center  ">
+                {/* <div className="flex gap-4 items-center">
+                  <div
+                    className="flex justify-center items-center bg-primary_color w-7 h-7 rounded-md cursor-pointer"
+                    onClick={() => setOpen2(!open2)}
+                  >
+                    {!open2 ? (
+                      <Image
+                        src={whitesearch}
+                        alt="Icon 1"
+                        width={500}
+                        height={300}
+                        className="w-5 transition-transform duration-300 transform scale-100 opacity-100"
+                      />
+                    ) : (
+                      <div
+                        className={`text-white transition-transform duration-300 transform ${
+                          open2
+                            ? "rotate-180 scale-125 opacity-100"
+                            : "rotate-0 scale-100 opacity-0"
+                        }`}
+                      >
+                        <IoMdClose className="text-xl" />
+                      </div>
+                    )}
+                  </div>
+                </div> */}
+
                 <div
-                  className="  relative bg-[#002A64] rounded-md cursor-pointer p-1"
                   onClick={() => setOpen(!open)}
+                  className=" w-7 h-7 rounded-md border-gray-500   flex justify-center items-center   bg-primary_color"
                 >
                   {!open ? (
-                    <Image
-                      src={search}
-                      alt="Icon 1"
-                      width={500}
-                      height={300}
-                      className=" w-7"
-                    />
+                    <Image src={whitesearch} className="w-5" />
                   ) : (
-                    <div onClick={() => setOpen(!open)}>
-                      <button className="relative group">
-                        <div className="relative flex overflow-hidden items-center justify-center rounded-md w-[36px] h-[36px] transform transition-all     ring-[#1E56AD]     duration-200 shadow-md">
-                          <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
-                            <div className="w-6 h-6  flex items-center   group-focus:translate-x-0   ">
-                              <div className=" absolute bg-primary_color h-[2px] w-5  transform transition-all duration-500 rotate-45 delay-300 group-focus:-rotate-45"></div>
-                              <div className=" absolute bg-primary_color h-[2px] w-5  transform transition-all duration-500 -rotate-45 delay-300 group-focus:-rotate-45"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </button>
-                    </div>
+                    <IoClose className="text-[#002A64] text-2xl transition ease transform duration-300" />
                   )}
                 </div>
 
                 <SheetTrigger asChild>
                   <div>
-                    <div className="border w-7 h-7 rounded-md border-gray-500 relative  flex justify-center items-center group">
+                    <div className="border w-7 h-7 rounded-md border-gray-500 relative  flex justify-center items-center  transition-all duration-500 ">
                       {!humberOpen ? (
-                        <div className="w-4 flex gap-1 flex-col ">
-                          <div className=" border-primary_color border transform transition-all duration-300" />
-                          <div className=" border-primary_color border transform transition-all duration-300" />
-                          <div className=" border-primary_color border transform transition-all duration-300" />
-                        </div>
+                        <IoMenu className="text-primary_color text-2xl" />
                       ) : (
-                        <div className="w-6 h-6  flex items-center     ms-[3px]  ">
-                          <div className=" absolute bg-primary_color h-[2px] w-5  transform transition-all duration-300 rotate-45 delay-300 group-focus:-rotate-45"></div>
-                          <div className=" absolute bg-primary_color h-[2px] w-5  transform transition-all duration-300 -rotate-45 delay-300 group-focus:-rotate-45"></div>
-                        </div>
+                        <IoClose
+                          className={`text-primary_color text-2xl ${
+                            open ? "opacity-0  " : " rotate-180 opacity-100  "
+                          }`}
+                        />
                       )}
                     </div>
                   </div>
@@ -351,22 +360,24 @@ export default function Header() {
               className={`absolute top-[48px] w-full transition-all duration-500 bg-[#002A64] p-4 ${
                 open
                   ? "opacity-100 translate-y-0"
-                  : "opacity-0 -translate-y-20 pointer-events-none "
+                  : "opacity-0 -translate-y-8 pointer-events-none "
               }`}
             >
-              <form className=" flex gap-4 max-w-96 mx-auto  ">
+              <form className="flex gap-4 justify-center h-8 md:h-10">
                 <Input
                   type="text"
                   name="search"
                   placeholder="Search"
-                  className="bg-white dark:bg-dark"
+                  className="bg-white dark:bg-dark  max-w-80  "
                 />
 
-                <div className=" flex items-center justify-center  bg-primary_color p-1 rounded-md   cursor-pointer w-[3.2rem] ">
-                  <IconImage src={filter} alt="Icon 1" size={30} />
-                </div>
-                <div className=" flex items-center justify-center  bg-primary_color p-1 rounded-md   cursor-pointer w-[3.2rem] ">
-                  <IconImage src={whitesearch} alt="Icon 1" size={24} />
+                <div className="relative flex gap-4">
+                  <div className=" flex items-center justify-center     bg-primary_color p-1 rounded-md   cursor-pointer w-8 md:w-[42px]    ">
+                    <Image src={filter} alt="Icon 1" className="w-5" />
+                  </div>
+                  <div className=" flex items-center justify-center     bg-primary_color p-1 rounded-md   cursor-pointer w-8 md:w-[42px] ">
+                    <Image src={whitesearch} alt="Icon 1" className="w-5" />
+                  </div>
                 </div>
               </form>
             </div>
@@ -385,7 +396,7 @@ export default function Header() {
                     </Link>
                   </div>
                 ) : (
-                  <div className="bg-[#002A64] p-4 flex items-center gap-8 ">
+                  <div className="bg-[#002A64] p-4 flex items-center gap-4 ">
                     <Avatar>
                       <AvatarImage src={profilePic} alt="@shadcn" />
                       <AvatarFallback>
@@ -394,11 +405,11 @@ export default function Header() {
                     </Avatar>
                     <div className="text-white flex gap-4   ">
                       <div>
-                        <h1 className="text-xl">Profile name</h1>
-                        <p className="text-sm">@companyname</p>
+                        <Heading size="sm">Profile Name</Heading>
+                        <Heading size="xs">@companyname</Heading>
                       </div>
 
-                      <IconImage src={verifiedIcon} size={28} />
+                      <IconImage src={verifiedIcon} size={18} />
                       {/* <IconImage src={ver} /> */}
                     </div>
                   </div>
@@ -407,69 +418,71 @@ export default function Header() {
               {/* menu */}
 
               <Accordion type="single" collapsible>
-                <ScrollArea className="  h-screen">
-                  <div className="w-full px-8 space-y-4 mt-4 text-sm  pb-96 ">
+                <ScrollArea className="  h-screen ">
+                  <div className="w-full px-8 space-y-4   text-sm  pb-96 py-4 border bg-gray-100 ">
                     <div className="flex justify-center items-center">
-                      <Button variant="hoverButton" size="lg">
+                      <Button variant="hoverButton" size="md">
                         <div className="absolute -top-2 -right-1">
                           <span className="relative flex h-3 w-3">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
                           </span>
                         </div>
-
-                        <span className="relative">Explore Job</span>
+                        <Heading size="xs">Explore job</Heading>
                       </Button>
                     </div>
                     <div className="flex items-center gap-4 border-b pb-4">
-                      <IconImage src={businessCase} size={28} alt="icon" />
-                      <span>For Business</span>
+                      <IconImage src={brifcaseIcon} size={20} alt="icon" />
+                      <Heading size="xs">For Business</Heading>
                     </div>
                     <div className="flex items-center gap-4 border-b pb-4">
-                      <IconImage src={category} size={24} alt="icon" />
-                      <span>Categories</span>
+                      <IconImage src={category} size={20} alt="icon" />
+                      <Heading size="xs">Categories</Heading>
                     </div>
                     <AccordionItem value="item-1">
                       <AccordionTrigger>
                         <div className="flex items-center gap-4 no-underline  ">
-                          <IconImage src={pageIcon} size={24} alt="icon" />
-                          <span>Pages</span>
+                          <IconImage src={pageIcon} size={20} alt="icon" />
+                          <Heading size="xs">Pages</Heading>
                         </div>
                       </AccordionTrigger>
                       <AccordionContent className="px-10">
                         <ul className="collapse-content space-y-2   ">
-                          <li> Terms of service</li>
-                          <li> Privacy Policy </li>
-                          <li> Events</li>
-                          <li>Blogs</li>
+                          <li className="text-xs"> Terms of service</li>
+                          <li className="text-xs"> Privacy Policy </li>
+                          <li className="text-xs"> Events</li>
+                          <li className="text-xs">Blogs</li>
                         </ul>
                       </AccordionContent>
                     </AccordionItem>
                     <div className="flex items-center gap-4 border-b pb-4 ">
-                      <IconImage src={businessIcon} size={24} alt="icon" />
-                      <span className=""> Business Pricing Plan</span>
+                      <IconImage src={businessIcon} size={20} alt="icon" />
+                      <Heading size="xs">Business Pricing Plan</Heading>
                     </div>
                     <div className="flex items-center gap-4 collapse-content border-b pb-4 ">
-                      <IconImage src={helpIcon} size={24} alt="icon" />
-                      <span> Help and Support</span>
+                      <IconImage src={helpIcon} size={20} alt="icon" />
+                      <Heading size="xs"> Help and Support</Heading>
                     </div>
-                    <div className="flex pt-14  ">
-                      {!currentUser ? (
-                        <Button
-                          variant="hover"
-                          className="   w-32 gap-4     first:ring-2 ring-primary_color ring-offset-2 h-8  md:h-auto lg:h-auto"
-                        >
-                          Login
-                        </Button>
-                      ) : (
-                        <Button
-                          variant="hover"
-                          className="   text-lg  w-32         ring-2 ring-primary_color ring-offset-2 h-8 flex gap-2    "
-                        >
-                          <LogOutSvg />
-                          Logout
-                        </Button>
-                      )}
+                    <div className="flex justify-center   ">
+                      <div
+                        className="w-28 h-10"
+                        onMouseEnter={() => setIsHovered(!isHovered)}
+                        onMouseLeave={() => setIsHovered(!isHovered)}
+                      >
+                        {!currentUser ? (
+                          <Button variant="hover">
+                            <Heading size="sm">Login</Heading>
+                          </Button>
+                        ) : (
+                          <Button
+                            variant="hover"
+                            className="  ring-primary_color ring-offset-2  flex gap-2    "
+                          >
+                            <LogOutSvg size={16} isHovered={isHovered} />
+                            <Heading size="sm">Logout</Heading>
+                          </Button>
+                        )}
+                      </div>
                     </div>
                   </div>
                   <ScrollBar orientation="vertical" />

@@ -2,16 +2,18 @@ import logo from "@/asserts/aidroo-logo.svg";
 
 import Layout from "@/components/Layout/Layout";
 import OptionSelect from "@/components/OptionSelect/OptionSelect";
+import PhoneNumberInput from "@/components/PhoneNumberInput/PhoneNumberInput";
 import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { options } from "@/constant";
+import { country, options } from "@/constant";
 import Link from "next/link";
 import { LuUser2 } from "react-icons/lu";
 import { VscBriefcase } from "react-icons/vsc";
 
 export default function Signup() {
+  console.log(country);
   return (
     <Layout title="signup">
       <div className="px-8">
@@ -79,7 +81,7 @@ export default function Signup() {
                   />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <OptionSelect label="country" options={options} />
+                  <PhoneNumberInput onlyCountries={country} />
                   <OptionSelect label="country" options={options} />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
