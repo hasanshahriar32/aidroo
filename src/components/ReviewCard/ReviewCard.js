@@ -18,6 +18,7 @@ import { AiFillLike } from "react-icons/ai";
 import { CiShare2 } from "react-icons/ci";
 import { FaReply } from "react-icons/fa";
 import { FcLike } from "react-icons/fc";
+import Heading from "../Heading";
 
 export default function ReviewCard() {
   return (
@@ -35,18 +36,23 @@ export default function ReviewCard() {
           </div>
           <div className="">
             <div className="flex gap-6 items-center">
-              <h1 className="text-xl">Jhon </h1>
-              <IconImage src={varifiedBadgePersional} size={18} />
+              <Heading size="sm" className="font-bold">
+                Jhon{" "}
+              </Heading>
+              <IconImage src={varifiedBadgePersional} size={16} />
             </div>
 
-            <p className="text-sm text-gray-500">San Fransico, USA </p>
+            <Heading size="xs" className="text-sm text-gray-500">
+              San Fransico, USA{" "}
+            </Heading>
             <span className="flex gap-4">
               <div className="flex gap-2 items-center text-[18px]">
-                <IconImage src={followerIcon} size={18} /> <span>0</span>
+                <IconImage src={followerIcon} size={18} />{" "}
+                <span className="text-xs">0</span>
               </div>
               <div className="flex gap-2 items-center text-[18px]">
                 <IconImage src={reviewsIcon} size={18} />
-                <span className="text-sm">0</span>
+                <span className="text-xs">0</span>
               </div>
             </span>
           </div>
@@ -68,15 +74,21 @@ export default function ReviewCard() {
           </div>
         </div>
         <div className=" ">
-          <h1 className="font-normal text-balance font-semi-bold">
+          <Heading
+            size="sm"
+            className="font-normal text-balance font-semi-bold"
+          >
             I would Highly recommended
-          </h1>
-          <p className="text-gray-500 text-sm tracking-tight leading-5 ">
+          </Heading>
+          <Heading
+            size="xs"
+            className="text-gray-500 text-sm tracking-tight leading-5 "
+          >
             I had a seamless experience with Panacea. Other companies denied me
             credit due to not providing evidence of income. Other financial
             institutions that are supposedly for medical professionals do not
             understand our process.
-          </p>
+          </Heading>
         </div>
         <div className="flex gap-4 mt-2">
           <IconImage src={profileImage} size={100} alt="review image" />
@@ -85,22 +97,22 @@ export default function ReviewCard() {
         <div className=" w-full   border mt-4" />
       </CardContent>
       <CardFooter>
-        <div className=" w-full h-4 flex justify-between items-center">
-          <div className="flex gap-2 md:gap-8  ">
-            <div className="flex gap-2 items-center border p-1 rounded shadow">
+        <div className=" w-full h-4 flex justify-between mt-4 items-center">
+          <div className="flex gap-2 md:gap-4  ">
+            <div className="flex gap-1 py-[2px] px-1   items-center border rounded shadow">
               <AiFillLike />
               <span>0</span>
             </div>
-            <div className="flex gap-2 items-center border p-1 rounded shadow">
+            <div className="flex gap-1 py-[2px] px-1 items-center border   rounded shadow">
               <FcLike />
               <span>0</span>
             </div>
-            <div className="flex gap-2 items-center border p-1 rounded shadow">
+            <div className="flex gap-1   items-center border py-[2px] px-1 rounded shadow">
               <CiShare2 />
               <span>0</span>
             </div>
           </div>
-          <div className="flex gap-2 items-center text-sm">
+          <div className="flex gap-1 w-8 h-6 items-center text-sm">
             <FaReply className="text-gray-500" />
             <span className="text-sm">Replay</span>
           </div>

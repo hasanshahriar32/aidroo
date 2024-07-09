@@ -1,4 +1,5 @@
 import logo from "@/asserts/aidroo-logo.svg";
+import Heading from "@/components/Heading";
 
 import Layout from "@/components/Layout/Layout";
 import OptionSelect from "@/components/OptionSelect/OptionSelect";
@@ -18,7 +19,7 @@ export default function Signup() {
     <Layout title="signup">
       <div className="px-8">
         <div className=" border shadow dark:bg-dark space-y-4 w-full md:max-w-2xl mx-auto p-4 md:p-8 my-10 rounded-lg">
-          <div className=" w-32 mx-auto ">
+          <div className=" w-24 md:w-32 mx-auto ">
             <Link href="/">
               <ResponsiveImage
                 src={logo}
@@ -28,13 +29,15 @@ export default function Signup() {
               />
             </Link>
           </div>
-          <h1 className="text-2xl text-center">Welcome to Aidroo</h1>
+          <Heading size="xl" className="text-2xl text-center">
+            Welcome to Aidroo
+          </Heading>
 
           <Tabs
             defaultValue="personal"
             className="w-full  py-8 place-content-center "
           >
-            <TabsList className="grid w-2/3 mx-auto grid-cols-2 mb-14 h-12">
+            <TabsList className="grid md:w-2/3 mx-auto grid-cols-2 mb-14 h-12">
               <TabsTrigger value="personal" className="flex gap-2 h-10  ">
                 <LuUser2 className="text-[22px]" />
                 <span> Personal</span>
@@ -50,34 +53,34 @@ export default function Signup() {
                   <Input
                     type="text"
                     placeholder="First Name"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
                   />
                   <Input
                     type="text"
                     placeholder="Last Name"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800  h-10 md:h-12"
                   />
                 </div>
                 <Input
                   type="text"
                   placeholder=" username"
-                  className="bg-white dark:bg-gray-800  h-12"
+                  className="bg-white dark:bg-gray-800  h-10 md:h-12"
                 />
                 <Input
                   type="email"
                   placeholder="email"
-                  className="bg-white dark:bg-gray-800  h-12"
+                  className="bg-white dark:bg-gray-800   h-10 md:h-12"
                 />
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input
                     type="password"
                     placeholder="Create Password"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
                   />
                   <Input
                     type="password"
                     placeholder="Confirm Password"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
                   />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -88,29 +91,29 @@ export default function Signup() {
                   <Input
                     type="text"
                     placeholder="City"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
                   />
                   <Input
                     type="text"
                     placeholder="Address"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
                   />
                 </div>
                 <div className="flex items-center justify-center pt-2">
                   <Button
                     variant="fillButton"
-                    className="h-12 max-w-64 mx-auto"
+                    className="h-10 md:h-12 max-w-64 mx-auto"
                   >
                     Sign Up
                   </Button>
                 </div>
                 <div className=" w-full flex flex-col items-center justify-center ">
-                  <h1 className="md:text-lg">
+                  <Heading className="text-sm">
                     Already have an account?
-                    <Link href="/login" className="text-lg text-primary_color">
+                    <Link href="/login" className=" text-primary_color">
                       Login
                     </Link>
-                  </h1>
+                  </Heading>
                 </div>
               </form>
               {/* <div className=" w-full flex  gap-4 items-center justify-center mt-4 ">
@@ -127,18 +130,18 @@ export default function Signup() {
                 <Input
                   type="text"
                   placeholder="Business Name"
-                  className="bg-white dark:bg-gray-800  h-12"
+                  className="bg-white dark:bg-gray-800   h-10 md:h-12"
                 />
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input
                     type="text"
                     placeholder="username"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
                   />
                   <Input
                     type="email"
                     placeholder="Email"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
                   />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -149,12 +152,12 @@ export default function Signup() {
                   <Input
                     type="password"
                     placeholder="Create Password"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800  h-10 md:h-12"
                   />
                   <Input
                     type="password"
                     placeholder="Confirm Password"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
                   />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -165,30 +168,30 @@ export default function Signup() {
                   <Input
                     type="text"
                     placeholder="City"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
                   />
                   <Input
                     type="text"
                     placeholder="Address"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
                   />
                 </div>
                 <div className="flex items-center justify-center pt-2">
                   <Button
                     variant="fillButton"
-                    className="h-12 max-w-64 mx-auto"
+                    className="h-10 md:h-12 max-w-64 mx-auto"
                   >
                     Sign Up
                   </Button>
                 </div>
               </form>
               <div className=" w-full flex flex-col items-center justify-center ">
-                <h1 className="md:text-lg">
+                <Heading size="xs">
                   Already have an account?
                   <Link href="/login" className="text-lg text-primary_color">
                     Login
                   </Link>
-                </h1>
+                </Heading>
               </div>
             </TabsContent>
           </Tabs>

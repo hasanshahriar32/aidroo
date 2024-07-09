@@ -72,8 +72,8 @@ export default function Category() {
     <div className="bg-[#d4e5ff] dark:bg-dark py-10">
       <div className="max-w-[1360px] mx-auto sm:px-8 flex items-center flex-col space-y-6">
         <Heading
+          size="xl"
           className={`text-center  font-semibold  ${poppins.variable}`}
-          size="md"
         >
           Browse Categories
         </Heading>

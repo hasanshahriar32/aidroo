@@ -1,31 +1,37 @@
+import Heading from "../Heading";
+
 export default function Consumer() {
   return (
     <div className="max-w-[1280px] mx-auto">
-      <h1 className="text-4xl font-bold mb-1 text-center">
+      <Heading size="xl" className="  font-bold mb-1 text-center">
         Why <span className="text-[#05affe]">Aidroo</span> for your Business?
-      </h1>
+      </Heading>
       <div className="flex items-center justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-14 px-8  text-center  h-fit justify-center">
-          <div className="space-y-2">
-            <span className="text-4xl font-bold">+473k </span>
-            <p className="text-secondary-A100">Total Business Profile</p>
+          <div>
+            <span className=" text-2xl md:text-3xl font-bold">+473k </span>
+            <Heading size="sm" className=" ">
+              Total Business Profile
+            </Heading>
           </div>
-          <div className="space-y-2">
-            <span className="text-4xl font-bold">+37k </span>
-            <p className="text-secondary-A100">Online profile</p>
+          <div>
+            <span className="text-2xl md:text-3xl font-bold">+37k </span>
+            <Heading size="sm" className=" ">
+              Online profile
+            </Heading>
           </div>{" "}
-          <div className="space-y-2">
-            <span className="text-4xl font-bold">+19m </span>
-            <p className="text-secondary-A100">
+          <div>
+            <span className="text-2xl md:text-3xl font-bold">+19m</span>
+            <Heading size="sm" className=" ">
               Reviews were written on Aidroo
-            </p>
+            </Heading>
           </div>{" "}
-          <div className="space-y-2">
-            <span className="text-4xl font-bold">87% </span>
-            <p className="text-secondary-A100">
+          <div>
+            <span className="text-2xl md:text-3xl font-bold">87%</span>
+            <Heading size="sm" className=" ">
               According to a survey, 87% of consumers trust Aidroo
-            </p>
-          </div>
+            </Heading>
+          </div>{" "}
         </div>
       </div>
     </div>

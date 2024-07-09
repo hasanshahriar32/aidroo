@@ -12,6 +12,8 @@ import userIcon from "@/public/icons/customer-review.gif";
 import { country, options } from "@/constant";
 import { useState } from "react";
 import { FaImage } from "react-icons/fa6";
+import { IoClose } from "react-icons/io5";
+import Heading from "../Heading";
 import OptionSelect from "../OptionSelect/OptionSelect";
 import PhoneNumberInput from "../PhoneNumberInput/PhoneNumberInput";
 
@@ -38,53 +40,48 @@ export default function WriteReview() {
         </div>
       </div>
       {isOpen && (
-        <form className="w-full border-2   rounded-md p-4 space-y-4">
+        <form className="w-full border-2   rounded-md p-4 space-y-8 ">
           <div className="flex justify-end">
-            <Button
-              variant="fillButton"
-              className="border    w-8 h-8 rounded-full  place-content-center  text-md "
+            <div
+              className="border    w-8 h-8 rounded-full     text-md  flex justify-center items-center cursor-pointer"
               onClick={() => setIsOpen(false)}
             >
-              x
-            </Button>
+              <IoClose className="text-xl text-primary_color " />
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center      h-24">
-            <div>
-              <h1>Service</h1>
-              <div className="flex gap-1">
-                <Rating value={1} isEditable />
+          <div className=" flex  justify-center items-center gap-8">
+            <div className=" grid grid-cols-1 md:grid-cols-3 gap-y-4 gap-14  ">
+              <div>
+                <Heading size="sm">Service</Heading>
+                <div className="flex gap-1">
+                  <Rating value={1} isEditable size={18} />
+                </div>
               </div>
-            </div>
-            <div>
-              <h1>Value</h1>
-              <div className="flex gap-1">
-                <Rating value={3} isEditable />
+              <div>
+                <Heading size="sm">Value</Heading>
+                <div className="flex gap-1">
+                  <Rating value={3} isEditable />
+                </div>
               </div>
-            </div>
-            <div>
-              <h1>Recommended</h1>
-              <div className="flex gap-1">
-                <Rating value={5} isEditable />
+              <div>
+                <Heading size="sm">Recommend</Heading>
+                <div className="flex gap-1">
+                  <Rating value={5} isEditable />
+                </div>
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3   gap-4   ">
+
+          <div className="grid grid-cols-1 md:grid-cols-3     md:gap-4   ">
             <div className=" col-span-2 space-y-4">
-              <div>
-                <label>Title</label>
-                <Input placeholder="Title" />
-              </div>
-              <div>
-                <label className="pb-2">Full Review</label>
-                <Textarea placeholder="Type your message here." />
-              </div>
+              <Input placeholder="Title" className=" h-10 md:h-12" />
+
+              <Textarea placeholder="Type your message here." />
             </div>
-            <div className=" col-span-1 space-y-4">
-              <div>
-                <label>Date of Experience</label>
-                <DatePicker />
-              </div>
+            <div className=" col-span-1 space-y-4 mt-4">
+              <DatePicker className="h-12 w-full" />
+
               <label
                 htmlFor="uploadFile1"
                 className="  font-semibold text-base rounded p-4  flex flex-col items-center justify-center cursor-pointer border-2     mx-auto font-[sans-serif]"
@@ -105,18 +102,18 @@ export default function WriteReview() {
               <Input
                 type="text"
                 placeholder="Business Name"
-                className="bg-white dark:bg-gray-800  h-12"
+                className="bg-white dark:bg-gray-800 h-10 md:h-12"
               />
               <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input
                   type="text"
                   placeholder="username"
-                  className="bg-white dark:bg-gray-800  h-12"
+                  className="bg-white dark:bg-gray-800 h-10 md:h-12"
                 />
                 <Input
                   type="email"
                   placeholder="Email"
-                  className="bg-white dark:bg-gray-800  h-12"
+                  className="bg-white dark:bg-gray-800  h-10 md:h-12"
                 />
               </div>
               <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -127,12 +124,12 @@ export default function WriteReview() {
                 <Input
                   type="password"
                   placeholder="Create Password"
-                  className="bg-white dark:bg-gray-800  h-12"
+                  className="bg-white dark:bg-gray-800  h-10 md:h-12"
                 />
                 <Input
                   type="password"
                   placeholder="Confirm Password"
-                  className="bg-white dark:bg-gray-800  h-12"
+                  className="bg-white dark:bg-gray-800  h-10 md:h-12"
                 />
               </div>
               <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -143,12 +140,12 @@ export default function WriteReview() {
                 <Input
                   type="text"
                   placeholder="City"
-                  className="bg-white dark:bg-gray-800  h-12"
+                  className="bg-white dark:bg-gray-800  h-10 md:h-12"
                 />
                 <Input
                   type="text"
                   placeholder="Address"
-                  className="bg-white dark:bg-gray-800  h-12"
+                  className="bg-white dark:bg-gray-800  h-10 md:h-12"
                 />
               </div>
             </div>

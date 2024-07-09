@@ -1,3 +1,4 @@
+import Heading from "@/components/Heading";
 import IconImage from "@/components/IconImage/IconImage";
 import Layout from "@/components/Layout/Layout";
 import { GoogleMap } from "@/components/Map/Map";
@@ -13,7 +14,13 @@ import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { businessOur, options } from "@/constant";
-import { bagIcon, brifcaseIcon, verifiedIcon } from "@/exportImage";
+import {
+  bagIcon,
+  brifcaseIcon,
+  locationIcon,
+  photoadd,
+  verifiedIcon,
+} from "@/exportImage";
 
 import ceoIcon from "@/public/icons/ceo.svg";
 import claimedIcon from "@/public/icons/claimed.svg";
@@ -27,15 +34,15 @@ import profileImage from "@/public/images/profile.jpg";
 import srsoft from "@/public/images/srsoft.svg";
 import tesla from "@/public/images/tesla.svg";
 import { Label } from "@radix-ui/react-dropdown-menu";
+import Image from "next/image";
 
 import {
   CiCircleChevRight,
   CiCirclePlus,
-  CiLocationArrow1,
   CiShare2,
   CiStar,
 } from "react-icons/ci";
-import { FaImage, FaPlus, FaRegEdit } from "react-icons/fa";
+import { FaPlus, FaRegEdit } from "react-icons/fa";
 import { LiaSmsSolid } from "react-icons/lia";
 
 export default function PublicProfile() {
@@ -46,7 +53,7 @@ export default function PublicProfile() {
           <div className="max-w-[1280px] mx-auto">
             <div className="grid w-full lg:w-2/3  mx-auto grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 py-8 ">
               <div className=" flex gap-8 px-8 items-center justify-center ">
-                <div className="  rounded-lg   w-32 shrink-0  overflow-hidden ">
+                <div className="  rounded-lg w-24  md:w-32 shrink-0  overflow-hidden ">
                   <ResponsiveImage
                     src={profileImage}
                     alt="profile image"
@@ -54,42 +61,50 @@ export default function PublicProfile() {
                   />
                 </div>
                 <div>
-                  <div className="flex gap-8 items-center">
-                    <h1 className="text-xl font-semibold">Safari Biz</h1>
-                    <IconImage src={verifiedIcon} size={24} alt="" />
+                  <div className="flex gap-4 items-center">
+                    <Heading size="sm" className=" font-semibold">
+                      Safari Biz
+                    </Heading>
+                    <Image src={verifiedIcon} className="w-5 " alt="" />
                   </div>
                   <div className="flex gap-6 items-center">
-                    <div className="text-14  ">
-                      ser
+                    <Heading size="xs" className=" ">
                       <span>Reviews </span>
                       <span>3124</span>
-                    </div>
+                    </Heading>
 
                     <ul className="flex  items-center gap-2">
                       <li className="bg-primary  w-2 h-2 rounded-full border" />
-                      <li className=" "> Excellent</li>
+                      <li className="text-xs md:text-sm "> Excellent</li>
                     </ul>
                   </div>
                   <div className="flex gap-x-2 mt-2">
                     <div className="flex gap-1">
-                      <Rating isEditable value={5} />
+                      <Rating isEditable value={5} size={15} />
                     </div>
-                    <p className="text-14 text-gray-700 font-semibold">4.7</p>
+                    <p className="text-xs text-gray-700 font-semibold">4.7</p>
                   </div>
-                  <IconImage src={claimedIcon} size={80} alt="claimed image" />
+                  <Image
+                    src={claimedIcon}
+                    alt="claimed image"
+                    className="w-20 mt-2"
+                  />
                 </div>
               </div>
 
               <div className="  lg:border-s border-primary  items-center justify-center flex  gap-2 lg:gap-4 px-8">
                 <div className="bg-primary_color p-2 rounded-lg text-white flex items-center gap-2">
-                  <LiaSmsSolid className="text-xl " /> <span>Chat</span>
+                  <LiaSmsSolid className="text-sm md:text-xl" />{" "}
+                  <span className="text-sm">Chat</span>
                 </div>
 
                 <div className="bg-primary_color p-2 rounded-lg text-white flex items-center gap-2">
-                  <FaPlus className="text-md " /> <span>Follow</span>
+                  <FaPlus className="text-sm md:text-xl" />{" "}
+                  <span className="text-sm">Follow</span>
                 </div>
                 <div className="bg-primary_color p-2 rounded-lg text-white flex items-center gap-2">
-                  <CiShare2 className="text-md " /> <span>Share</span>
+                  <CiShare2 className="text-sm md:text-xl" />{" "}
+                  <span className="text-sm">Follow</span>
                 </div>
               </div>
             </div>
@@ -123,23 +138,29 @@ export default function PublicProfile() {
               <TabsContent value="job" className="space-y-6">
                 <form>
                   <div className="w-full rounded-lg border-2 p-6 flex flex-col space-y-4">
-                    <h1 className="text-lg text-primary_color flex items-center gap-4">
+                    <Heading
+                      size="sm"
+                      className="text-lg text-primary_color flex items-center gap-4"
+                    >
                       <FaRegEdit className="text-2xl" /> Post a Job
-                    </h1>
+                    </Heading>
                     <div className="flex flex-col items-center justify-center">
-                      <label> Job Title</label>
-                      <Input type="text" placeholder="Enter your title" />
+                      <Input
+                        type="text"
+                        className="text-xs"
+                        placeholder="Enter your job title"
+                      />
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                      <label placeholder="whirte something for your business">
-                        Description
-                      </label>
-                      <Textarea className="min-h-32" />
+                      <Textarea
+                        className="min-h-32 text-xs"
+                        placeholder="Enter your job description"
+                      />
                     </div>
 
                     {/* image */}
                     <div className="flex gap-4 h-32">
-                      <div className="dark:ring-offset-slate-700 rounded w-32 shrink-0 overflow-hidden">
+                      <div className="dark:ring-offset-slate-700 rounded w-24 md:w-32 shrink-0 overflow-hidden">
                         <ResponsiveImage
                           src={profileImage}
                           alt="profile image"
@@ -148,7 +169,7 @@ export default function PublicProfile() {
                           className="rounded-lg"
                         />
                       </div>
-                      <div className="w-32 h-32 border-2 border-dashed rounded-lg place-content-center">
+                      <div className=" w-24 md:w-32 h-24 md:h-32 border-2 border-dashed rounded-lg place-content-center">
                         <label
                           htmlFor="uploadFile1"
                           className="font-semibold text-base rounded p-1 flex flex-col items-center justify-center cursor-pointer mx-auto font-[sans-serif]"
@@ -165,16 +186,23 @@ export default function PublicProfile() {
 
                     <div>
                       <div className="flex justify-between">
-                        <div className="flex items-center gap-6 text-2xl">
-                          <CiLocationArrow1 />
-                          <FaImage className="text-red-400" />
+                        <div className="flex items-center gap-2 text-2xl">
+                          <Image src={locationIcon} className="w-6 md:w-8" />
+                          <Image src={photoadd} className="w-6 md:w-8" />
                         </div>
-                        <div className=" bg-gray-100 p-1 w-fit rounded-md  text-gray-400">
+                        <Heading
+                          size="xs"
+                          className=" bg-gray-100 p-1 w-fit rounded-md  text-gray-400"
+                        >
                           #add hashtag to find your job
-                        </div>
+                        </Heading>
                       </div>
                     </div>
-                    <Button variant="hover" size="lg">
+                    <Button
+                      variant="hover"
+                      size="sm"
+                      className=" max-w-40 mx-auto rounded-full   hover:ring-1 ring-primary_color ring-offset-2 animate-in duration-100 hover:zoom-in-50"
+                    >
                       Publish
                     </Button>
                   </div>
@@ -182,21 +210,24 @@ export default function PublicProfile() {
                 {/* post job card */}
                 <div>
                   <div className="w-full rounded-lg border-2 p-6 flex flex-col space-y-4">
-                    <h1 className="text-lg text-primary_color flex items-center gap-4">
+                    <Heading className="  text-primary_color flex items-center gap-4">
                       Looking for sels manager
-                    </h1>
+                    </Heading>
                     <div className="flex flex-col items-center justify-center">
-                      <p className="text-justify text-gray-400 tracking-tight">
+                      <Heading
+                        size="xs"
+                        className="text-justify text-gray-400 tracking-tight"
+                      >
                         I had a seamless experience with Panacea. Other
                         companies denied me credit due to not providing evidence
                         of income. Other financial institutions that are
                         supposedly for medical professionals.
-                      </p>
+                      </Heading>
                     </div>
 
                     {/* image */}
-                    <div className="flex gap-4 h-32">
-                      <div className="dark:ring-offset-slate-700 rounded w-32 shrink-0 overflow-hidden">
+                    <div className="flex gap-4 ">
+                      <div className="dark:ring-offset-slate-700 rounded w-24 md:w-32 shrink-0 overflow-hidden">
                         <ResponsiveImage
                           src={profileImage}
                           alt="profile image"
@@ -205,7 +236,7 @@ export default function PublicProfile() {
                           className="rounded-lg"
                         />
                       </div>
-                      <div className="dark:ring-offset-slate-700 rounded w-32 shrink-0 overflow-hidden">
+                      <div className="dark:ring-offset-slate-700 rounded  w-24 md:w-32 shrink-0 overflow-hidden">
                         <ResponsiveImage
                           src={profileImage}
                           alt="profile image"
@@ -217,7 +248,7 @@ export default function PublicProfile() {
                     </div>
                     <div className="flex gap-2">
                       {[1, 2, 3, 4, 5, 6].map((item) => (
-                        <h1 key={item} className="text-primary_color">
+                        <h1 key={item} className="text-primary_color text-xs">
                           #job
                         </h1>
                       ))}
@@ -225,8 +256,8 @@ export default function PublicProfile() {
 
                     <Button
                       variant="hover"
-                      size="lg"
-                      className="w-1/4 rounded-full text-xl hover:ring-2 ring-primary_color ring-offset-2 animate-in duration-100 hover:zoom-in-50"
+                      size="sm"
+                      className=" max-w-40 mx-auto rounded-full   hover:ring-1 ring-primary_color ring-offset-2 animate-in duration-100 hover:zoom-in-50"
                     >
                       Apply Now
                     </Button>
@@ -235,34 +266,26 @@ export default function PublicProfile() {
                 {/* report this review */}
 
                 <form className="border-2 p-6 rounded-md space-y-4 ">
-                  <h1 className="text-xl">Report this review?</h1>
+                  <Heading className="font-bold text-gray-700">
+                    Report this review?
+                  </Heading>
                   <div className="border-2" />
-                  <h1 className="text-md mt-8">Please choose a reson</h1>
+                  <Heading size="sm" className="text-md mt-8">
+                    Please choose a reson
+                  </Heading>
                   <ul className="ms-4 space-y-1 mt-6">
                     <div className="flex items-center space-x-2">
-                      <Checkbox id="terms" />
-                      <Label htmlFor="terms">Competitors fake review</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="terms" />
-                      <Label htmlFor="terms">Suspicious Review Patterns</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="terms" />
-                      <Label htmlFor="terms">
+                      <Checkbox id="terms" className=" h-4 w-4 rounded-full" />
+                      <Label htmlFor="terms" className="text-xs">
                         Offensive or Inappropriate Content
                       </Label>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="terms" />
-                      <Label htmlFor="terms"> </Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="terms" />
-                      <Label htmlFor="terms">Spam or Advertising</Label>
-                    </div>
 
-                    <OptionSelect options={options} className="w-64" />
+                    <OptionSelect
+                      options={options}
+                      className="w-64"
+                      label="Label"
+                    />
                   </ul>
 
                   <div className="flex gap-4 max-w-64 ">
@@ -276,21 +299,21 @@ export default function PublicProfile() {
                   <ThumbSlider />
                 </div>
                 {/* business Our */}
-                <h1 className="text-primary_color text-xl text-center pt-10 pb-2">
+                <Heading className="text-primary_color text-xl text-center pt-10 pb-2">
                   Business Our
-                </h1>
+                </Heading>
                 <div className="border-2 rounded-md">
                   {businessOur.map((our) => (
                     <div
                       key={our.day}
-                      className="flex    place-content-center justify-between p-4  "
+                      className="flex  text-xs   place-content-center justify-between p-4  "
                     >
-                      <h1 className="w-24">{our.day}</h1>
+                      <h1 className="w-12">{our.day}</h1>
                       <div className="flex items-center space-x-2 w-24">
                         <Switch id={our.day} disabled={!our.open} />
                       </div>
 
-                      <span>9.00 AM - 10.00 PM</span>
+                      <span className="">9.00 AM - 10.00 PM</span>
                     </div>
                   ))}
                 </div>
@@ -308,36 +331,35 @@ export default function PublicProfile() {
               <div className="w-full  space-y-4  ">
                 {/* business name */}
                 <div className="border rounded-md shadow p-4 space-y-4 ">
-                  <h1 className="text-xl text-center border-b pb-1 ">
-                    Business Name
-                  </h1>
-                  <p className="tracking-tight leading-6   pb-2">
+                  <h1 className=" text-center border-b pb-1 ">Business Name</h1>
+                  <Heading size="xs" className="tracking-tight    pb-2">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Itaque sit neque natus quidem aperiam iste, deleniti,
                     voluptatem doloribus totam quam quaerat molestiae vero
                     sapiente dignissimos minima optio. Repellendus, sunt
                     tempora.
-                  </p>
+                  </Heading>
                   <div className="border-2 rounded-md p-8 space-y-4">
                     <div className="flex items-center gap-2">
-                      <IconImage src={earningIcon} size={64} alt="dolar icon" />
+                      <div className="w-14 ">
+                        <ResponsiveImage src={earningIcon} />
+                      </div>
                       <div className="">
-                        <h1 className="text-md text-primary_color">
+                        <Heading className=" text-sm text-primary_color">
                           Total Fundings
-                        </h1>
-                        <p className="text-gray-500">10B - 20B</p>
+                        </Heading>
+                        <Heading size="xs" className="text-gray-500">
+                          10B - 20B
+                        </Heading>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <IconImage
-                        src={workerIcon}
-                        size={64}
-                        alt="worker"
-                        className=" "
-                      />
+                      <div className="w-14 ">
+                        <ResponsiveImage src={workerIcon} />
+                      </div>
                       <div className="">
-                        <h1 className="text-md text-primary_color">Worker</h1>
-                        <p className="text-gray-500">700+</p>
+                        <h1 className="text-sm text-primary_color">Worker</h1>
+                        <p className="text-gray-500 text-xs">700+</p>
                       </div>
                     </div>
                   </div>
@@ -348,26 +370,28 @@ export default function PublicProfile() {
                 <div className="border rounded-md shadow p-4 space-y-6 ">
                   <div className="bg-primary_color/20 text-center flex items-center  gap-2  justify-center rounded-md">
                     <IconImage src={dealonIcon} alt="" />
-                    <h1 className="text-xl text-primary_color">
+                    <Heading size="sm" className=" text-primary_color">
                       Deals on Aidroo
-                    </h1>
+                    </Heading>
                   </div>
                   <div className="flex items-center gap-2 px-8">
                     <IconImage src={bagIcon} alt="bag icon" size={4} />
                     <div className="">
-                      <h1 className="text-md text-primary_color">
+                      <h1 className="text-sm text-primary_color">
                         Total Posted Job
                       </h1>
-                      <p className="text-gray-500">0 Job posted</p>
+                      <p className="text-gray-500 text-xs">0 Job posted</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 px-8">
-                    <IconImage src={workerIcon} alt="worker icon" size={64} />
+                    <div className="w-14 ">
+                      <ResponsiveImage src={workerIcon} />
+                    </div>
                     <div className="">
-                      <h1 className="text-md text-primary_color">
+                      <h1 className="text-sm text-primary_color">
                         Total Posted Job
                       </h1>
-                      <p className="text-gray-500">2 Hires</p>
+                      <p className="text-gray-500 text-xs">2 Hires</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 px-8">
@@ -394,26 +418,7 @@ export default function PublicProfile() {
                 </div>
 
                 {/* BUSINESS OUR */}
-                <div>
-                  <h1 className="text-primary_color text-xl text-center pt-10 pb-2">
-                    Business Our
-                  </h1>
-                  <div className="border-2 rounded-md">
-                    {businessOur.map((our) => (
-                      <div
-                        key={our.day}
-                        className="flex    place-content-center justify-between p-4  "
-                      >
-                        <h1 className="w-10 ">{our.day}</h1>
-                        <div className="flex items-center space-x-1 fit">
-                          <Switch id={our.day} disabled={!our.open} />
-                        </div>
 
-                        <span>9.00 AM -10.00 PM</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
                 {/* claim business */}
                 <div className="border rounded-md p-8 space-y-4">
                   <IconImage src={claimWithBusiness} />

@@ -1,4 +1,3 @@
-import { ThemeProvider } from "@/components/theme-provider";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 
@@ -16,14 +15,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="light">
       <body className={roboto.className}>
-        <ThemeProvider
+        {/* <ThemeProvider
           attribute="class"
           enableSystem
           themes={["light", "dark"]}
           disableTransitionOnChange
-        >
-          <main className="w-full ">{children}</main>
-        </ThemeProvider>
+        > */}
+        <main className="w-full ">{children}</main>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );

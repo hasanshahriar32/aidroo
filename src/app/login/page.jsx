@@ -1,4 +1,5 @@
 import logo from "@/asserts/aidroo-logo.svg";
+import Heading from "@/components/Heading";
 import Layout from "@/components/Layout/Layout";
 import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
 import { Button } from "@/components/ui/button";
@@ -24,18 +25,18 @@ export default function Login() {
             <Input
               type="email"
               placeholder="Email or username"
-              className="bg-white dark:bg-gray-800  h-12"
+              className="bg-white dark:bg-gray-800  h-10 md:h-12"
             />
           </div>
           <div>
             <Input
               type="password"
               placeholder="Password"
-              className="bg-white dark:bg-gray-800  h-12"
+              className="bg-white dark:bg-gray-800   h-10 md:h-12"
             />
           </div>
           <div className="flex items-center space-x-2">
-            <Checkbox id="terms" />
+            <Checkbox id="terms" className="w-4 h-4  " />
             <label
               htmlFor="terms"
               className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -43,7 +44,7 @@ export default function Login() {
               Remember Login
             </label>
           </div>
-          <Button variant="fillButton" className="h-12 text-xl">
+          <Button variant="fillButton" className="h-10 md:h-12 md:text-xl">
             Login
           </Button>
         </form>
@@ -55,13 +56,12 @@ export default function Login() {
               Reset
             </Link>
           </h1> */}
-          <h1 className="text-lg">
-            Not signed up?
-            <Link href="/signup" className="text-lg text-primary_color">
-              {" "}
-              Sign Up
+          <Heading className="text-sm">
+            Not signed up?{" "}
+            <Link href="/signup" className="  text-primary_color">
+              Signup
             </Link>
-          </h1>
+          </Heading>
         </div>
       </div>
     </Layout>

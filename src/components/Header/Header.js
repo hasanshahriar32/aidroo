@@ -335,7 +335,7 @@ export default function Header() {
                   {!open ? (
                     <Image src={whitesearch} className="w-5" />
                   ) : (
-                    <IoClose className="text-[#002A64] text-2xl transition ease transform duration-300" />
+                    <IoClose className="text-white text-2xl transition ease transform duration-300" />
                   )}
                 </div>
 

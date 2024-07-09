@@ -64,7 +64,7 @@ const PaginationNext = ({ className, ...props }) => (
   <PaginationLink
     aria-label="Go to next page"
     size="default"
-    className={cn("gap-1 pr-2.5 ", className)}
+    className={cn("gap-1  px-3 ", className)}
     {...props}
   >
     <span>Next</span>
@@ -76,7 +76,7 @@ PaginationNext.displayName = "PaginationNext";
 const PaginationEllipsis = ({ className, ...props }) => (
   <span
     aria-hidden
-    className={cn("flex h-9 w-9 items-center justify-center", className)}
+    className={cn("flex h-9 w-4 items-center justify-center", className)}
     {...props}
   >
     <DotsHorizontalIcon className="h-4 w-4" />

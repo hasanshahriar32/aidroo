@@ -138,7 +138,10 @@ export default function Categories() {
                           <ScrollArea className="w-full whitespace-nowrap rounded-md ">
                             <div className="flex w-max space-x-4 p-4">
                               {works.map((artwork) => (
-                                <div className="w-[330px] md:w-52 overflow-hidden  p-3 border rounded-md ">
+                                <div
+                                  className="w-[330px] md:w-52 overflow-hidden  p-3 border rounded-md "
+                                  key={artwork}
+                                >
                                   <div>
                                     <h1 className="text-sm text-primary_color text-wrap">
                                       Looking for Sales Manager
@@ -224,7 +227,10 @@ export default function Categories() {
                           <ScrollArea className="w-full whitespace-nowrap rounded-md ">
                             <div className="flex w-max space-x-4 p-4">
                               {works.map((artwork) => (
-                                <div className="w-[330px] md:w-52 overflow-hidden  p-3 border rounded-md ">
+                                <div
+                                  className="w-[330px] md:w-52 overflow-hidden  p-3 border rounded-md "
+                                  key={artwork}
+                                >
                                   <div>
                                     <h1 className="text-sm text-primary_color text-wrap">
                                       Looking for Sales Manager
@@ -300,7 +306,10 @@ export default function Categories() {
                     <ScrollArea className="w-full whitespace-nowrap rounded-md ">
                       <div className="flex w-max space-x-4 p-4">
                         {works.map((artwork) => (
-                          <div className="w-[230px] md:w-52 max-h-44  overflow-hidden  p-2 border rounded-md ">
+                          <div
+                            className="w-[230px] md:w-52 max-h-44  overflow-hidden  p-2 border rounded-md "
+                            key={artwork}
+                          >
                             <div className="flex flex-col gap-3">
                               <span className="text-xs text-gray-400">
                                 5 day ago
