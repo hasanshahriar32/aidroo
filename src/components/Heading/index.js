@@ -1,8 +1,8 @@
 const Heading = ({ children, className, size = "md" }) => {
   const sizeClasses = {
     xl: "text-xl md:text-2xl",
-
-    sm: "text-sm md:text-xl",
+    lg: "text-lg md:text-xl",
+    sm: "text-sm md:text-lg",
     xs: "text-xs md:text-sm",
   };
 

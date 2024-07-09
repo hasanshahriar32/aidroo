@@ -1,7 +1,6 @@
 "use client";
 import OptionSelect from "@/components/OptionSelect/OptionSelect";
 import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
-import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { businessOur, options } from "@/constant";
 import profileImage from "@/public/images/profile.jpg";
@@ -24,10 +23,10 @@ export default function Schedule() {
   };
 
   return (
-    <div className="border rounded-lg p-10 space-y-6">
-      <div className="p-8 border rounded-lg">
+    <div className="border rounded-lg p-4     space-y-6">
+      <div className="  rounded-lg">
         <div className="flex gap-4 h-32">
-          <div className="dark:ring-offset-slate-700 rounded w-32 shrink-0 overflow-hidden">
+          <div className="dark:ring-offset-slate-700 rounded w-24 md:w-32 shrink-0 overflow-hidden">
             <ResponsiveImage
               src={profileImage}
               alt="profile image"
@@ -36,7 +35,7 @@ export default function Schedule() {
               className="rounded-lg"
             />
           </div>
-          <div className="w-32 h-32 border-2 border-dashed rounded-lg place-content-center">
+          <div className="w-24 md:w-32  h-24 md:h-32 border-2 border-dashed rounded-lg place-content-center">
             <label
               htmlFor="uploadFile1"
               className="font-semibold text-base rounded p-1 flex flex-col items-center justify-center cursor-pointer mx-auto font-[sans-serif]"
@@ -47,37 +46,46 @@ export default function Schedule() {
           </div>
         </div>
       </div>
-      <div className="border-2 rounded-md p-8">
-        {businessOur.map((our) => (
-          <div
-            key={our.day}
-            className="flex   justify-between px-4 h-14 items-center"
-          >
-            <div className="  flex  items-center gap-32">
-              <h1 className="w-14">{our.day}</h1>
-              <div className="flex items-center space-x-2 w-10">
-                <Switch
-                  id={our.day}
-                  checked={openStatus[our.day]}
-                  onCheckedChange={() => handleChange(our.day)}
-                />
-                <Label htmlFor={our.day}>
-                  {openStatus[our.day] ? "Open" : "Closed"}
-                </Label>
+      <div className="md:full">
+        <div className=" border px-4 rounded-md  overflow-hidden overflow-x-auto  ">
+          {businessOur.map((our) => (
+            <div
+              key={our.day}
+              className=" grid grid-cols-2 justify-center    h-14 items-center"
+            >
+              <div className="  flex  items-center gap-8">
+                <h1 className="w-2 text-xs md:text-sm">{our.day}</h1>
+                <div className="flex items-center space-x-2 w-10">
+                  <Switch
+                    id={our.day}
+                    checked={openStatus[our.day]}
+                    onCheckedChange={() => handleChange(our.day)}
+                  />
+                </div>
+              </div>
+              <div>
+                {openStatus[our.day] ? (
+                  <div className="flex  gap-2 ">
+                    <OptionSelect
+                      label="srikanto"
+                      options={options}
+                      className="text-xs   max-w-2"
+                    />
+                    <OptionSelect
+                      label="srikanto"
+                      options={options}
+                      className="text-xs "
+                    />
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
-            <div>
-              {openStatus[our.day] ? (
-                <div className="flex gap-8 min-w-24">
-                  <OptionSelect label="srikanto" options={options} />
-                  <OptionSelect label="srikanto" options={options} />
-                </div>
-              ) : (
-                ""
-              )}
-            </div>
-          </div>
-        ))}
+          ))}
+
+          {/* <ScrollBar orientation="horizontal" /> */}
+        </div>
       </div>
     </div>
   );

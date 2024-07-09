@@ -9,14 +9,20 @@ import {
 
 export default function OptionSelect({ className, label = "", options = [] }) {
   return (
-    <Select className={className}>
-      <SelectTrigger className={` min-w-32   dark:bg-gray-800    ${className}`}>
-        <SelectValue placeholder={label} />
+    <Select className={` ${className}`}>
+      <SelectTrigger
+        className={` min-w-32   dark:bg-gray-800 h-10 md:h-12  ${className}`}
+      >
+        <SelectValue placeholder={label} className="text-xs  " />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
           {options.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
+            <SelectItem
+              key={option.value}
+              value={option.value}
+              className="text-xs"
+            >
               {option.label}
             </SelectItem>
           ))}

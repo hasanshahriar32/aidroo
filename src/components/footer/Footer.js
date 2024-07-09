@@ -91,8 +91,8 @@ export default function Footer() {
             ))}
           {footerLinks.length > 0 &&
             footerLinks.slice(0, -1).map((footerLink, index) => (
-              <div>
-                <div key={index} className="flex flex-col md:hidden ">
+              <div key={index}>
+                <div className="flex flex-col md:hidden ">
                   <Accordion
                     type="single"
                     collapsible

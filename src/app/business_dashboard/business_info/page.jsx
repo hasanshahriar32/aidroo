@@ -1,4 +1,7 @@
+import AllCountries from "@/components/Countries/AllCountries";
+import Heading from "@/components/Heading";
 import OptionSelect from "@/components/OptionSelect/OptionSelect";
+import PhoneNumberInput from "@/components/PhoneNumberInput/PhoneNumberInput";
 import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,14 +13,14 @@ export default function BusinessInfo() {
   return (
     <div className="border  rounded-lg p-10 space-y-6">
       <div className="flex gap-10 items-center h-fit">
-        <div className=" ring-2 ring-primary_color ring-offset-8  dark:ring-offset-slate-700 rounded-full   w-32 shrink-0  overflow-hidden ">
+        <div className=" ring-2 ring-primary_color ring-offset-8  dark:ring-offset-slate-700 rounded-full  w-20 md:w-32 shrink-0  overflow-hidden ">
           <ResponsiveImage
             src={profileImage}
             alt="profile image"
             className="rounded-lg"
           />
         </div>
-        <div className="max-w-64 space-y-4">
+        <div className="max-w-64 space-y-2">
           <Button variant="fillButton">Change Photo</Button>
           <Button variant="hover">Remove Photo</Button>
         </div>
@@ -28,61 +31,46 @@ export default function BusinessInfo() {
             <Input
               type="text"
               placeholder="First Name"
-              className="bg-white dark:bg-gray-800  h-12"
+              className="bg-white dark:bg-gray-800 h-10 md:h-12 text-xs md:text-sm"
             />
             <Input
               type="text"
               placeholder="Last Name"
-              className="bg-white dark:bg-gray-800  h-12"
+              className="bg-white dark:bg-gray-800  h-10 md:h-12  text-xs md:text-sm"
             />
           </div>
-          <Input
-            type="text"
-            placeholder=" username"
-            className="bg-white dark:bg-gray-800  h-12"
-          />
-          <Input
-            type="email"
-            placeholder="email"
-            className="bg-white dark:bg-gray-800  h-12"
-          />
-          <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Input
-              type="password"
-              placeholder="Create Password"
-              className="bg-white dark:bg-gray-800  h-12"
-            />
-            <Input
-              type="password"
-              placeholder="Confirm Password"
-              className="bg-white dark:bg-gray-800  h-12"
-            />
-          </div>
+
+          <div className=" grid grid-cols-1 md:grid-cols-2 gap-4"></div>
           <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
             <OptionSelect label="Category" options={options} />
             <OptionSelect label="Sub Category" options={options} />
           </div>
           <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
+            <AllCountries />
+            <PhoneNumberInput />
             <Input
               type="text"
               placeholder="City"
-              className="bg-white dark:bg-gray-800  h-12"
+              className="bg-white dark:bg-gray-800  h-10 md:h-12  text-xs md:text-sm"
             />
             <Input
               type="text"
               placeholder="Address"
-              className="bg-white dark:bg-gray-800  h-12"
+              className="bg-white dark:bg-gray-800  h-10 md:h-12  text-xs md:text-sm"
             />
           </div>
           <div className="space-y-2">
-            <h1 className="text-center text-xl">About my Business </h1>
+            <Heading className="text-center  ">About my Business </Heading>
             <Textarea
-              className="h-64 placeholder:text-xl placeholder:flex placeholder:mt-14"
+              className="h-24 placeholder:text-xs placeholder:flex placeholder:mt-14"
               placeholder="Write short description about your business .
 (300 words Limit )"
             />
           </div>
-          <Button variant="fillButton" className="h-12">
+          <Button
+            variant="fillButton"
+            className="h-10 md:h-12  text-xs md:text-sm"
+          >
             Update Profile
           </Button>
         </form>

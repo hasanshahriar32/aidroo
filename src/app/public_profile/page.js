@@ -423,13 +423,13 @@ export default function PublicProfile() {
                 <div className="border rounded-md p-8 space-y-4">
                   <IconImage src={claimWithBusiness} />
                   <div className="">
-                    <h1 className="text-xl text-primary_color ">
+                    <Heading size="sm" className=" text-primary_color ">
                       In this Your Business
-                    </h1>
-                    <p className="tracking-tighter">
+                    </Heading>
+                    <Heading size="xs" className="tracking-tighter">
                       Claim listing is the best way to manage and protect your
                       business.
-                    </p>
+                    </Heading>
                     <a
                       href="#_"
                       className="relative inline-flex items-center justify-center h-12 px-4 py-3 mt-4 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-primary_color rounded-full shadow-md group"
@@ -453,50 +453,64 @@ export default function PublicProfile() {
                       <span className="absolute flex items-center justify-center w-full h-full text-primary_color transition-all duration-300 transform group-hover:translate-x-full ease">
                         Access your Business
                       </span>
-                      <span className="relative invisible">
+                      <span className="relative invisible text-sm">
                         Access your Business
                       </span>
                     </a>
                   </div>
                 </div>
                 {/* popular listing  */}
-                <div className="border rounded-md p-8 space-y-10">
+                <div className="border rounded-md p-8 space-y-4">
                   <div className="flex gap-4 items-center">
-                    <IconImage src={google} size={84} className="rounded-md" />
+                    <div className="w-24 md:32">
+                      <ResponsiveImage src={google} />
+                    </div>
                     <div className="space-y-1">
-                      <div className="flex gap-10">
-                        <h1 className="text-xl">Google</h1>
-                        <IconImage src={verifiedIcon} size={24} />
+                      <div className="flex gap-6">
+                        <Heading size="sm" className=" ">
+                          Google
+                        </Heading>
+                        <div className="w-4 md:w-5 ">
+                          <ResponsiveImage src={verifiedIcon} />
+                        </div>
                       </div>
-                      <h1>Tech Company</h1>
+                      <Heading size="xs">Tech Company</Heading>
                       <div className="flex gap-1">
-                        <Rating value={5} />
+                        <Rating value={5} size={14} />
                       </div>
                     </div>
                   </div>
                   <div className="flex gap-4 items-center">
-                    <IconImage src={tesla} size={84} className="rounded-md" />
+                    <div className="w-24 md:32">
+                      <ResponsiveImage src={tesla} />
+                    </div>
                     <div className="space-y-1">
                       <div className="flex gap-10">
-                        <h1 className="text-xl">Tesla</h1>
-                        <IconImage src={verifiedIcon} size={24} />
+                        <Heading size="sm">Tesla</Heading>
+                        <div className="w-4 md:w-5 ">
+                          <ResponsiveImage src={verifiedIcon} />
+                        </div>
                       </div>
-                      <h1>Tech Company</h1>
+                      <Heading size="xs">Tech Company</Heading>
                       <div className="flex gap-1">
-                        <Rating value={5} />
+                        <Rating value={5} size={14} />
                       </div>
                     </div>
                   </div>
                   <div className="flex gap-4  items-center">
-                    <IconImage src={srsoft} size={84} className="rounded-md" />
+                    <div className="w-24 md:32">
+                      <ResponsiveImage src={srsoft} />
+                    </div>
                     <div className="space-y-1">
                       <div className="flex gap-10">
-                        <h1 className="text-xl">Srsoft</h1>
-                        <IconImage src={verifiedIcon} size={24} />
+                        <Heading size="sm">Srsoft</Heading>
+                        <div className="w-4 md:w-5 ">
+                          <ResponsiveImage src={verifiedIcon} />
+                        </div>
                       </div>
-                      <h1>Tech Company</h1>
+                      <Heading size="xs">Tech Company</Heading>
                       <div className="flex gap-1">
-                        <Rating value={5} />
+                        <Rating value={5} size={14} />
                       </div>
                     </div>
                   </div>
