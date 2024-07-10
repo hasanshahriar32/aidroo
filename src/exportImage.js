@@ -21,6 +21,14 @@ import notificationIcon from "@/public/icons/notifications.svg";
 import addyourbusiness from "@/public/icons/profile/addyourbusiness.svg";
 import whitesearch from "@/public/icons/whitesearch.svg";
 
+import businessverified from "@/public/icons/pricising_plan/businessverified.svg";
+import clientsmanagement from "@/public/icons/pricising_plan/clientsmanagement.svg";
+import crossmark from "@/public/icons/pricising_plan/crossmark.svg";
+import featuredbadge from "@/public/icons/pricising_plan/featuredbadge.svg";
+import guaranteedbadge from "@/public/icons/pricising_plan/guaranteedbadge.svg";
+import plaimedbadge from "@/public/icons/pricising_plan/plaimedbadge.svg";
+import tikmark from "@/public/icons/pricising_plan/tikmark.svg";
+import topplacement from "@/public/icons/pricising_plan/topplacement.svg";
 import myorder from "@/public/icons/profile/myorder.svg";
 import myprofile from "@/public/icons/profile/myprofile.svg";
 import myReview from "@/public/icons/profile/myreviews.svg";
@@ -44,10 +52,15 @@ export {
   bagIcon,
   brifcaseIcon,
   businessIcon,
+  businessverified,
   categories,
   category,
+  clientsmanagement,
+  crossmark,
   facebook,
+  featuredbadge,
   filter,
+  guaranteedbadge,
   hashtag,
   helpIcon,
   humber,
@@ -65,6 +78,7 @@ export {
   notificationIcon,
   pageIcon,
   photoadd,
+  plaimedbadge,
   pricingPlan,
   profilePic,
   reportIcon,
@@ -73,6 +87,8 @@ export {
   search,
   signout,
   singoutIcon,
+  tikmark,
+  topplacement,
   twitter,
   user,
   userdashboard,

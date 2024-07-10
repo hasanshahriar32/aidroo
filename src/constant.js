@@ -18,6 +18,14 @@ import {
 } from "@/asserts/categories-icons/pet.svg";
 import applePlay from "@/public/icons/apple.svg";
 import googlePlay from "@/public/icons/google.svg";
+import {
+  crossmark,
+  guaranteedbadge,
+  plaimedbadge,
+  tikmark,
+  topplacement,
+  verifiedIcon,
+} from "./exportImage";
 
 export const categories = [
   categoryIcon1,
@@ -298,5 +306,36 @@ export const country = [
   "tr", // Turkey
   "us", // United States
   "gb", // United Kingdom
+];
+
+export const priceplan = [
+  {
+    title: "Claimed Badge",
+    image: plaimedbadge,
+  },
+  {
+    title: "Top Placement",
+    image: topplacement,
+  },
+  {
+    title: "Verified Badge",
+    image: verifiedIcon,
+  },
+  {
+    title: "Guaranteed Badge",
+    image: guaranteedbadge,
+  },
+  {
+    title: "Featured ",
+    image: crossmark,
+  },
+  {
+    title: "50 reviews   Invitation",
+    image: tikmark,
+  },
+  {
+    title: "Claimed Badge",
+    image: tikmark,
+  },
 ];
 export { applePlay, googlePlay };
