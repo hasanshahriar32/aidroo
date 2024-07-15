@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-redundant-roles */
 "use client";
 import logo from "@/asserts/aidroo-logo.svg";
 import Link from "next/link";

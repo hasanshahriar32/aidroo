@@ -1,4 +1,4 @@
-export default function StarSvg({ st0Color }) {
+export default function StarSvg() {
   return (
     <svg
       version="1.1"

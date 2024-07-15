@@ -45,15 +45,15 @@ export default function Footer() {
                           ) : link.image ? (
                             <>
                               <div className="flex gap-4 mt-8">
-                                <a
+                                <Link
                                   href="#_"
-                                  class="relative inline-flex items-center  px-2 py-3 border w-64 h-12 overflow-hidden font-medium transition-all bg-[#002A64] rounded-xl group"
+                                  className="relative inline-flex items-center  px-2 py-3 border w-64 h-12 overflow-hidden font-medium transition-all bg-[#002A64] rounded-xl group"
                                 >
-                                  <span class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-[#002A64]rounded group-hover:-mr-4 group-hover:-mt-4">
-                                    <span class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-primary_color"></span>
+                                  <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-[#002A64]rounded group-hover:-mr-4 group-hover:-mt-4">
+                                    <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-primary_color"></span>
                                   </span>
-                                  <span class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-primary_color/20 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
-                                  <span class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white flex items-center justify-center gap-4">
+                                  <span className="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-primary_color/20 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
+                                  <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white flex items-center justify-center gap-4">
                                     <IconImage
                                       src={googlePlay}
                                       alt=""
@@ -61,16 +61,16 @@ export default function Footer() {
                                     />
                                     <h1>Play Store</h1>
                                   </span>
-                                </a>
+                                </Link>
                                 <a
                                   href="#_"
-                                  class="relative inline-flex items-center  px-2 py-3 border w-64 h-12 overflow-hidden font-medium transition-all bg-[#002A64] rounded-xl group"
+                                  className="relative inline-flex items-center  px-2 py-3 border w-64 h-12 overflow-hidden font-medium transition-all bg-[#002A64] rounded-xl group"
                                 >
-                                  <span class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-[#002A64]rounded group-hover:-mr-4 group-hover:-mt-4">
-                                    <span class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-primary_color"></span>
+                                  <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-[#002A64]rounded group-hover:-mr-4 group-hover:-mt-4">
+                                    <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-primary_color"></span>
                                   </span>
-                                  <span class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-primary_color/20 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
-                                  <span class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white flex items-center justify-center gap-4">
+                                  <span className="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-primary_color/20 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
+                                  <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white flex items-center justify-center gap-4">
                                     <IconImage
                                       src={applePlay}
                                       alt=""
@@ -133,28 +133,28 @@ export default function Footer() {
             </Heading>
           </div>
           <div className="flex gap-4 w-72    mx-auto md:hidden">
-            <a
+            <Link
               href="#_"
-              class="relative inline-flex items-center  px-2 py-3 border w-52 h-10   overflow-hidden font-medium transition-all bg-[#002A64] rounded-xl group"
+              className="relative inline-flex items-center  px-2 py-3 border w-52 h-10   overflow-hidden font-medium transition-all bg-[#002A64] rounded-xl group"
             >
-              <span class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-[#002A64]rounded group-hover:-mr-4 group-hover:-mt-4">
-                <span class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-primary_color"></span>
+              <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-[#002A64]rounded group-hover:-mr-4 group-hover:-mt-4">
+                <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-primary_color"></span>
               </span>
-              <span class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-primary_color/20 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
-              <span class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white flex items-center justify-center gap-4">
+              <span className="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-primary_color/20 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
+              <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white flex items-center justify-center gap-4">
                 <IconImage src={googlePlay} alt="" size={24} />
                 <h1>Play Store</h1>
               </span>
-            </a>
+            </Link>
             <a
               href="#_"
-              class="relative inline-flex items-center  md:px-2 py-3 border w-52 h-10  md:w-64 md:h-12 overflow-hidden font-medium transition-all bg-[#002A64] rounded-xl group"
+              className="relative inline-flex items-center  md:px-2 py-3 border w-52 h-10  md:w-64 md:h-12 overflow-hidden font-medium transition-all bg-[#002A64] rounded-xl group"
             >
-              <span class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-[#002A64]rounded group-hover:-mr-4 group-hover:-mt-4">
-                <span class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-primary_color"></span>
+              <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-[#002A64]rounded group-hover:-mr-4 group-hover:-mt-4">
+                <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-primary_color"></span>
               </span>
-              <span class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-primary_color/20 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
-              <span class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white flex items-center justify-center gap-4">
+              <span className="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-primary_color/20 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
+              <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white flex items-center justify-center gap-4">
                 <IconImage src={applePlay} alt="" size={20} />
                 <h1>Apple App</h1>
               </span>

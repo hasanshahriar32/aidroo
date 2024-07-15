@@ -6,20 +6,18 @@ import OptionSelect from "../OptionSelect/OptionSelect";
 
 export default function AllCountries() {
   const [selectedCountry, setSelectedCountry] = useState(null);
-  const [selectedState, setSelectedState] = useState(null);
-  const [selectedCity, setSelectedCity] = useState(null);
 
   const countries = Country.getAllCountries().map((country) => ({
     label: country.name,
     value: country.isoCode,
   }));
 
-  const states = selectedCountry
-    ? State.getStatesOfCountry(selectedCountry.value).map((state) => ({
-        label: state.name,
-        value: state.isoCode,
-      }))
-    : [];
+  // const states = selectedCountry
+  //   ? State.getStatesOfCountry(selectedCountry.value).map((state) => ({
+  //       label: state.name,
+  //       value: state.isoCode,
+  //     }))
+  //   : [];
 
   //   const cities = selectedState
   //     ? City.getCitiesOfState(selectedCountry.value, selectedState.value).map(

@@ -170,17 +170,14 @@ export default function PublicProfile() {
                         />
                       </div>
                       <div className=" w-24 md:w-32 h-24 md:h-32 border-2 border-dashed rounded-lg place-content-center">
-                        <label
-                          htmlFor="uploadFile1"
-                          className="font-semibold text-base rounded p-1 flex flex-col items-center justify-center cursor-pointer mx-auto font-[sans-serif]"
-                        >
+                        <div className="font-semibold text-base rounded p-1 flex flex-col items-center justify-center cursor-pointer mx-auto font-[sans-serif]">
                           <CiCirclePlus className="text-6xl text-primary_color" />
                           <input
                             type="file"
                             id="uploadFile1"
                             className="hidden"
                           />
-                        </label>
+                        </div>
                       </div>
                     </div>
 
@@ -443,9 +440,9 @@ export default function PublicProfile() {
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             d="M14 5l7 7m0 0l-7 7m7-7H3"
                           ></path>
                         </svg>

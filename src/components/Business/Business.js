@@ -26,12 +26,12 @@ const Business = () => {
             className="mt-[-50px]"
           />
 
-          <div className="sm:w-full md:w-[400px] space-y-6">
+          <div className=" max-w-[325px] md:w-[400px] space-y-6">
             <div>
               <Heading className=" font-semibold text-[#42b2fc] ">
                 Enhanced Branding
               </Heading>
-              <Heading size="xs" className="  text-sm text-justify ">
+              <Heading size="xs" className="  text-sm  flex-wrap ">
                 Elevate your brand with Claimed, Verified, and Guaranteed
                 badges, along with verified badge reviews.
               </Heading>
@@ -41,26 +41,26 @@ const Business = () => {
               <Heading className="  font-semibold text-[#42b2fc] ">
                 Targeted Leads
               </Heading>
-              <Heading size="xs" className="  text-sm text-justify ">
+              <p size="xs" className="  text-sm  text-wrap ">
                 Engage with a highly relevant audience tailored to your niche,
                 driving qualified leads to your business.
-              </Heading>
+              </p>
             </div>
             <div className="flex flex-col  ">
               <Heading className=" font-semibold text-[#42b2fc] ">
                 Seamless Management
               </Heading>
-              <Heading size="xs" className="   text-justify tracking-[.97px]">
+              <p size="xs" className=" text-wrap   tracking-[.97px]">
                 Aidroo simplifies directory management, offering tools to
                 update, monitor, and analyze listings efficiently.
-              </Heading>
+              </p>
             </div>
             <div className="mt-8 flex  justify-between space-x-4">
               <Button variant="fillButton" size="lg" className="h-9 md:h-10  ">
                 See Our Pricing
               </Button>
               <Button variant="hover" size="lg" className="h-9 md:h-10">
-                See Our Pricing
+                Add business
               </Button>
             </div>
           </div>

@@ -36,13 +36,10 @@ export default function Schedule() {
             />
           </div>
           <div className="w-24 md:w-32  h-24 md:h-32 border-2 border-dashed rounded-lg place-content-center">
-            <label
-              htmlFor="uploadFile1"
-              className="font-semibold text-base rounded p-1 flex flex-col items-center justify-center cursor-pointer mx-auto font-[sans-serif]"
-            >
+            <div className="font-semibold text-base rounded p-1 flex flex-col items-center justify-center cursor-pointer mx-auto font-[sans-serif]">
               <CiCirclePlus className="text-6xl text-primary_color" />
               <input type="file" id="uploadFile1" className="hidden" />
-            </label>
+            </div>
           </div>
         </div>
       </div>

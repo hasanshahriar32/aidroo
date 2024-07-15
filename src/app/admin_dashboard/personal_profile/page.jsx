@@ -12,15 +12,15 @@ import {
 import WriteReview from "@/components/WriteReview/WriteReview";
 import { search } from "@/exportImage";
 import Image from "next/image";
-function shortenString(str, maxLength) {
-  if (str.length > maxLength) {
-    return str.slice(0, maxLength - 3) + "...";
-  }
-  return str;
-}
+// function shortenString(str, maxLength) {
+//   if (str.length > maxLength) {
+//     return str.slice(0, maxLength - 3) + "...";
+//   }
+//   return str;
+// }
 
-let str =
-  "Lorem ipsum dolor sit amet consectetur  Lorem ipsum dolor sit amet consectetur";
+// let str =
+//   "Lorem ipsum dolor sit amet consectetur  Lorem ipsum dolor sit amet consectetur";
 export default function PersonalProfile() {
   return (
     <div className="  rounded-lg  space-y-6">
