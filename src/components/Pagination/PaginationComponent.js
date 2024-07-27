@@ -10,7 +10,7 @@ import {
 
 export default function PaginationComponent({ className }) {
   return (
-    <Pagination className="border md:w-fit p-2 rounded-md ">
+    <Pagination className=" md:w-fit p-2 rounded-md ">
       <PaginationContent className="text-sm">
         <PaginationItem>
           <PaginationPrevious href="#" className={className} />

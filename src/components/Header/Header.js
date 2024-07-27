@@ -332,20 +332,20 @@ export default function Header() {
 
                 <div
                   onClick={() => setOpen(!open)}
-                  className=" w-7 h-7 rounded-md border-gray-500   flex justify-center items-center   bg-primary_color"
+                  className=" w-9 h-9 rounded-md border-gray-500   flex justify-center items-center   bg-primary_color"
                 >
                   {!open ? (
                     <Image src={whitesearch} className="w-5" />
                   ) : (
-                    <IoClose className="text-white text-2xl transition ease transform duration-300" />
+                    <IoClose className="text-white text-3xl transition ease transform duration-300" />
                   )}
                 </div>
 
                 <SheetTrigger asChild>
                   <div>
-                    <div className="border w-7 h-7 rounded-md border-gray-500 relative  flex justify-center items-center  transition-all duration-500 ">
+                    <div className="border w-9 h-9 rounded-md border-gray-500 relative  flex justify-center items-center  transition-all duration-500 ">
                       {!humberOpen ? (
-                        <IoMenu className="text-primary_color text-2xl" />
+                        <IoMenu className="text-primary_color text-3xl" />
                       ) : (
                         <IoClose
                           className={`text-primary_color text-2xl ${
@@ -365,7 +365,7 @@ export default function Header() {
                   : "opacity-0 -translate-y-8 pointer-events-none "
               }`}
             >
-              <form className="flex gap-4 justify-center h-8 md:h-10">
+              <form className="flex gap-4 justify-center  h-10">
                 <Input
                   type="text"
                   name="search"
@@ -374,10 +374,10 @@ export default function Header() {
                 />
 
                 <div className="relative flex gap-4">
-                  <div className=" flex items-center justify-center     bg-primary_color p-1 rounded-md   cursor-pointer w-8 md:w-[42px]    ">
+                  <div className=" flex items-center justify-center     bg-primary_color p-1 rounded-md   cursor-pointer w-10 md:w-[42px]    ">
                     <Image src={filter} alt="Icon 1" className="w-5" />
                   </div>
-                  <div className=" flex items-center justify-center     bg-primary_color p-1 rounded-md   cursor-pointer w-8 md:w-[42px] ">
+                  <div className=" flex items-center justify-center     bg-primary_color p-1 rounded-md   cursor-pointer w-10 md:w-[42px] ">
                     <Image src={whitesearch} alt="Icon 1" className="w-5" />
                   </div>
                 </div>

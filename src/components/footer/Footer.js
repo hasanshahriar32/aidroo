@@ -1,4 +1,4 @@
-import { applePlay, footerLinks, googlePlay } from "@/constant";
+import { applePlay, font16, footerLinks, googlePlay } from "@/constant";
 
 import {
   facebook,
@@ -28,9 +28,11 @@ export default function Footer() {
             footerLinks.map((footerLink, index) => (
               <div key={index} className="hidden md:block">
                 <div className="flex flex-col">
-                  <Heading size="lg" className="  font-semi-bold pb-1  ">
+                  <h1
+                    className={` text-primary_color   font-semibold pb-1 ${font16} `}
+                  >
                     {footerLink.title}
-                  </Heading>
+                  </h1>
                   {footerLink.links.length > 0 && (
                     <ul className=" ">
                       {footerLink.links.map((link, linkIndex) => (
@@ -100,7 +102,9 @@ export default function Footer() {
                   >
                     <AccordionItem value="item-1">
                       <AccordionTrigger>
-                        <div className="flex items-center gap-4 no-underline text-sm ">
+                        <div
+                          className={` text-primary_color font-semibold pb-1 ${font16} `}
+                        >
                           {footerLink.title}
                         </div>
                       </AccordionTrigger>
@@ -111,7 +115,10 @@ export default function Footer() {
                               .slice(0, -1)
                               .map((link, linkIndex) => (
                                 <li key={linkIndex}>
-                                  <Link href={link.link} className="  text-xs">
+                                  <Link
+                                    href={link.link}
+                                    className="hover:text-blue-500 text-sm text-gray-600"
+                                  >
                                     {link.title}
                                   </Link>
                                 </li>
@@ -128,9 +135,12 @@ export default function Footer() {
 
         <div className="mt-8 space-y-5 md:hidden">
           <div>
-            <Heading size="sm" className=" ">
+            <p className="text-primary_color font-normal text-[16px]">
               Aidroo For Mobile
-            </Heading>
+            </p>
+            <p className=" font-normal text-sm">
+              Download aidroo app to manage your business
+            </p>
           </div>
           <div className="flex gap-4 w-72    mx-auto md:hidden">
             <Link

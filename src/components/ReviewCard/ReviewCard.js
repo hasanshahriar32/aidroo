@@ -19,6 +19,7 @@ import { CiShare2 } from "react-icons/ci";
 import { FaReply } from "react-icons/fa";
 import { FcLike } from "react-icons/fc";
 import Heading from "../Heading";
+import { font12, font14, font16, font18bold } from "@/constant";
 
 export default function ReviewCard() {
   return (
@@ -36,23 +37,19 @@ export default function ReviewCard() {
           </div>
           <div className="">
             <div className="flex gap-6 items-center">
-              <Heading size="sm" className="font-bold">
-                Jhon{" "}
-              </Heading>
+              <h1 className={`${font18bold}`}>Jhon </h1>
               <IconImage src={varifiedBadgePersional} size={16} />
             </div>
 
-            <Heading size="xs" className="text-sm text-gray-500">
-              San Fransico, USA{" "}
-            </Heading>
+            <p className={`${font14} text-gray-500`}>San Fransico, USA </p>
             <span className="flex gap-4">
               <div className="flex gap-2 items-center text-[18px]">
                 <IconImage src={followerIcon} size={18} />{" "}
-                <span className="text-xs">0</span>
+                <span className={`${font14}`}>0</span>
               </div>
               <div className="flex gap-2 items-center text-[18px]">
                 <IconImage src={reviewsIcon} size={18} />
-                <span className="text-xs">0</span>
+                <span className={`${font14}`}>0</span>
               </div>
             </span>
           </div>
@@ -64,7 +61,7 @@ export default function ReviewCard() {
           <div className="flex gap-1">
             <Rating value={4} size={14} />
           </div>
-          <p className="text-xs">August 12,2023</p>
+          <p className={`${font14}`}>August 12,2023</p>
           <div className="w-24 ">
             <IconImage
               src={reviewVerifiedIcon}
@@ -73,22 +70,16 @@ export default function ReviewCard() {
             />
           </div>
         </div>
-        <div className=" ">
-          <Heading
-            size="sm"
-            className="font-normal text-balance font-semi-bold"
-          >
-            I would Highly recommended
-          </Heading>
-          <Heading
-            size="xs"
-            className="text-gray-500 text-sm tracking-tight leading-5 "
+        <div>
+          <h1 className={`${font16}`}>I would Highly recommended</h1>
+          <p
+            className={`${font14} text-gray-500 text-sm tracking-tight leading-5`}
           >
             I had a seamless experience with Panacea. Other companies denied me
             credit due to not providing evidence of income. Other financial
             institutions that are supposedly for medical professionals do not
             understand our process.
-          </Heading>
+          </p>
         </div>
         <div className="flex gap-4 mt-2">
           <IconImage src={profileImage} size={100} alt="review image" />

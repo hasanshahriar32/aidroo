@@ -1,21 +1,23 @@
-import categoryIcon8 from "@/asserts/categories-icons/Automotive.svg";
-import categoryIcon1 from "@/asserts/categories-icons/Beauty.svg";
-import categoryIcon9 from "@/asserts/categories-icons/Education.svg";
-import categoryIcon10 from "@/asserts/categories-icons/Electronics.svg";
-import categoryIcon2 from "@/asserts/categories-icons/Food.svg";
-import categoryIcon3 from "@/asserts/categories-icons/Health.svg";
-import categoryIcon4 from "@/asserts/categories-icons/Law.svg";
-import categoryIcon6 from "@/asserts/categories-icons/Medical.svg";
-import {
-  default as categoryIcon13,
-  default as categoryIcon14,
-  default as categoryIcon7,
-} from "@/asserts/categories-icons/Shopping.svg";
-import {
-  default as categoryIcon11,
-  default as categoryIcon12,
-  default as categoryIcon5,
-} from "@/asserts/categories-icons/pet.svg";
+import Appliance from "@/asserts/categories-icons/Appliance.svg";
+import Artsanddesign from "@/asserts/categories-icons/Artsand-designs.svg";
+import Automotive from "@/asserts/categories-icons/Automotive.svg";
+import Beauty from "@/asserts/categories-icons/Beauty.svg";
+import Education from "@/asserts/categories-icons/Education.svg";
+import Technology from "@/asserts/categories-icons/Electronics.svg";
+import Entertainment from "@/asserts/categories-icons/Entertainment.svg";
+import Finance from "@/asserts/categories-icons/Finance.svg";
+import Food from "@/asserts/categories-icons/Food.svg";
+import Fitness from "@/asserts/categories-icons/Health.svg";
+import insurance from "@/asserts/categories-icons/insurance.svg";
+import Jewellery from "@/asserts/categories-icons/Jewellery.svg";
+import Law from "@/asserts/categories-icons/Law.svg";
+import Medical from "@/asserts/categories-icons/Medical.svg";
+import Organisation from "@/asserts/categories-icons/Organisation.svg";
+import Pet from "@/asserts/categories-icons/pet.svg";
+import RealEstate from "@/asserts/categories-icons/RealEstate.svg";
+import Shopping from "@/asserts/categories-icons/Shopping.svg";
+import Sports from "@/asserts/categories-icons/Sports.svg";
+import TravelsandHotels from "@/asserts/categories-icons/TravelsandHotels.svg";
 import applePlay from "@/public/icons/apple.svg";
 import googlePlay from "@/public/icons/google.svg";
 import {
@@ -28,20 +30,29 @@ import {
 } from "./exportImage";
 
 export const categories = [
-  categoryIcon1,
-  categoryIcon2,
-  categoryIcon3,
-  categoryIcon4,
-  categoryIcon5,
-  categoryIcon6,
-  categoryIcon7,
-  categoryIcon8,
-  categoryIcon9,
-  categoryIcon10,
-  categoryIcon11,
-  categoryIcon12,
-  categoryIcon13,
-  categoryIcon14,
+  { title: "Finance", src: Finance },
+  { title: "Real Estate", src: RealEstate },
+  { title: "Automotive", src: Automotive },
+  { title: "Technology", src: Technology },
+  { title: " Medical", src: Medical },
+  { title: "Appliance", src: Appliance },
+
+  { title: "Beauty", src: Beauty },
+  { title: "Food", src: Food },
+  { title: "Fitness", src: Fitness },
+  { title: "Law", src: Law },
+  { title: "Pet", src: Pet },
+  { title: "Shopping", src: Shopping },
+  { title: "Education", src: Education },
+  { title: "Arts and design", src: Artsanddesign },
+  { title: "Entertainment", src: Entertainment },
+  { title: "Insurance", src: insurance },
+  { title: "Jewelry", src: Jewellery },
+  { title: "Organization", src: Organisation },
+  { title: "Sports", src: Sports },
+  { title: "Travels Hotels", src: TravelsandHotels },
+
+  // { title: "Business", src: categoryIcon13 },
 ];
 
 export const footerLinks = [
@@ -338,4 +349,11 @@ export const priceplan = [
     image: tikmark,
   },
 ];
+
+export const font18bold = "text-[18px]  font-semibold";
+export const font18 = "text-[18px]";
+export const font16 = "text-[16px] ";
+export const font14 = "text-[14px] ";
+export const font12 = "text-[12px] ";
+
 export { applePlay, googlePlay };

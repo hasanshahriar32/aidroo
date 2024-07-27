@@ -68,34 +68,38 @@ export default function Business_plan() {
                 <Input
                   type="text"
                   placeholder="Business Name"
-                  className="bg-white dark:bg-gray-800  h-12"
+                  className="bg-white dark:bg-gray-800  h-10"
                 />
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input
                     type="text"
                     placeholder="username"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800  h-10"
                   />
                   <Input
                     type="email"
                     placeholder="Email"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800  h-10"
                   />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <OptionSelect label="country" options={options} />
+                  <OptionSelect
+                    label="country"
+                    className="border-none"
+                    options={options}
+                  />
                   <OptionSelect label="country" options={options} />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input
                     type="password"
                     placeholder="Create Password"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800  h-10"
                   />
                   <Input
                     type="password"
                     placeholder="Confirm Password"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800  h-10"
                   />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -106,12 +110,12 @@ export default function Business_plan() {
                   <Input
                     type="text"
                     placeholder="City"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800  h-10"
                   />
                   <Input
                     type="text"
                     placeholder="Address"
-                    className="bg-white dark:bg-gray-800  h-12"
+                    className="bg-white dark:bg-gray-800  h-10"
                   />
                 </div>
               </form>
@@ -119,7 +123,7 @@ export default function Business_plan() {
               <div className="flex items-center justify-center pt-2">
                 <Button
                   variant="hover"
-                  className="h-12 w-full    duration-300 "
+                  className="h-10 w-full    duration-300 "
                 >
                   Create Job
                 </Button>
@@ -131,7 +135,7 @@ export default function Business_plan() {
           <input
             type="text"
             placeholder="Search your business"
-            className="h-12 focus:outline-none  px-4 w-full "
+            className="h-10 focus:outline-none  px-4 w-full "
           />
           <Image
             src={search}
@@ -144,30 +148,32 @@ export default function Business_plan() {
           <Table className="w-[790px] ">
             <TableHeader className="w-fit h-14 ">
               <TableRow>
-                <TableHead className="w-fit">Profile Name</TableHead>
+                <TableHead className="w-fit text-sm">Profile Name</TableHead>
                 <TableHead>
                   <OptionSelect
                     label="Category"
                     options={options}
-                    className="text-lg"
+                    className="text-sm"
                   />
                 </TableHead>
                 <TableHead>
                   <OptionSelect
                     label="Country"
                     options={options}
-                    className="text-lg"
+                    className="text-sm"
                   />
                 </TableHead>
-                <TableHead className="text-right">Status</TableHead>
-                <TableHead className="text-right">Varified</TableHead>
-                <TableHead className="text-right">Top Guarented</TableHead>
+                <TableHead className="text-right text-sm">Status</TableHead>
+                <TableHead className="text-right text-sm">Varified</TableHead>
+                <TableHead className="text-right text-sm">
+                  Top Guarented
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {[1, 2, 3, 5, 6].map((item) => (
                 <TableRow key={item}>
-                  <TableCell className="font-medium">
+                  <TableCell className="font-medium text-sm">
                     Microsoft comapany
                   </TableCell>
                   <TableCell>

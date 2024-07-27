@@ -14,7 +14,6 @@ import { LuUser2 } from "react-icons/lu";
 import { VscBriefcase } from "react-icons/vsc";
 
 export default function Signup() {
-  console.log(country);
   return (
     <Layout title="signup">
       <div className="px-8">
@@ -53,34 +52,34 @@ export default function Signup() {
                   <Input
                     type="text"
                     placeholder="First Name"
-                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
+                    className="bg-white dark:bg-gray-800   h-10 "
                   />
                   <Input
                     type="text"
                     placeholder="Last Name"
-                    className="bg-white dark:bg-gray-800  h-10 md:h-12"
+                    className="bg-white dark:bg-gray-800  h-10 "
                   />
                 </div>
                 <Input
                   type="text"
                   placeholder=" username"
-                  className="bg-white dark:bg-gray-800  h-10 md:h-12"
+                  className="bg-white dark:bg-gray-800  h-10 "
                 />
                 <Input
                   type="email"
                   placeholder="email"
-                  className="bg-white dark:bg-gray-800   h-10 md:h-12"
+                  className="bg-white dark:bg-gray-800   h-10 "
                 />
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input
                     type="password"
                     placeholder="Create Password"
-                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
+                    className="bg-white dark:bg-gray-800   h-10 "
                   />
                   <Input
                     type="password"
                     placeholder="Confirm Password"
-                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
+                    className="bg-white dark:bg-gray-800   h-10 "
                   />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -91,18 +90,18 @@ export default function Signup() {
                   <Input
                     type="text"
                     placeholder="City"
-                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
+                    className="bg-white dark:bg-gray-800   h-10 "
                   />
                   <Input
                     type="text"
                     placeholder="Address"
-                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
+                    className="bg-white dark:bg-gray-800   h-10 "
                   />
                 </div>
                 <div className="flex items-center justify-center pt-2">
                   <Button
                     variant="fillButton"
-                    className="h-10 md:h-12 max-w-64 mx-auto"
+                    className="h-10  max-w-64 mx-auto"
                   >
                     Sign Up
                   </Button>
@@ -130,18 +129,18 @@ export default function Signup() {
                 <Input
                   type="text"
                   placeholder="Business Name"
-                  className="bg-white dark:bg-gray-800   h-10 md:h-12"
+                  className="bg-white dark:bg-gray-800   h-10 "
                 />
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input
                     type="text"
                     placeholder="username"
-                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
+                    className="bg-white dark:bg-gray-800   h-10 "
                   />
                   <Input
                     type="email"
                     placeholder="Email"
-                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
+                    className="bg-white dark:bg-gray-800   h-10 "
                   />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -152,12 +151,12 @@ export default function Signup() {
                   <Input
                     type="password"
                     placeholder="Create Password"
-                    className="bg-white dark:bg-gray-800  h-10 md:h-12"
+                    className="bg-white dark:bg-gray-800  h-10 "
                   />
                   <Input
                     type="password"
                     placeholder="Confirm Password"
-                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
+                    className="bg-white dark:bg-gray-800   h-10 "
                   />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -168,18 +167,18 @@ export default function Signup() {
                   <Input
                     type="text"
                     placeholder="City"
-                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
+                    className="bg-white dark:bg-gray-800   h-10 "
                   />
                   <Input
                     type="text"
                     placeholder="Address"
-                    className="bg-white dark:bg-gray-800   h-10 md:h-12"
+                    className="bg-white dark:bg-gray-800   h-10 "
                   />
                 </div>
                 <div className="flex items-center justify-center pt-2">
                   <Button
                     variant="fillButton"
-                    className="h-10 md:h-12 max-w-64 mx-auto"
+                    className="h-10  max-w-64 mx-auto"
                   >
                     Sign Up
                   </Button>

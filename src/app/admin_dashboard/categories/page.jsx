@@ -40,7 +40,7 @@ export default function Categories() {
           <Input
             type="text"
             placeholder="Type sub category name"
-            className="h-12"
+            className="h-10"
           />
           <OptionSelect options={options} label="Sub category" />
           <Button variant="hover" size="lg">

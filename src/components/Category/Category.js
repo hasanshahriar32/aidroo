@@ -1,10 +1,10 @@
 "use client";
 
-import { categories } from "@/constant";
+import { categories, font18 } from "@/constant";
 import { Poppins } from "next/font/google";
 import { useEffect, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import Heading from "../Heading";
+
 import CategoryItem from "./CategoryItem/CategoryItem";
 
 const poppins = Poppins({
@@ -71,12 +71,11 @@ export default function Category() {
   return (
     <div className="bg-[#d4e5ff] dark:bg-dark py-10">
       <div className="max-w-[1360px] mx-auto sm:px-8 flex items-center flex-col space-y-6">
-        <Heading
-          size="xl"
-          className={`text-center  font-semibold  ${poppins.variable}`}
+        <h1
+          className={`text-center ${font18}  font-semibold  ${poppins.variable}`}
         >
-          Browse Categories
-        </Heading>
+          Explore Categories
+        </h1>
         <div className=" px-14 relative mx-8">
           <div className=" w-fit lg:max-w-[900px]  flex justify-center overflow-hidden">
             <div

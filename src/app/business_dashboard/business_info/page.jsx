@@ -6,7 +6,7 @@ import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { options } from "@/constant";
+import { font16, font18, options } from "@/constant";
 import profileImage from "@/public/images/profile.jpg";
 
 export default function BusinessInfo() {
@@ -31,12 +31,12 @@ export default function BusinessInfo() {
             <Input
               type="text"
               placeholder="First Name"
-              className="bg-white dark:bg-gray-800 h-10 md:h-12 text-xs md:text-sm"
+              className="bg-white dark:bg-gray-800 h-10  text-xs md:text-sm"
             />
             <Input
               type="text"
               placeholder="Last Name"
-              className="bg-white dark:bg-gray-800  h-10 md:h-12  text-xs md:text-sm"
+              className="bg-white dark:bg-gray-800  h-10   text-xs md:text-sm"
             />
           </div>
 
@@ -51,26 +51,23 @@ export default function BusinessInfo() {
             <Input
               type="text"
               placeholder="City"
-              className="bg-white dark:bg-gray-800  h-10 md:h-12  text-xs md:text-sm"
+              className="bg-white dark:bg-gray-800  h-10   text-xs md:text-sm"
             />
             <Input
               type="text"
               placeholder="Address"
-              className="bg-white dark:bg-gray-800  h-10 md:h-12  text-xs md:text-sm"
+              className="bg-white dark:bg-gray-800  h-10   text-xs md:text-sm"
             />
           </div>
           <div className="space-y-2">
-            <Heading className="text-center  ">About my Business </Heading>
+            <h1 className={`text-center ${font18}`}>About my Business </h1>
             <Textarea
-              className="h-24 placeholder:text-xs placeholder:flex placeholder:mt-14"
+              className="h-24 placeholder:text-sm placeholder:flex placeholder:mt-14"
               placeholder="Write short description about your business .
 (300 words Limit )"
             />
           </div>
-          <Button
-            variant="fillButton"
-            className="h-10 md:h-12  text-xs md:text-sm"
-          >
+          <Button variant="fillButton" className="h-10   text-xs md:text-sm">
             Update Profile
           </Button>
         </form>

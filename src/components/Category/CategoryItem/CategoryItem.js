@@ -1,11 +1,11 @@
-import Heading from "@/components/Heading";
+import { font14 } from "@/constant";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function CategoryItem({ category }) {
   return (
     <Link
-      className="slide_card bg-[#d4e5ff] dark:bg-[#0b1120] shadow-md min-w-[85px] h-20  md:h-[120px] before:bg-[#ccd9ff] dark:before:bg-dark dark:border"
+      className="slide_card bg-[#d4e5ff] dark:bg-[#0b1120] shadow-md min-w-[80px] h-20  md:h-[120px] before:bg-[#ccd9ff] dark:before:bg-dark dark:border"
       href="#"
     >
       <div className="relative flex justify-center">
@@ -64,12 +64,11 @@ export default function CategoryItem({ category }) {
             alt="Category icon"
             className="absolute top-4   md:top-[35px] p-1 shrink-0"
           />
-          <Heading
-            className="absolute top-14 md:top-[77px] text-gray-500   "
-            size="xs"
+          <h1
+            className={`absolute top-14 md:top-[77px] text-gray-500  font-light ${font14}  `}
           >
-            Finance
-          </Heading>
+            {category.title}
+          </h1>
         </div>
       </div>
     </Link>

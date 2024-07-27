@@ -44,12 +44,12 @@ export default function PersonalProfile() {
           <Table className="w-[790px]  ">
             <TableHeader className="w-fit h-14 ">
               <TableRow>
-                <TableHead className="w-fit"> Profile Name </TableHead>
-                <TableHead>Country</TableHead>
+                <TableHead className="w-fit text-sm"> Profile Name </TableHead>
+                <TableHead className="text-sm">Country</TableHead>
 
-                <TableHead>Status</TableHead>
-                <TableHead>Hiring</TableHead>
-                <TableHead>Varified</TableHead>
+                <TableHead className="text-sm">Status</TableHead>
+                <TableHead className="text-sm">Hiring</TableHead>
+                <TableHead className="text-sm">Varified</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>

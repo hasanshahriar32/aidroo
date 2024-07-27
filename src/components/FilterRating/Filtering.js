@@ -1,5 +1,5 @@
 "use client";
-import { options } from "@/constant";
+import { font14, font16, options } from "@/constant";
 import { useState } from "react";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import OptionSelect from "../OptionSelect/OptionSelect";
@@ -17,31 +17,31 @@ export default function Filtering() {
   return (
     <div className="min-w-[350px] col-span-3 border-2 rounded-md shadow p-4  space-y-4">
       <div>
-        <h1 className=" text-xs md:text-[16px] font-bold ">Searchig Listing</h1>
+        <h1 className={`${font16} font-medium `}>Searchig Listing</h1>
       </div>
 
       <div className=" space-y-3 md:space-y-6">
         <Input
           type="text"
           placeholder="What are you looking for?"
-          className="text-gray-600 text-xs md:h-10 "
+          className={`text-gray-600  ${font14} h-10 `}
         />
         <OptionSelect
           label="Select a category"
           options={options}
-          className="text-gray-600 text-xs md:h-12 "
+          className={`text-gray-600  ${font14} h-10 `}
         />
         <OptionSelect
           label="Select a sub category"
           options={options}
-          className="text-gray-600 text-xs md:h-12 "
+          className={`text-gray-600  ${font14} h-10 `}
         />
       </div>
       <div>
-        <h1 className="text-xs md:text-[16px] font-bold mb-2">Rating</h1>
+        <h1 className={`${font16} font-medium `}>Rating</h1>
         <div className="border border-r-0 h-11 rounded grid grid-cols-4">
           <button
-            className={`text-sm text-gray-700 font-semibold border-r flex justify-center items-center  cursor-pointer hover:text-white ${
+            className={`${font14} text-gray-700 font-semibold border-r flex justify-center items-center  cursor-pointer hover:text-white ${
               activeButton == "any"
                 ? "bg-[#9ce0ff] text-white  "
                 : "hover:bg-[#81d7fe] "
@@ -87,53 +87,33 @@ export default function Filtering() {
         </div>
       </div>
       <div className=" ">
-        <h1 className=" text-sm md:text-[16px] font-bold ">Locations</h1>
+        <h1 className={`${font16} font-medium `}>Locations</h1>
 
         <div className="  flex  gap-4 items-center">
           <OptionSelect
             label="Country"
             options={options}
-            className="text-gray-600 text-xs md:h-12 "
+            className="text-gray-600 text-sm h-10 "
           />
           <Input
             placeholder="City or Zip code"
-            className="text-gray-600 text-xs h-10 "
+            className="text-gray-600 text-sm h-10 "
           />
         </div>
       </div>
       <div className="flex gap-4   justify-between">
         <div className="space-y-2">
-          <h1 className="text-sm md:text-sm md:text-[16px] font-bold md:font-semi-bold ">
-            Profile status
-          </h1>
+          <h1 className={`${font16} font-medium `}>Profile status</h1>
 
           <div className="space-y-2">
             <div className="flex items-center justify-between space-x-2 w-44">
               <label
                 htmlFor="terms"
-                className="text-xs  font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
                 Claimed
               </label>
-              <Checkbox className="w-6 h-6 rounded-full" id="terms" />
-            </div>
-            <div className="flex items-center justify-between space-x-2 w-44">
-              <label
-                htmlFor="terms"
-                className="text-xs font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              >
-                Claimed
-              </label>
-              <Checkbox className="w-6 h-6 rounded-full" id="terms" />
-            </div>
-            <div className="flex items-center justify-between space-x-2 w-44">
-              <label
-                htmlFor="terms"
-                className="text-xs font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              >
-                Claimed
-              </label>
-              <Checkbox className="w-6 h-6 rounded-full" id="terms" />
+              <Checkbox className="w-5 h-5 rounded-full" id="terms" />
             </div>
           </div>
         </div>

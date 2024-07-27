@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { font14, font16, font18bold } from "@/constant";
 import {
   brifcaseIcon,
   categories,
@@ -57,7 +58,9 @@ export default function Categories() {
   return (
     <div className="max-w-7xl mx-auto  px-6  py-10   ">
       <div>
-        <h1 className="text-primary_color text-2xl text-center font-semi-bold  py-8">
+        <h1
+          className={`text-primary_color  ${font18bold}  text-center    py-8`}
+        >
           Find your best company
         </h1>
       </div>
@@ -79,12 +82,15 @@ export default function Categories() {
               <IconImage
                 src={profilePic}
                 alt="profile pic"
-                size={80}
+                size={90}
                 className="rounded-sm"
               />
-              <div className="flex flex-col space-y-2 ">
+              <div className="flex flex-col space-y-1 ">
                 <div className="flex gap-2 items-center ">
-                  <h1 className=" md:text-xl ">Aidroo</h1>
+                  <h1 className={`text-gray-600  ${font16} font-semibold  `}>
+                    Aidroo
+                  </h1>
+
                   <IconImage src={verifiedIcon} size={18} />
                 </div>
                 {/*rating */}
@@ -92,15 +98,13 @@ export default function Categories() {
                   <div className="flex gap-1 ">
                     <Rating value={5} size={14} />
                   </div>
-                  <h1 className="text-gray-600 text-xs md:text-sm  ">
+                  <h1 className="text-gray-600 text-sm  ">
                     <span>4.5 | 102 Reviews</span>
                   </h1>
                 </div>
                 <div className="flex gap-2 items-center  text-gray-600">
                   <FaRegPaperPlane className="text-[12px]" />
-                  <h1 className=" text-xs md:text-sm  ">
-                    Newyork , United States
-                  </h1>
+                  <h1 className="text-sm  ">Newyork , United States</h1>
                 </div>
                 {/* 
                 category
@@ -110,11 +114,11 @@ export default function Categories() {
             <div className="px-4 py-1 flex justify-between md:hidden">
               <div className="flex gap-1 items-center ">
                 <IconImage src={category} size={15} />
-                <h1 className="text-xs">Digital Agency</h1>
+                <h1 className="text-sm">Digital Agency</h1>
               </div>
               <div className="flex gap-1 items-center ">
                 <IconImage src={category} size={15} />
-                <h1 className="text-xs">Digital Agency</h1>
+                <h1 className="text-sm">Digital Agency</h1>
               </div>
             </div>
             <div className=" border-t px-4 py-2">
@@ -124,26 +128,28 @@ export default function Categories() {
                     <div className=" hidden md:grid grid-cols-1 md:grid-cols-3  w-full gap-4">
                       <div className="flex gap-2 items-center ">
                         <IconImage src={category} size={20} />
-                        <h1 className="text-xs">Digital Agency</h1>
+                        <h1 className="text-sm">Digital Agency</h1>
                       </div>
                       <Dialog>
                         <DialogTrigger asChild>
                           <div className="flex gap-2 items-center cursor-pointer text-primary_color ">
                             <IconImage src={brifcaseIcon} size={20} />
-                            <h1 className="text-xs">Job feed</h1>
+                            <h1 className="text-sm">Job feed</h1>
                           </div>
                         </DialogTrigger>
 
-                        <DialogContent className="  sm:h-2/3 overflow-hidden overflow-y-auto ">
+                        <DialogContent className="    overflow-hidden overflow-y-auto ">
                           <ScrollArea className="w-full whitespace-nowrap rounded-md ">
                             <div className="flex w-max space-x-4 p-4">
                               {works.map((artwork) => (
                                 <div
-                                  className="w-[330px] md:w-52 overflow-hidden  p-3 border rounded-md "
+                                  className="w-[330px]  overflow-hidden  p-3 border rounded-md "
                                   key={artwork}
                                 >
                                   <div>
-                                    <h1 className="text-sm text-primary_color text-wrap">
+                                    <h1
+                                      className={`${font16}text-primary_color text-wrap`}
+                                    >
                                       Looking for Sales Manager
                                     </h1>
 
@@ -155,8 +161,10 @@ export default function Categories() {
                                         <div className="flex items-center text-sm gap-4">
                                           <IconImage src={moneyBag} size={32} />
                                           <div>
-                                            <h1 className="text-xs">1624 $</h1>
-                                            <p className="text-[10px]">
+                                            <h1 className="text-sm">1624 $</h1>
+                                            <p
+                                              className={`text-gray-600  ${font14} `}
+                                            >
                                               Price is{" "}
                                               <span className="text-primary_color">
                                                 Negotiable
@@ -171,7 +179,7 @@ export default function Categories() {
                                             src={categories}
                                             size={32}
                                           />
-                                          <h1 className="text-xs">
+                                          <h1 className="text-sm">
                                             Appliance Service
                                           </h1>
                                         </div>
@@ -179,7 +187,7 @@ export default function Categories() {
                                       <div>
                                         <div className="flex items-center text-sm gap-4">
                                           <IconImage src={schedule} size={32} />
-                                          <h1 className="text-xs">
+                                          <h1 className="text-sm">
                                             10--09-2024
                                           </h1>
                                         </div>
@@ -190,7 +198,7 @@ export default function Categories() {
                                             src={locationIcon}
                                             size={32}
                                           />
-                                          <h1 className="text-xs">
+                                          <h1 className="text-sm">
                                             Az 2031 ,Ariziba ,Usa
                                           </h1>
                                         </div>
@@ -202,12 +210,12 @@ export default function Categories() {
                             </div>
                             <ScrollBar orientation="horizontal" />
                           </ScrollArea>
-                          <PaginationComponent className=" text-xs md:text-sm" />
+                          <PaginationComponent className=" text-sm" />
                         </DialogContent>
                       </Dialog>
                       <AccordionTrigger className=" w-fit flex  -mt-3 ">
                         <IconImage src={myReview} size={20} />
-                        <span className="text-xs text-primary_color">
+                        <span className="text-sm text-primary_color">
                           Latest reviews
                         </span>
                       </AccordionTrigger>
@@ -219,7 +227,7 @@ export default function Categories() {
                         <DialogTrigger asChild>
                           <div className="flex gap-2 items-center cursor-pointer text-primary_color ">
                             <IconImage src={brifcaseIcon} size={20} />
-                            <h1 className="text-xs">Job feed</h1>
+                            <h1 className="text-sm">Job feed</h1>
                           </div>
                         </DialogTrigger>
 
@@ -236,7 +244,7 @@ export default function Categories() {
                                       Looking for Sales Manager
                                     </h1>
 
-                                    <p className="text-xs text-wrap">
+                                    <p className="text-sm text-wrap">
                                       {shortenString(str, 250)}
                                     </p>
                                     <div className=" mt-2">
@@ -244,7 +252,7 @@ export default function Categories() {
                                         <div className="flex items-center text-sm gap-4">
                                           <IconImage src={moneyBag} size={32} />
                                           <div>
-                                            <h1 className="text-xs">1624 $</h1>
+                                            <h1 className="text-sm">1624 $</h1>
                                             <p className="text-[10px]">
                                               Price is{" "}
                                               <span className="text-primary_color">
@@ -260,7 +268,7 @@ export default function Categories() {
                                             src={categories}
                                             size={32}
                                           />
-                                          <h1 className="text-xs">
+                                          <h1 className="text-sm">
                                             Appliance Service
                                           </h1>
                                         </div>
@@ -268,7 +276,7 @@ export default function Categories() {
                                       <div>
                                         <div className="flex items-center text-sm gap-4">
                                           <IconImage src={schedule} size={32} />
-                                          <h1 className="text-xs">
+                                          <h1 className="text-sm">
                                             10--09-2024
                                           </h1>
                                         </div>
@@ -279,7 +287,7 @@ export default function Categories() {
                                             src={locationIcon}
                                             size={32}
                                           />
-                                          <h1 className="text-xs">
+                                          <h1 className="text-sm">
                                             Az 2031 ,Ariziba ,Usa
                                           </h1>
                                         </div>
@@ -291,12 +299,12 @@ export default function Categories() {
                             </div>
                             <ScrollBar orientation="horizontal" />
                           </ScrollArea>
-                          <PaginationComponent className=" text-xs md:text-sm" />
+                          <PaginationComponent className=" text-sm md:text-sm" />
                         </DialogContent>
                       </Dialog>
                       <AccordionTrigger className=" w-fit flex    ">
                         <IconImage src={myReview} size={20} />
-                        <span className="text-xs text-primary_color">
+                        <span className="text-sm text-primary_color">
                           Latest reviews
                         </span>
                       </AccordionTrigger>
@@ -311,7 +319,7 @@ export default function Categories() {
                             key={artwork}
                           >
                             <div className="flex flex-col gap-3">
-                              <span className="text-xs text-gray-400">
+                              <span className="text-sm text-gray-400">
                                 5 day ago
                               </span>
                               <div className="flex gap-4">
@@ -323,7 +331,9 @@ export default function Categories() {
                                                  pic"
                                 />
                                 <div className="space-y-2">
-                                  <h1>Jhon Doe</h1>
+                                  <h1 className={`${font16} font-semibold`}>
+                                    Jhon Doe
+                                  </h1>
                                   <div className="flex gap-1">
                                     <Rating value={4} size={14} />
                                   </div>
@@ -334,7 +344,7 @@ export default function Categories() {
                             <div className=" w-full border my-2   " />
 
                             <div className="px-1">
-                              <p className="text-wrap text-xs text-gray-500 ">
+                              <p className="text-wrap text-sm text-gray-500 ">
                                 Lorem ipsum dolor sit amet conse ctetur adipi
                                 sicing elit. Dignissimos, magnam.
                               </p>

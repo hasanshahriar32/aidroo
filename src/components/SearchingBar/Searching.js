@@ -5,7 +5,7 @@ import { Input } from "../ui/input";
 
 export default function SearchingBar() {
   return (
-    <form className="flex gap-4 justify-center h-8 md:h-10">
+    <form className="flex gap-4 justify-center  h-10">
       <Input
         type="text"
         name="search"
@@ -14,10 +14,10 @@ export default function SearchingBar() {
       />
 
       <div className="relative flex gap-4">
-        <div className=" flex items-center justify-center     bg-primary_color p-1 rounded-md   cursor-pointer w-8 md:w-[42px]    ">
+        <div className=" flex items-center justify-center     bg-primary_color p-1 rounded-md   cursor-pointer w-10 md:w-[42px]    ">
           <Image src={filter} alt="Icon 1" className="w-5" />
         </div>
-        <div className=" flex items-center justify-center     bg-primary_color p-1 rounded-md   cursor-pointer w-8 md:w-[42px] ">
+        <div className=" flex items-center justify-center     bg-primary_color p-1 rounded-md   cursor-pointer w-10 md:w-[42px] ">
           <Image src={whitesearch} alt="Icon 1" className="w-5" />
         </div>
       </div>

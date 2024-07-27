@@ -9,13 +9,20 @@ export default function Banner() {
       <div className="  max-w-[1280px]  mx-auto mt-14 lg:mt-0  ">
         <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 sm:px-8 items-center mx-4">
           <div className="flex flex-col gap-6 text-center justify-center ">
-            <Heading Heading className=" font-semibold  " size="xl">
+            <Heading Heading className=" font-semibold   text-3xl  pb-">
               Explore Reviews <br className="block lg:hidden" />
               Share Feedback
               <br />
-              <span className="   hidden md:block">
-                Connect with Reliable Companies
-              </span>
+              <div className=" md:flex   items-center justify-center mt-3 hidden ">
+                <h1 className="animate-typing overflow-hidden whitespace-nowrap  ps-14   text-3xl text-primary_color font-bold  pr-14">
+                  Connect with reliable companies
+                </h1>
+              </div>
+              <div className="flex   items-center justify-center mt-3 md:hidden ">
+                <h1 className="animate-typing overflow-hidden whitespace-nowrap    text-xl text-primary_color font-bold  ">
+                  Connect with reliable companies
+                </h1>
+              </div>
             </Heading>
 
             <SearchingBar />

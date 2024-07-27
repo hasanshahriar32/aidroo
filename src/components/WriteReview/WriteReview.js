@@ -77,16 +77,19 @@ export default function WriteReview() {
 
           <div className="grid grid-cols-1 md:grid-cols-3     md:gap-4   ">
             <div className=" col-span-2 space-y-4">
-              <Input placeholder="Title" className=" h-10 md:h-12" />
+              <Input placeholder="Title" className=" h-10 " />
 
-              <Textarea placeholder="Type your message here." />
+              <Textarea
+                placeholder="Type your message here."
+                className="min-h-28"
+              />
             </div>
-            <div className=" col-span-1 space-y-4 mt-4">
+            <div className=" col-span-1 space-y-4 ">
               <DatePicker className="h-12 w-full" />
 
               <label
                 htmlFor="uploadFile1"
-                className="  font-semibold text-base rounded p-4  flex flex-col items-center justify-center cursor-pointer border-2     mx-auto font-[sans-serif]"
+                className="  font-semibold text-base rounded p-4  flex flex-col items-center justify-center cursor-pointer border-2 h-28    mx-auto font-[sans-serif]"
               >
                 <FaImage className="text-6xl text-primary_color" />
 
@@ -104,18 +107,18 @@ export default function WriteReview() {
               <Input
                 type="text"
                 placeholder="Business Name"
-                className="bg-white dark:bg-gray-800 h-10 md:h-12"
+                className="bg-white dark:bg-gray-800 h-10 "
               />
               <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input
                   type="text"
                   placeholder="username"
-                  className="bg-white dark:bg-gray-800 h-10 md:h-12"
+                  className="bg-white dark:bg-gray-800 h-10 "
                 />
                 <Input
                   type="email"
                   placeholder="Email"
-                  className="bg-white dark:bg-gray-800  h-10 md:h-12"
+                  className="bg-white dark:bg-gray-800  h-10 "
                 />
               </div>
               <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -126,12 +129,12 @@ export default function WriteReview() {
                 <Input
                   type="password"
                   placeholder="Create Password"
-                  className="bg-white dark:bg-gray-800  h-10 md:h-12"
+                  className="bg-white dark:bg-gray-800  h-10 "
                 />
                 <Input
                   type="password"
                   placeholder="Confirm Password"
-                  className="bg-white dark:bg-gray-800  h-10 md:h-12"
+                  className="bg-white dark:bg-gray-800  h-10 "
                 />
               </div>
               <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -142,12 +145,12 @@ export default function WriteReview() {
                 <Input
                   type="text"
                   placeholder="City"
-                  className="bg-white dark:bg-gray-800  h-10 md:h-12"
+                  className="bg-white dark:bg-gray-800  h-10 "
                 />
                 <Input
                   type="text"
                   placeholder="Address"
-                  className="bg-white dark:bg-gray-800  h-10 md:h-12"
+                  className="bg-white dark:bg-gray-800  h-10 "
                 />
               </div>
             </div>

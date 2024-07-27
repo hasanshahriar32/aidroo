@@ -3,17 +3,18 @@ import heroImage from "@/asserts/business-image.svg";
 import Image from "next/image";
 import Heading from "../Heading";
 import { Button } from "../ui/button";
+import { font14, font16, font18bold } from "@/constant";
 
 const Business = () => {
   return (
-    <div className="background-gradient bannerBackgroundImage   px-8  py-20  ">
+    <div className="background-gradient bannerBackgroundImage   px-4  py-20  ">
       <div className="max-w-[1280px]  mx-auto  ">
         <div className="  mx-auto text-center    rounded-lg">
-          <Heading size="xl" className="  font-bold mb-1">
-            Why <span className="text-[#05affe]">Aidroo</span> for your
+          <h1 className={`  mb-1 ${font18bold}`}>
+            Why <span className="text-primary_color">Aidroo</span> for your
             Business?
-          </Heading>
-          <p className="  mb-6">
+          </h1>
+          <p className={`${font14} mb-8`}>
             Explore the popular listings around the world
           </p>
         </div>
@@ -28,29 +29,29 @@ const Business = () => {
 
           <div className=" max-w-[325px] md:w-[400px] space-y-6">
             <div>
-              <Heading className=" font-semibold text-[#42b2fc] ">
+              <h1 className={`font-semibold text-primary_color ${font16}`}>
                 Enhanced Branding
-              </Heading>
-              <Heading size="xs" className="  text-sm  flex-wrap ">
+              </h1>
+              <p className={`text-sm text-wrap ${font14}  `}>
                 Elevate your brand with Claimed, Verified, and Guaranteed
                 badges, along with verified badge reviews.
-              </Heading>
+              </p>
             </div>
 
             <div className="flex flex-col  ">
-              <Heading className="  font-semibold text-[#42b2fc] ">
+              <h1 className={`font-semibold text-primary_color ${font16}`}>
                 Targeted Leads
-              </Heading>
-              <p size="xs" className="  text-sm  text-wrap ">
+              </h1>
+              <p className={`text-sm text-wrap ${font14}  `}>
                 Engage with a highly relevant audience tailored to your niche,
                 driving qualified leads to your business.
               </p>
             </div>
             <div className="flex flex-col  ">
-              <Heading className=" font-semibold text-[#42b2fc] ">
+              <h1 className={`font-semibold text-primary_color ${font16}`}>
                 Seamless Management
-              </Heading>
-              <p size="xs" className=" text-wrap   tracking-[.97px]">
+              </h1>
+              <p className={`text-sm text-wrap ${font14}  `}>
                 Aidroo simplifies directory management, offering tools to
                 update, monitor, and analyze listings efficiently.
               </p>

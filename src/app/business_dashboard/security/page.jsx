@@ -1,4 +1,3 @@
-import AllCountries from "@/components/Countries/AllCountries";
 import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,8 +19,6 @@ export default function Security() {
         <Button variant="hover" className=" w-24 mt-4">
           Update
         </Button>
-
-        <AllCountries />
       </form>
     </div>
   );
