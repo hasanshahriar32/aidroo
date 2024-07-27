@@ -25,13 +25,17 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { font16, font18 } from "@/constant";
 import {
+  addyourbusiness,
   brifcaseIcon,
+  claimWithBusiness,
   loginIcon,
   logo,
   myorder,
   myprofile,
   myReview,
+  pricingPlan,
   singoutIcon,
   user,
   userdashboard,
@@ -152,11 +156,57 @@ export default function Header() {
                   </button>
 
                   {isHovered && (
-                    <div className="absolute  shadow rounded-md    top-11 pt-4 ">
-                      <div className=" file:selection: z-50  border-2 rounded   p-8 ">
-                        <input type="checkbox" />
-                        <Button variant="hoverButton">submit</Button>
-                      </div>
+                    <div className="absolute    -left-8 top-8 pt-4  w-[230px] ">
+                      <ul className=" z-50 shadow rounded-md    p-4 bg-white flex flex-col gap-4 mt-3">
+                        <Link href="/notifications">
+                          <span className="flex items-center gap-6  border-b pb-2 ">
+                            <IconImage
+                              src={addyourbusiness}
+                              size={27}
+                              alt="notification icon"
+                            />
+                            <span className={`${font16} text-gray-700`}>
+                              Add Business
+                            </span>
+                          </span>
+                        </Link>
+                        <Link href="/notifications">
+                          <span className="flex items-center gap-6  border-b pb-2 ">
+                            <IconImage
+                              src={claimWithBusiness}
+                              size={27}
+                              alt="notification icon"
+                            />
+                            <span className={`${font16} text-gray-700`}>
+                              Claim Business
+                            </span>
+                          </span>
+                        </Link>
+                        <Link href="/notifications">
+                          <span className="flex items-center gap-6  border-b pb-2 ">
+                            <IconImage
+                              src={myReview}
+                              size={27}
+                              alt="notification icon"
+                            />
+                            <span className={`${font16} text-gray-700`}>
+                              Request Review
+                            </span>
+                          </span>
+                        </Link>
+                        <Link href="/notifications">
+                          <span className="flex items-center gap-6  pb-2 ">
+                            <IconImage
+                              src={pricingPlan}
+                              size={27}
+                              alt="notification icon"
+                            />
+                            <span className={`${font16} text-gray-700`}>
+                              Pricing Plan
+                            </span>
+                          </span>
+                        </Link>
+                      </ul>
                     </div>
                   )}
                 </div>
@@ -189,17 +239,17 @@ export default function Header() {
                   <Popover>
                     <PopoverTrigger>
                       <Avatar>
-                        <AvatarImage src={profilePic} alt="@shadcn" />
+                        <AvatarImage src={profilePic} alt="profile pic" />
                         <AvatarFallback>
                           <IconImage src={user} />
                         </AvatarFallback>
                       </Avatar>
                     </PopoverTrigger>
-                    <PopoverContent className=" mt-4 rounded-lg ">
-                      <div className="bg-[#002A64] p-4 flex items-center gap-4 ">
+                    <PopoverContent className=" mt-3  ">
+                      <div className="bg-[#002A64] p-4 flex items-center gap-4 rounded-t-md ">
                         <div className="text-white flex gap-4   ">
                           <div>
-                            <h1 className="text-xl">Profile name</h1>
+                            <h1 className={`${font18}`}>Profile name</h1>
                             <p className="text-sm">@companyname</p>
                           </div>
 
@@ -214,15 +264,15 @@ export default function Header() {
                           </AvatarFallback>
                         </Avatar>
                       </div>
-                      <div className="flex flex-col     space-y-4 p-4">
+                      <div className="flex flex-col     space-y-3 p-4">
                         <Link href="/notifications">
                           <span className="flex items-center gap-6  border-b pb-2 ">
                             <IconImage
                               src={myprofile}
-                              size={30}
+                              size={27}
                               alt="notification icon"
                             />
-                            <span className="text-lg text-gray-700">
+                            <span className={`${font16} text-gray-700`}>
                               My Profile
                             </span>
                           </span>
@@ -231,10 +281,10 @@ export default function Header() {
                           <span className="flex items-center gap-6  border-b pb-2   ">
                             <IconImage
                               src={myReview}
-                              size={30}
+                              size={28}
                               alt="notification icon"
                             />
-                            <span className="text-lg text-gray-700">
+                            <span className={`${font16} text-gray-700`}>
                               My Reviews
                             </span>
                           </span>
@@ -243,10 +293,10 @@ export default function Header() {
                           <span className="flex items-center gap-6 border-b pb-2    ">
                             <IconImage
                               src={myorder}
-                              size={30}
+                              size={27}
                               alt="notification icon"
                             />
-                            <span className="text-lg text-gray-700">
+                            <span className={`${font16} text-gray-700`}>
                               My Order
                             </span>
                           </span>
@@ -255,10 +305,10 @@ export default function Header() {
                           <span className="flex items-center gap-6 border-b pb-2   ">
                             <IconImage
                               src={userdashboard}
-                              size={30}
+                              size={27}
                               alt="notification icon"
                             />
-                            <span className="text-lg text-gray-700">
+                            <span className={`${font16} text-gray-700`}>
                               Dashboard
                             </span>
                           </span>
@@ -267,10 +317,10 @@ export default function Header() {
                           <span className="flex items-center gap-6     ">
                             <IconImage
                               src={singoutIcon}
-                              size={30}
+                              size={27}
                               alt="notification icon"
                             />
-                            <span className="text-lg text-gray-700">
+                            <span className={`${font16} text-gray-700`}>
                               Logout
                             </span>
                           </span>

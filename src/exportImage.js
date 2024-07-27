@@ -21,6 +21,7 @@ import notificationIcon from "@/public/icons/notifications.svg";
 import addyourbusiness from "@/public/icons/profile/addyourbusiness.svg";
 import whitesearch from "@/public/icons/whitesearch.svg";
 
+import claimWithBusiness from "@/public/icons/claimthisbusiness.svg";
 import businessverified from "@/public/icons/pricising_plan/businessverified.svg";
 import clientsmanagement from "@/public/icons/pricising_plan/clientsmanagement.svg";
 import crossmark from "@/public/icons/pricising_plan/crossmark.svg";
@@ -55,6 +56,7 @@ export {
   businessverified,
   categories,
   category,
+  claimWithBusiness,
   clientsmanagement,
   crossmark,
   facebook,

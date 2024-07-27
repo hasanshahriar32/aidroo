@@ -48,6 +48,7 @@ export const categories = [
   { title: "Entertainment", src: Entertainment },
   { title: "Insurance", src: insurance },
   { title: "Jewelry", src: Jewellery },
+
   { title: "Organization", src: Organisation },
   { title: "Sports", src: Sports },
   { title: "Travels Hotels", src: TravelsandHotels },
@@ -241,7 +242,7 @@ export const businessSidebarOptions = [
   },
 
   {
-    name: "Schedule & Photos",
+    name: "Timeline",
     href: "/business_dashboard/schedule",
   },
   {
@@ -274,24 +275,53 @@ export const adminDashboardSidebarLinks = [
 ];
 export const options = [
   {
-    value: "default",
-    label: "Most Recent",
+    value: "09.00 Am",
+    label: "09.00 Am",
   },
   {
-    value: "recent",
-    label: "Most Recent",
+    value: "10.00 Am",
+    label: "10.00 Am",
   },
   {
-    value: "relevant",
-    label: "Relevant",
+    value: "11.00 Am",
+    label: "11.00 Am",
+  },
+
+  {
+    value: "12.00 Pm",
+    label: "12.00 Pm",
   },
   {
-    value: "verified",
-    label: "Verified",
+    value: "01.00 Pm",
+    label: "01.00 Pm",
   },
   {
-    value: "toprated",
-    label: "Top Rated",
+    value: "02.00 Pm",
+    label: "02.00 Pm",
+  },
+  {
+    value: "03.00 Pm",
+    label: "03.00 Pm",
+  },
+  {
+    value: "04.00 Pm",
+    label: "04.00 Pm",
+  },
+  {
+    value: "05.00 Pm",
+    label: "05.00 Pm",
+  },
+  {
+    value: "06.00 Pm",
+    label: "06.00 Pm",
+  },
+  {
+    value: "07.00 Pm",
+    label: "07.00 Pm",
+  },
+  {
+    value: "08.00 Pm",
+    label: "08.00 Pm",
   },
 ];
 

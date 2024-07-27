@@ -4,6 +4,7 @@ import Layout from "@/components/Layout/Layout";
 import { GoogleMap } from "@/components/Map/Map";
 import OptionSelect from "@/components/OptionSelect/OptionSelect";
 import PublicReview from "@/components/PublicReview/PublicReview";
+import QRCodeComponent from "@/components/Qrcode/Qrcode";
 import Rating from "@/components/Rating/Rating";
 import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
 import ThumbSlider from "@/components/ThumbSlider/ThumbSlider";
@@ -11,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -24,6 +26,7 @@ import {
 import {
   bagIcon,
   brifcaseIcon,
+  categories,
   locationIcon,
   photoadd,
   verifiedIcon,
@@ -42,6 +45,7 @@ import srsoft from "@/public/images/srsoft.svg";
 import tesla from "@/public/images/tesla.svg";
 import { Label } from "@radix-ui/react-dropdown-menu";
 import Image from "next/image";
+import Link from "next/link";
 
 import {
   CiCircleChevRight,
@@ -106,7 +110,7 @@ export default function PublicProfile() {
                 </div>
 
                 <div className="bg-primary_color p-2 rounded-lg text-white flex items-center gap-2">
-                  <FaPlus className="text-sm md:text-xl" />{" "}
+                  <FaPlus className="text-sm " />{" "}
                   <span className={`${font14}`}>Follow</span>
                 </div>
                 <div className="bg-primary_color p-2 rounded-lg text-white flex items-center gap-2">
@@ -329,11 +333,26 @@ export default function PublicProfile() {
             </div>
             <div className=" w-full lg:col-span-2 ">
               <div className="w-full  space-y-4  ">
+                {/* qr code  */}
+
+                <QRCodeComponent />
+
                 {/* business name */}
                 <div className="border rounded-md shadow p-4 space-y-4 ">
-                  <h1 className={` text-center border-b pb-1 ${font16} `}>
-                    Business Name
-                  </h1>
+                  <div className="flex flex-col justify-center items-center">
+                    <h1 className={` ${font18} `}>Business Name</h1>
+                    <div className="flex items-center       ">
+                      <IconImage
+                        src={categories}
+                        size={35}
+                        alt="notification icon"
+                      />
+                      <Link href="#" className={`${font14} text-gray-500`}>
+                        Developing
+                      </Link>
+                    </div>
+                  </div>
+
                   <p className={`tracking-tight    pb-2 ${font14}`}>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Itaque sit neque natus quidem aperiam iste, deleniti,
