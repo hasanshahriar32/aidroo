@@ -96,7 +96,7 @@ export default function Categories() {
                 {/*rating */}
                 <div className="md:flex gap-4  items-center  space-y-2 md:space-y-0 ">
                   <div className="flex gap-1 ">
-                    <Rating value={5} size={14} />
+                    <Rating value={5} size={18} />
                   </div>
                   <h1 className="text-gray-600 text-sm  ">
                     <span>4.5 | 102 Reviews</span>
@@ -335,7 +335,7 @@ export default function Categories() {
                                     Jhon Doe
                                   </h1>
                                   <div className="flex gap-1">
-                                    <Rating value={4} size={14} />
+                                    <Rating value={4} size={18} />
                                   </div>
                                 </div>
                               </div>

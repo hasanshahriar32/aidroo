@@ -5,7 +5,6 @@ import { Progress } from "@/components/ui/progress";
 
 import { font14, font16, options } from "@/constant";
 import topplacementBadge from "@/public/icons/topplacement.svg";
-import Heading from "../Heading";
 import OptionSelect from "../OptionSelect/OptionSelect";
 import PaginationComponent from "../Pagination/PaginationComponent";
 import ReviewCard from "../ReviewCard/ReviewCard";
@@ -20,7 +19,7 @@ export default function PublicReview() {
           <IconImage src={topplacementBadge} size={70} alt="image" />
           <h1 className={`${font16}`}>Overall Rating</h1>
           <div className="flex gap-1">
-            <Rating value={4} />
+            <Rating value={4} size={18} />
           </div>
           <h1 className={`${font14}`}>
             <span>200</span> Reviews

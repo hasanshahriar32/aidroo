@@ -2,7 +2,7 @@
 import OptionSelect from "@/components/OptionSelect/OptionSelect";
 import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
 import { Switch } from "@/components/ui/switch";
-import { businessOur, options } from "@/constant";
+import { businessOur, scheduleOptions } from "@/constant";
 import profileImage from "@/public/images/profile.jpg";
 import { useState } from "react";
 import { CiCirclePlus } from "react-icons/ci";
@@ -65,12 +65,12 @@ export default function Schedule() {
                   <div className=" flex gap-4    justify-between">
                     <OptionSelect
                       label="Start Time"
-                      options={options}
+                      options={scheduleOptions}
                       className="text-sm   "
                     />
                     <OptionSelect
                       label="End Time"
-                      options={options}
+                      options={scheduleOptions}
                       className="text-sm "
                     />
                   </div>

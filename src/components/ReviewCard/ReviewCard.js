@@ -12,14 +12,13 @@ import reportIcon from "@/public/icons/report-icon.svg";
 import reviewsIcon from "@/public/icons/reviews.svg";
 import varifiedBadgePersional from "@/public/icons/verified-badgey-persional.svg";
 
+import { font14, font16, font18, font18bold } from "@/constant";
 import reviewVerifiedIcon from "@/public/icons/reviewverified.svg";
 import profileImage from "@/public/images/profile.jpg";
 import { AiFillLike } from "react-icons/ai";
 import { CiShare2 } from "react-icons/ci";
 import { FaReply } from "react-icons/fa";
 import { FcLike } from "react-icons/fc";
-import Heading from "../Heading";
-import { font12, font14, font16, font18bold } from "@/constant";
 
 export default function ReviewCard() {
   return (
@@ -31,8 +30,7 @@ export default function ReviewCard() {
               src={profileImage}
               size={70}
               className="rounded-full ring-1 ring-offset-2"
-              alt="profile
-                            pic"
+              alt="profile pic"
             />
           </div>
           <div className="">
@@ -54,15 +52,16 @@ export default function ReviewCard() {
             </span>
           </div>
         </div>
-        <div className=" w-full md:w-64 border" />
+        <hr className=" w-full  " />
       </CardHeader>
       <CardContent className="  mt-2">
-        <div className="flex justify-between gap-8  items-center -mt-10 text-sm">
-          <div className="flex gap-1">
-            <Rating value={4} size={14} />
+        <div className="flex justify-between gap-4  items-center -mt-10 text-sm">
+          <div className="flex gap-1 ms-4">
+            <Rating value={4} size={18} />
           </div>
-          <p className={`${font14}`}>August 12,2023</p>
-          <div className="w-24 ">
+          {/* <p className={`${font12}`}>August 12,2023</p> */}
+
+          <div className="w-24">
             <IconImage
               src={reviewVerifiedIcon}
               alt="verified image"
@@ -70,27 +69,25 @@ export default function ReviewCard() {
             />
           </div>
         </div>
-        <div>
-          <h1 className={`${font16}`}>I would Highly recommended</h1>
-          <p
-            className={`${font14} text-gray-500 text-sm tracking-tight leading-5`}
-          >
+        <div className="space-y-1">
+          <h1 className={`${font18}`}>I would Highly recommended</h1>
+          <p className={`${font16} text-gray-500  `}>
             I had a seamless experience with Panacea. Other companies denied me
             credit due to not providing evidence of income. Other financial
             institutions that are supposedly for medical professionals do not
             understand our process.
           </p>
         </div>
-        <div className="flex gap-4 mt-2">
+        <div className="flex gap-4 mt-3">
           <IconImage src={profileImage} size={100} alt="review image" />
           <IconImage src={profileImage} size={100} alt="review image" />
         </div>
-        <div className=" w-full   border mt-4" />
+        <hr className=" w-full  mt-4 " />
       </CardContent>
       <CardFooter>
-        <div className=" w-full h-4 flex justify-between mt-4 items-center">
+        <div className=" w-full  flex justify-between  items-center  ">
           <div className="flex gap-2 md:gap-4  ">
-            <div className="flex gap-1 py-[2px] px-1   items-center border rounded shadow">
+            <div className="flex gap-1   items-center border py-[2px] px-1 rounded shadow">
               <AiFillLike />
               <span>0</span>
             </div>

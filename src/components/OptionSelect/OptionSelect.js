@@ -21,7 +21,7 @@ export default function OptionSelect({ className, label = "", options = [] }) {
             <SelectItem
               key={option.value}
               value={option.value}
-              className="text-xs"
+              className="text-sm"
             >
               {option.label}
             </SelectItem>

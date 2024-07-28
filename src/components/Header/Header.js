@@ -265,7 +265,7 @@ export default function Header() {
                         </Avatar>
                       </div>
                       <div className="flex flex-col     space-y-3 p-4">
-                        <Link href="/notifications">
+                        <Link href="/business_profile">
                           <span className="flex items-center gap-6  border-b pb-2 ">
                             <IconImage
                               src={myprofile}
@@ -277,7 +277,7 @@ export default function Header() {
                             </span>
                           </span>
                         </Link>
-                        <Link href="/notifications">
+                        <Link href="/business_profile">
                           <span className="flex items-center gap-6  border-b pb-2   ">
                             <IconImage
                               src={myReview}
@@ -289,7 +289,7 @@ export default function Header() {
                             </span>
                           </span>
                         </Link>
-                        <Link href="/notifications">
+                        <Link href="/business_dashboard/business_info">
                           <span className="flex items-center gap-6 border-b pb-2    ">
                             <IconImage
                               src={myorder}
@@ -485,35 +485,35 @@ export default function Header() {
                     </div>
                     <div className="flex items-center gap-4 border-b pb-4">
                       <IconImage src={brifcaseIcon} size={20} alt="icon" />
-                      <Heading size="xs">For Business</Heading>
+                      <h1 className={`${font16}`}>For Business</h1>
                     </div>
                     <div className="flex items-center gap-4 border-b pb-4">
                       <IconImage src={category} size={20} alt="icon" />
-                      <Heading size="xs">Categories</Heading>
+                      <h1 className={`${font16}`}>Categories</h1>
                     </div>
                     <AccordionItem value="item-1">
                       <AccordionTrigger>
                         <div className="flex items-center gap-4 no-underline  ">
                           <IconImage src={pageIcon} size={20} alt="icon" />
-                          <Heading size="xs">Pages</Heading>
+                          <h1 className={`${font16}`}>Pages</h1>
                         </div>
                       </AccordionTrigger>
                       <AccordionContent className="px-10">
                         <ul className="collapse-content space-y-2   ">
-                          <li className="text-xs"> Terms of service</li>
-                          <li className="text-xs"> Privacy Policy </li>
-                          <li className="text-xs"> Events</li>
-                          <li className="text-xs">Blogs</li>
+                          <li className="text-sm"> Terms of service</li>
+                          <li className="text-sm"> Privacy Policy </li>
+                          <li className="text-sm"> Events</li>
+                          <li className="text-sm">Blogs</li>
                         </ul>
                       </AccordionContent>
                     </AccordionItem>
                     <div className="flex items-center gap-4 border-b pb-4 ">
                       <IconImage src={businessIcon} size={20} alt="icon" />
-                      <Heading size="xs">Business Pricing Plan</Heading>
+                      <h1 className={`${font16}`}>Business Pricing Plan</h1>
                     </div>
                     <div className="flex items-center gap-4 collapse-content border-b pb-4 ">
                       <IconImage src={helpIcon} size={20} alt="icon" />
-                      <Heading size="xs"> Help and Support</Heading>
+                      <h1 className={`${font16}`}> Help and Support</h1>
                     </div>
                     <div className="flex justify-center   ">
                       <div

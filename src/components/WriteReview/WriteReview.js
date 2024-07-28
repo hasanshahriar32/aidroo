@@ -63,13 +63,13 @@ export default function WriteReview() {
               <div>
                 <Heading size="sm">Value</Heading>
                 <div className="flex gap-1">
-                  <Rating value={3} isEditable />
+                  <Rating value={3} isEditable size={18} />
                 </div>
               </div>
               <div>
                 <Heading size="sm">Recommend</Heading>
                 <div className="flex gap-1">
-                  <Rating value={5} isEditable />
+                  <Rating value={5} isEditable size={18} />
                 </div>
               </div>
             </div>
@@ -84,7 +84,7 @@ export default function WriteReview() {
                 className="min-h-28"
               />
             </div>
-            <div className=" col-span-1 space-y-4 ">
+            <div className=" col-span-1 space-y-4 mt-6 ">
               <DatePicker className="h-12 w-full" />
 
               <label

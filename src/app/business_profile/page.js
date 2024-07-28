@@ -91,9 +91,11 @@ export default function PublicProfile() {
                   </div>
                   <div className="flex gap-x-2 mt-2">
                     <div className="flex gap-1">
-                      <Rating isEditable value={5} size={15} />
+                      <Rating value={4} size={22} />
                     </div>
-                    <p className="text-xs text-gray-700 font-semibold">4.7</p>
+                    <p className="text-[18px] text-gray-700 font-semibold">
+                      4.7
+                    </p>
                   </div>
                   <Image
                     src={claimedIcon}
@@ -115,7 +117,7 @@ export default function PublicProfile() {
                 </div>
                 <div className="bg-primary_color p-2 rounded-lg text-white flex items-center gap-2">
                   <CiShare2 className="text-sm md:text-xl" />{" "}
-                  <span className={`${font14}`}>Follow</span>
+                  <span className={`${font14}`}>Share</span>
                 </div>
               </div>
             </div>
@@ -497,7 +499,7 @@ export default function PublicProfile() {
                       </div>
                       <p className={`${font14}`}>Tech Company</p>
                       <div className="flex gap-1">
-                        <Rating value={5} size={14} />
+                        <Rating value={5} size={18} />
                       </div>
                     </div>
                   </div>
@@ -514,7 +516,7 @@ export default function PublicProfile() {
                       </div>
                       <h1 className={`${font14}`}>Tech Company</h1>
                       <div className="flex gap-1">
-                        <Rating value={5} size={14} />
+                        <Rating value={5} size={18} />
                       </div>
                     </div>
                   </div>
@@ -531,7 +533,7 @@ export default function PublicProfile() {
                       </div>
                       <h1 className={`${font14}`}>Tech Company</h1>
                       <div className="flex gap-1">
-                        <Rating value={5} size={14} />
+                        <Rating value={5} size={18} />
                       </div>
                     </div>
                   </div>

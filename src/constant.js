@@ -273,6 +273,58 @@ export const adminDashboardSidebarLinks = [
     href: "/admin_dashboard/reviews",
   },
 ];
+
+export const scheduleOptions = [
+  {
+    value: "09.00 Am",
+    label: "09.00 Am",
+  },
+  {
+    value: "10.00 Am",
+    label: "10.00 Am",
+  },
+  {
+    value: "11.00 Am",
+    label: "11.00 Am",
+  },
+
+  {
+    value: "12.00 Pm",
+    label: "12.00 Pm",
+  },
+  {
+    value: "01.00 Pm",
+    label: "01.00 Pm",
+  },
+  {
+    value: "02.00 Pm",
+    label: "02.00 Pm",
+  },
+  {
+    value: "03.00 Pm",
+    label: "03.00 Pm",
+  },
+  {
+    value: "04.00 Pm",
+    label: "04.00 Pm",
+  },
+  {
+    value: "05.00 Pm",
+    label: "05.00 Pm",
+  },
+  {
+    value: "06.00 Pm",
+    label: "06.00 Pm",
+  },
+  {
+    value: "07.00 Pm",
+    label: "07.00 Pm",
+  },
+  {
+    value: "08.00 Pm",
+    label: "08.00 Pm",
+  },
+];
 export const options = [
   {
     value: "09.00 Am",
@@ -324,7 +376,6 @@ export const options = [
     label: "08.00 Pm",
   },
 ];
-
 export const country = [
   "at", // Austria
   "au", // Australia
@@ -380,7 +431,7 @@ export const priceplan = [
   },
 ];
 
-export const font18bold = "text-[18px]  font-semibold";
+export const font18bold = "text-[20px]  font-semibold";
 export const font18 = "text-[18px]";
 export const font16 = "text-[16px] ";
 export const font14 = "text-[14px] ";

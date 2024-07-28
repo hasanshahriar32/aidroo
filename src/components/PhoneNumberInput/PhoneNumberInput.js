@@ -2,7 +2,7 @@
 import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 
-import "react-phone-input-2/lib/style.css";
+import "react-phone-input-2/lib/bootstrap.css";
 
 export default function PhoneNumberInput({ onlyCountries }) {
   const [phoneNumber, setPhoneNumber] = useState("");
