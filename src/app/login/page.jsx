@@ -1,32 +1,40 @@
 "use client";
 import logo from "@/asserts/aidroo-logo.svg";
 import Heading from "@/components/Heading";
+import CustomInput from "@/components/InputComponent/InputComponent";
 import Layout from "@/components/Layout/Layout";
 import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
+import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
+import { LuUser2 } from "react-icons/lu";
+import { SlLock } from "react-icons/sl";
+
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:8000/api/v1/auth/login", {
-        method: "POST",
-        body: JSON.stringify(email, password),
-        headers: {
-          "content-type": "application/json",
-        },
+      const res = await axios.post("/api/auth/login", {
+        email: formData.email,
+        password: formData.password,
       });
-      console.log(res);
       if (res.ok) {
-        console.log("Yeai!");
-      } else {
-        console.log("Oops! Something is wrong.");
+        console.log("Yeai!", res);
       }
     } catch (error) {
       console.log(error);
@@ -47,24 +55,27 @@ export default function Login() {
               />
             </Link>
           </div>
-          <div>
-            <Input
-              type="email"
-              placeholder="Email or username"
-              className="bg-white dark:bg-gray-800  h-10 "
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div>
-            <Input
-              type="password"
-              placeholder="Password"
-              className="bg-white dark:bg-gray-800   h-10  "
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
+          <CustomInput
+            type="email"
+            placeholder="Email"
+            icon={LuUser2}
+            className="mb-4"
+            value={formData.email}
+            onChange={handleChange}
+            name="email"
+          />
+          <CustomInput
+            type="password"
+            placeholder="Password"
+            icon={SlLock}
+            className="mb-4"
+            value={formData.password}
+            onChange={handleChange}
+            name="password"
+          />
+
           <div className="flex items-center space-x-2">
-            <Checkbox id="terms" className="w-4 h-4  " />
+            <Checkbox id="terms" className="w-4 h-4  " required />
             <label
               htmlFor="terms"
               className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"

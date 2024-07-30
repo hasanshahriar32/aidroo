@@ -1,19 +1,38 @@
+"use client";
 import logo from "@/asserts/aidroo-logo.svg";
 import Heading from "@/components/Heading";
-
+import CustomInput2 from "@/components/InputComponent/CustomInput";
 import Layout from "@/components/Layout/Layout";
 import OptionSelect from "@/components/OptionSelect/OptionSelect";
-import PhoneNumberInput from "@/components/PhoneNumberInput/PhoneNumberInput";
 import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { country, options } from "@/constant";
+import { Country } from "country-state-city";
 import Link from "next/link";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { LuUser2 } from "react-icons/lu";
+import { MdOutlineMail } from "react-icons/md";
+import { SlLock } from "react-icons/sl";
 import { VscBriefcase } from "react-icons/vsc";
 
 export default function Signup() {
+  const [selectedCountry, setSelectedCountry] = useState(null);
+
+  const countries = Country.getAllCountries().map((country) => ({
+    label: country.name,
+    value: country.isoCode,
+  }));
+  const {
+    register,
+    handleSubmit,
+    control,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => console.log(data);
   return (
     <Layout title="signup">
       <div className="px-8">
@@ -47,55 +66,98 @@ export default function Signup() {
               </TabsTrigger>
             </TabsList>
             <TabsContent value="personal" className="">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input
+                  <CustomInput2
                     type="text"
-                    placeholder="First Name"
-                    className="bg-white dark:bg-gray-800   h-10 "
+                    name="firstName"
+                    placeholder="Enter text"
+                    control={control}
+                    register={register}
+                    className="mb-4"
                   />
-                  <Input
+                  <CustomInput2
                     type="text"
-                    placeholder="Last Name"
-                    className="bg-white dark:bg-gray-800  h-10 "
+                    placeholder="Last name"
+                    className="mb-4"
+                    name="lastName"
+                    control={control}
+                    register={register}
                   />
                 </div>
-                <Input
+                <CustomInput2
                   type="text"
-                  placeholder=" username"
-                  className="bg-white dark:bg-gray-800  h-10 "
+                  placeholder="username"
+                  icon={LuUser2}
+                  control={control}
+                  register={register}
+                  className="mb-4"
+                  name="username"
                 />
-                <Input
+                <CustomInput2
                   type="email"
                   placeholder="email"
-                  className="bg-white dark:bg-gray-800   h-10 "
+                  icon={MdOutlineMail}
+                  control={control}
+                  register={register}
+                  className="mb-4"
+                  name="email"
                 />
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input
+                  <CustomInput2
                     type="password"
-                    placeholder="Create Password"
-                    className="bg-white dark:bg-gray-800   h-10 "
+                    placeholder="Password"
+                    icon={SlLock}
+                    control={control}
+                    register={register}
+                    className="mb-4"
+                    name="password"
                   />
-                  <Input
+                  <CustomInput2
                     type="password"
-                    placeholder="Confirm Password"
-                    className="bg-white dark:bg-gray-800   h-10 "
+                    placeholder="Password"
+                    icon={SlLock}
+                    className="mb-4"
+                    name="confirmPassword"
+                    control={control}
+                    register={register}
                   />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <PhoneNumberInput onlyCountries={country} />
-                  <OptionSelect label="country" options={options} />
+                  <CustomInput2
+                    type="phone"
+                    name="phone"
+                    control={control}
+                    placeholder="Input Number"
+                    onlyCountries={country}
+                    className="mb-4"
+                  />
+                  <CustomInput2
+                    type="select"
+                    name="country"
+                    label="country"
+                    control={control}
+                    options={countries}
+                    className="mb-4"
+                  />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input
+                  <CustomInput2
                     type="text"
                     placeholder="City"
-                    className="bg-white dark:bg-gray-800   h-10 "
+                    className="mb-4"
+                    control={control}
+                    register={register}
+                    name="city"
                   />
-                  <Input
+
+                  <CustomInput2
                     type="text"
-                    placeholder="Address"
-                    className="bg-white dark:bg-gray-800   h-10 "
+                    placeholder="State"
+                    className="mb-4"
+                    name="state"
+                    control={control}
+                    register={register}
                   />
                 </div>
                 <div className="flex items-center justify-center pt-2">

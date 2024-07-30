@@ -32,7 +32,6 @@ export default function Banner() {
             src={hero}
             alt="A descriptive alt text"
             className="w-80 md:w-2/3"
-            aspectRatio="9/16"
           />
         </div>
       </div>

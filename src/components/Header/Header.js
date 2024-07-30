@@ -66,7 +66,7 @@ export default function Header() {
   const [isHovered, setIsHovered] = useState(false);
 
   const { currentUser } = useAuth();
-  console.log(serachtext);
+ 
   const handleInputChange = (event) => {
     setSearchText(event.target.value);
   };
