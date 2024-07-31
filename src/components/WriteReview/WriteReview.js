@@ -11,16 +11,18 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import userIcon from "@/public/icons/customer-review.gif";
 
-import { country, options } from "@/constant";
+import { options } from "@/constant";
 import { useState } from "react";
 import { FaImage } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import Heading from "../Heading";
 import OptionSelect from "../OptionSelect/OptionSelect";
-import PhoneNumberInput from "../PhoneNumberInput/PhoneNumberInput";
+import PhoneCountry from "../PhoneNumberInput/PhoneCountry";
 
 export default function WriteReview() {
   const [isOpen, setIsOpen] = useState(false);
+  const [phone, setPhone] = useState(false);
+  console.log(phone);
   const currentUser = {
     role: "admin",
   };
@@ -122,7 +124,7 @@ export default function WriteReview() {
                 />
               </div>
               <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                <PhoneNumberInput country={country} />
+                <PhoneCountry setPhone={setPhone} />
                 <OptionSelect label="country" options={options} />
               </div>
               <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
