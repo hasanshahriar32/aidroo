@@ -66,7 +66,7 @@ export default function Header() {
   const [isHovered, setIsHovered] = useState(false);
 
   const { currentUser } = useAuth();
- 
+
   const handleInputChange = (event) => {
     setSearchText(event.target.value);
   };
@@ -348,7 +348,7 @@ export default function Header() {
                     className=" w-9 h-9 rounded-md border-gray-500   flex justify-center items-center   bg-primary_color"
                   >
                     {!open ? (
-                      <Image src={whitesearch} className="w-5" />
+                      <Image src={whitesearch} className="w-5" alt="image" />
                     ) : (
                       <IoClose className="text-white text-3xl transition ease transform duration-300" />
                     )}

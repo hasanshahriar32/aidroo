@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const IconImage = ({ src, alt, size = 50, className }) => {
+const IconImage = ({ src, alt = "image", size = 50, className }) => {
   return (
     <div
       className="relative"

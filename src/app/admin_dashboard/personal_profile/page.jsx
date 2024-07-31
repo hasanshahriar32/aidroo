@@ -36,7 +36,7 @@ export default function PersonalProfile() {
             width={500}
             height={300}
             className="bg-primary_color w-[42px] p-2 rounded-md"
-            alt=""
+            alt="image"
           />
         </div>
 

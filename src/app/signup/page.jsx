@@ -1,17 +1,17 @@
 "use client";
 import logo from "@/asserts/aidroo-logo.svg";
 import Heading from "@/components/Heading";
-import CustomInput2 from "@/components/InputComponent/CustomInput";
+import CustomInput from "@/components/InputComponent/CustomInput";
 import Layout from "@/components/Layout/Layout";
-import OptionSelect from "@/components/OptionSelect/OptionSelect";
+import PhoneCountry from "@/components/PhoneNumberInput/PhoneCountry";
 import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { country, options } from "@/constant";
-import { Country } from "country-state-city";
+import { categories, countries } from "@/constant";
+import { axiosInstance } from "@/lib/axios";
 import Link from "next/link";
 import { useState } from "react";
+
 import { useForm } from "react-hook-form";
 import { LuUser2 } from "react-icons/lu";
 import { MdOutlineMail } from "react-icons/md";
@@ -19,23 +19,64 @@ import { SlLock } from "react-icons/sl";
 import { VscBriefcase } from "react-icons/vsc";
 
 export default function Signup() {
-  const [selectedCountry, setSelectedCountry] = useState(null);
+  const { register, handleSubmit, control } = useForm();
 
-  const countries = Country.getAllCountries().map((country) => ({
-    label: country.name,
-    value: country.isoCode,
-  }));
-  const {
-    register,
-    handleSubmit,
-    control,
-    watch,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const [phone, setPhone] = useState();
+  const [error, setError] = useState("");
+  const [error2, setError2] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+
+  const personProfileSubmit = async (data) => {
+    data.phoneNumber = phone;
+    data.role = "personal";
+    data.dob = "10/2/2010";
+    data.gender = "Male";
+
+    data.postalCode = "5120";
+
+    const { confirmPassword, ...validData } = data;
+    if (data?.password !== data?.confirmPassword) {
+      setError(" create password & confirm passwords do not match");
+    } else {
+      setError("");
+    }
+
+    // save the data in the database
+    try {
+      setLoading(true);
+
+      console.log(validData);
+      const result = await axiosInstance.post("/auth/register", validData);
+      setData(result.data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const businessProfileSubmit = async (data) => {
+    data.phone = phone;
+    if (data?.password !== data?.confirmPassword) {
+      setError2(" create password & confirm passwords do not match");
+    } else {
+      setError2("");
+    }
+    const { confirmPassword, ...validData } = data;
+
+    //save the  user data database
+    // save the data in the database
+    try {
+      const result = await axiosInstance.post("/auth/register", validData);
+      console.log(result);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   return (
     <Layout title="signup">
-      <div className="px-8">
+      <div className="px-8 z-10">
         <div className=" border shadow dark:bg-dark space-y-4 w-full md:max-w-2xl mx-auto p-4 md:p-8 my-10 rounded-lg">
           <div className=" w-24 md:w-32 mx-auto ">
             <Link href="/">
@@ -66,17 +107,20 @@ export default function Signup() {
               </TabsTrigger>
             </TabsList>
             <TabsContent value="personal" className="">
-              <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+              <form
+                className="space-y-6"
+                onSubmit={handleSubmit(personProfileSubmit)}
+              >
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <CustomInput2
+                  <CustomInput
                     type="text"
                     name="firstName"
-                    placeholder="Enter text"
+                    placeholder="First Name"
                     control={control}
                     register={register}
                     className="mb-4"
                   />
-                  <CustomInput2
+                  <CustomInput
                     type="text"
                     placeholder="Last name"
                     className="mb-4"
@@ -85,16 +129,16 @@ export default function Signup() {
                     register={register}
                   />
                 </div>
-                <CustomInput2
-                  type="text"
+                <CustomInput
                   placeholder="username"
+                  type="text"
                   icon={LuUser2}
                   control={control}
                   register={register}
                   className="mb-4"
                   name="username"
                 />
-                <CustomInput2
+                <CustomInput
                   type="email"
                   placeholder="email"
                   icon={MdOutlineMail}
@@ -104,18 +148,18 @@ export default function Signup() {
                   name="email"
                 />
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <CustomInput2
+                  <CustomInput
                     type="password"
-                    placeholder="Password"
+                    placeholder="Create Password"
                     icon={SlLock}
                     control={control}
                     register={register}
                     className="mb-4"
                     name="password"
                   />
-                  <CustomInput2
+                  <CustomInput
                     type="password"
-                    placeholder="Password"
+                    placeholder=" Confirm Password"
                     icon={SlLock}
                     className="mb-4"
                     name="confirmPassword"
@@ -124,25 +168,20 @@ export default function Signup() {
                   />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <CustomInput2
-                    type="phone"
-                    name="phone"
-                    control={control}
-                    placeholder="Input Number"
-                    onlyCountries={country}
-                    className="mb-4"
-                  />
-                  <CustomInput2
+                  <PhoneCountry setPhone={setPhone} />
+
+                  <CustomInput
                     type="select"
                     name="country"
-                    label="country"
+                    placeholder="Select your language"
                     control={control}
+                    register={register}
                     options={countries}
-                    className="mb-4"
+                    label="Chose country"
                   />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <CustomInput2
+                  <CustomInput
                     type="text"
                     placeholder="City"
                     className="mb-4"
@@ -151,7 +190,7 @@ export default function Signup() {
                     name="city"
                   />
 
-                  <CustomInput2
+                  <CustomInput
                     type="text"
                     placeholder="State"
                     className="mb-4"
@@ -160,8 +199,16 @@ export default function Signup() {
                     register={register}
                   />
                 </div>
+                {error && (
+                  <p className="text-red-400  bg-red-100 p-2 rounded-md">
+                    {error}
+                  </p>
+                )}
+
+                {loading && <p>loading......</p>}
                 <div className="flex items-center justify-center pt-2">
                   <Button
+                    disabled={loading}
                     variant="fillButton"
                     className="h-10  max-w-64 mx-auto"
                   >
@@ -187,56 +234,109 @@ export default function Signup() {
               </div> */}
             </TabsContent>
             <TabsContent value="business">
-              <form className="space-y-6">
-                <Input
-                  type="text"
+              <form
+                className="space-y-6"
+                onSubmit={handleSubmit(businessProfileSubmit)}
+              >
+                <CustomInput
                   placeholder="Business Name"
-                  className="bg-white dark:bg-gray-800   h-10 "
+                  type="text"
+                  control={control}
+                  register={register}
+                  className="mb-4"
+                  name="businessName"
                 />
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input
-                    type="text"
+                  <CustomInput
                     placeholder="username"
-                    className="bg-white dark:bg-gray-800   h-10 "
+                    type="text"
+                    control={control}
+                    register={register}
+                    className="mb-4"
+                    name="username"
                   />
-                  <Input
+                  <CustomInput
                     type="email"
-                    placeholder="Email"
-                    className="bg-white dark:bg-gray-800   h-10 "
+                    control={control}
+                    register={register}
+                    className="mb-4"
+                    placeholder="email"
+                    name="email"
                   />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <OptionSelect label="country" options={options} />
-                  <OptionSelect label="country" options={options} />
+                  <CustomInput
+                    type="select"
+                    name="category"
+                    placeholder="Select your language"
+                    control={control}
+                    register={register}
+                    options={categories}
+                    label="Chose Category"
+                  />
+                  <CustomInput
+                    type="select"
+                    name="subcategory"
+                    placeholder="Select your language"
+                    control={control}
+                    register={register}
+                    options={categories}
+                    label="Chose Subcategory"
+                  />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input
+                  <CustomInput
                     type="password"
-                    placeholder="Create Password"
-                    className="bg-white dark:bg-gray-800  h-10 "
+                    control={control}
+                    register={register}
+                    className="mb-4"
+                    placeholder="Create password"
+                    name="password"
                   />
-                  <Input
+                  <CustomInput
                     type="password"
-                    placeholder="Confirm Password"
-                    className="bg-white dark:bg-gray-800   h-10 "
+                    control={control}
+                    register={register}
+                    className="mb-4"
+                    placeholder="Confirm password"
+                    name="confirmPassword"
                   />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <OptionSelect label="country" options={options} />
-                  <OptionSelect label="country" options={options} />
+                  <PhoneCountry setPhone={setPhone} />
+                  <CustomInput
+                    type="select"
+                    name="country"
+                    placeholder="Select your language"
+                    control={control}
+                    register={register}
+                    options={countries}
+                    label="Chose country"
+                  />
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input
+                  <CustomInput
                     type="text"
+                    control={control}
+                    register={register}
+                    className="mb-4"
                     placeholder="City"
-                    className="bg-white dark:bg-gray-800   h-10 "
+                    name="city"
                   />
-                  <Input
+                  <CustomInput
                     type="text"
-                    placeholder="Address"
-                    className="bg-white dark:bg-gray-800   h-10 "
+                    control={control}
+                    register={register}
+                    className="mb-4"
+                    placeholder="State"
+                    name="state"
                   />
                 </div>
+                {error2 && (
+                  <p className="text-red-400  bg-red-100 p-2 rounded-md">
+                    {error2}
+                  </p>
+                )}
                 <div className="flex items-center justify-center pt-2">
                   <Button
                     variant="fillButton"

@@ -76,7 +76,7 @@ export default function PublicProfile() {
                     <h1 size="sm" className={`${font18bold}`}>
                       Safari Biz
                     </h1>
-                    <Image src={verifiedIcon} className="w-5 " alt="" />
+                    <Image src={verifiedIcon} className="w-5 " alt="image" />
                   </div>
                   <div className="flex gap-6 items-center">
                     <h className={`${font14}`}>
@@ -196,8 +196,16 @@ export default function PublicProfile() {
                     <div>
                       <div className="flex justify-between">
                         <div className="flex items-center gap-2 text-2xl">
-                          <Image src={locationIcon} className="w-6 md:w-8" />
-                          <Image src={photoadd} className="w-6 md:w-8" />
+                          <Image
+                            src={locationIcon}
+                            className="w-6 md:w-8"
+                            alt="image"
+                          />
+                          <Image
+                            src={photoadd}
+                            className="w-6 md:w-8"
+                            alt="image"
+                          />
                         </div>
                         <Heading
                           size="xs"

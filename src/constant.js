@@ -30,28 +30,28 @@ import {
 } from "./exportImage";
 
 export const categories = [
-  { title: "Finance", src: Finance },
-  { title: "Real Estate", src: RealEstate },
-  { title: "Automotive", src: Automotive },
-  { title: "Technology", src: Technology },
-  { title: " Medical", src: Medical },
-  { title: "Appliance", src: Appliance },
+  { name: "Finance", src: Finance },
+  { name: "Real Estate", src: RealEstate },
+  { name: "Automotive", src: Automotive },
+  { name: "Technology", src: Technology },
+  { name: " Medical", src: Medical },
+  { name: "Appliance", src: Appliance },
 
-  { title: "Beauty", src: Beauty },
-  { title: "Food", src: Food },
-  { title: "Fitness", src: Fitness },
-  { title: "Law", src: Law },
-  { title: "Pet", src: Pet },
-  { title: "Shopping", src: Shopping },
-  { title: "Education", src: Education },
-  { title: "Arts and design", src: Artsanddesign },
-  { title: "Entertainment", src: Entertainment },
-  { title: "Insurance", src: insurance },
-  { title: "Jewelry", src: Jewellery },
+  { name: "Beauty", src: Beauty },
+  { name: "Food", src: Food },
+  { name: "Fitness", src: Fitness },
+  { name: "Law", src: Law },
+  { name: "Pet", src: Pet },
+  { name: "Shopping", src: Shopping },
+  { name: "Education", src: Education },
+  { name: "Arts and design", src: Artsanddesign },
+  { name: "Entertainment", src: Entertainment },
+  { name: "Insurance", src: insurance },
+  { name: "Jewelry", src: Jewellery },
 
-  { title: "Organization", src: Organisation },
-  { title: "Sports", src: Sports },
-  { title: "Travels Hotels", src: TravelsandHotels },
+  { name: "Organization", src: Organisation },
+  { name: "Sports", src: Sports },
+  { name: "Travels Hotels", src: TravelsandHotels },
 
   // { title: "Business", src: categoryIcon13 },
 ];
@@ -398,6 +398,30 @@ export const country = [
   "tr", // Turkey
   "us", // United States
   "gb", // United Kingdom
+];
+
+export const countries = [
+  { name: "Austria", code: "AT", phone: 43 },
+  { name: "Australia", code: "AU", phone: 61 },
+  { name: "Bangladesh", code: "BD", phone: 880 },
+  { name: "Belgium", code: "BE", phone: 32 },
+  { name: "Canada", code: "CA", phone: 1 },
+  { name: "Denmark", code: "DK", phone: 45 },
+  { name: "Estonia", code: "EE", phone: 372 },
+  { name: "Finland", code: "FI", phone: 358 },
+  { name: "France", code: "FR", phone: 33 },
+  { name: "Germany", code: "DE", phone: 49 },
+  { name: "India", code: "IN", phone: 91 },
+  { name: "Luxembourg", code: "LU", phone: 352 },
+  { name: "Mexico", code: "MX", phone: 52 },
+  { name: "Netherlands", code: "NL", phone: 31 },
+  { name: "Saudi Arabia", code: "SA", phone: 966 },
+  { name: "Spain", code: "ES", phone: 34 },
+  { name: "Sweden", code: "SE", phone: 46 },
+  { name: "Switzerland", code: "CH", phone: 41 },
+  { name: "Turkey", code: "TR", phone: 90 },
+  { name: "United States", code: "US", phone: 1 },
+  { name: "United Kingdom", code: "GB", phone: 44 },
 ];
 
 export const priceplan = [

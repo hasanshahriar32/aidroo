@@ -184,7 +184,7 @@ export default function Footer() {
         </div>
         <div className=" flex flex-col justify-center items-center space-y-4  ">
           <div className="w-24  ">
-            <Image src={logo} />
+            <Image src={logo} alt="image" />
           </div>
           <Heading className="font-semibold  text-sm text-center pb-4">
             Copyrights © Aidroo All rights reserved 2024

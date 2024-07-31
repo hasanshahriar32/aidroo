@@ -30,7 +30,7 @@ export default function Review() {
             width={500}
             height={300}
             className="bg-primary_color w-[42px] p-2 rounded-md"
-            alt=""
+            alt="image"
           />
         </div>
         <div className="w-[450px] lg:w-[800px] overflow-hidden   overflow-x-auto space-y-6">
