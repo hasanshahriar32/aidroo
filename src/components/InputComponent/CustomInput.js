@@ -2,7 +2,6 @@
 import { Input } from "@/components/ui/input";
 import { font14 } from "@/constant";
 import { useState } from "react";
-import { BsCheckCircleFill } from "react-icons/bs";
 import { IoEye, IoEyeOffSharp } from "react-icons/io5";
 
 const CustomInput = ({
@@ -62,7 +61,7 @@ const CustomInput = ({
             <button
               type="button"
               onClick={handleToggleShowPassword}
-              className="p-2"
+              className="px-2"
             >
               {showPassword ? (
                 <IoEye className="text-xl text-primary_color " />
@@ -70,9 +69,6 @@ const CustomInput = ({
                 <IoEyeOffSharp className="text-xl text-gray-00 " />
               )}
             </button>
-          )}
-          {name === "username" && (
-            <BsCheckCircleFill className="text-primary_color text-2xl mr-2" />
           )}
         </div>
       )}
