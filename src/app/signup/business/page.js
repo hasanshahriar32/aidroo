@@ -6,11 +6,10 @@ import PhoneCountry from "@/components/PhoneNumberInput/PhoneCountry";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { categories, countries } from "@/constant";
-import useDebounce from "@/hooks/useDebaunce";
-import { axiosInstance } from "@/lib/axios";
+// import useDebounce from "@/hooks/useDebaunce";
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { LuUser2 } from "react-icons/lu";
@@ -26,33 +25,35 @@ export default function BusinessSignup() {
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState("");
-  const debouncedUsername = useDebounce(username, 1000);
+  const router = useRouter();
 
-  useEffect(() => {
-    if (debouncedUsername) {
-      const checkUsername = async () => {
-        try {
-          const response = await axiosInstance.get(
-            `user/single-user?username=${debouncedUsername}`
-          );
-          if (response.data.exists) {
-            setError("username", {
-              type: "manual",
-              message: "Username is not available",
-            });
-          } else {
-            clearErrors("username");
-          }
-        } catch (error) {
-          setError("username", {
-            type: "manual",
-            message: "Error checking username",
-          });
-        }
-      };
-      checkUsername();
-    }
-  }, [debouncedUsername, clearErrors, setError]);
+  // const debouncedUsername = useDebounce(username, 1000);
+
+  // useEffect(() => {
+  //   if (debouncedUsername) {
+  //     const checkUsername = async () => {
+  //       try {
+  //         const response = await axiosInstance.get(
+  //           `user/single-user?username=${debouncedUsername}`
+  //         );
+  //         if (response.data.exists) {
+  //           setError("username", {
+  //             type: "manual",
+  //             message: "Username is not available",
+  //           });
+  //         } else {
+  //           clearErrors("username");
+  //         }
+  //       } catch (error) {
+  //         setError("username", {
+  //           type: "manual",
+  //           message: "Error checking username",
+  //         });
+  //       }
+  //     };
+  //     checkUsername();
+  //   }
+  // }, [debouncedUsername, clearErrors, setError]);
 
   const onSubmit = async (data) => {
     setLoading(true);
@@ -74,16 +75,21 @@ export default function BusinessSignup() {
     }
 
     try {
-      const user = await axiosInstance.post("auth/register", validData);
-      if (user) {
-        redirect("/");
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(validData),
+      });
+      if (response.ok) {
+        router.push("/");
       }
     } catch (error) {
       setError("form", {
         type: "manual",
-        message: error.response?.data?.message || "Something went wrong!",
+        message: "Something went wrong!",
       });
-      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -207,11 +213,7 @@ export default function BusinessSignup() {
 
       {loading && <p>Loading...</p>}
       <div className="flex items-center justify-center pt-2">
-        <Button
-          disabled={loading}
-          variant="fillButton"
-          className="h-10  max-w-64 mx-auto"
-        >
+        <Button variant="fillButton" className="h-10  max-w-64 mx-auto">
           Sign Up
         </Button>
       </div>

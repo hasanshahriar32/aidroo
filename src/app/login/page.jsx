@@ -6,45 +6,59 @@ import Layout from "@/components/Layout/Layout";
 import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import axios from "axios";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { LuUser2 } from "react-icons/lu";
+import { useForm } from "react-hook-form";
+
+import { MdOutlineMail } from "react-icons/md";
 import { SlLock } from "react-icons/sl";
 
 export default function Login() {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const {
+    register,
+    handleSubmit,
+    control,
+    setError,
+    clearErrors,
+    formState: { errors },
+  } = useForm();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const router = useRouter();
+  const onSubmit = async (data) => {
+    setLoading(true);
+    clearErrors();
+
     try {
-      const res = await axios.post("/api/auth/login", {
-        email: formData.email,
-        password: formData.password,
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
-      if (res.ok) {
-        console.log("Yeai!", res);
+      if (response.ok) {
+        router.push("/");
       }
+      console.log(response);
     } catch (error) {
-      console.log(error);
+      console.log("error");
+      setError("form", {
+        type: "manual",
+        message: "Something went wrong!",
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <Layout title="Login">
       <div className=" border shadow dark:bg-dark p-8   space-y-4 max-w-xl mx-auto  my-10 rounded-lg">
-        <form className="  space-y-8 " onSubmit={handleSubmit}>
+        <form className="  space-y-8 " onSubmit={handleSubmit(onSubmit)}>
           <div className=" w-32 mx-auto ">
             <Link href="/">
               <ResponsiveImage
@@ -58,19 +72,19 @@ export default function Login() {
           <CustomInput
             type="email"
             placeholder="Email"
-            icon={LuUser2}
+            icon={MdOutlineMail}
+            control={control}
+            register={register}
             className="mb-4"
-            value={formData.email}
-            onChange={handleChange}
             name="email"
           />
           <CustomInput
             type="password"
-            placeholder="Password"
+            placeholder="Create Password"
             icon={SlLock}
+            control={control}
+            register={register}
             className="mb-4"
-            value={formData.password}
-            onChange={handleChange}
             name="password"
           />
 
@@ -83,7 +97,16 @@ export default function Login() {
               Remember Login
             </label>
           </div>
-          <Button variant="fillButton" className="h-10  md:text-xl">
+          {errors.form && (
+            <p className="text-red-400 bg-red-100 p-2 rounded-md">
+              {errors.form.message}
+            </p>
+          )}
+          <Button
+            variant="fillButton"
+            className="h-10  md:text-xl"
+            disbled={loading}
+          >
             Login
           </Button>
         </form>

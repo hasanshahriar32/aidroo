@@ -1,6 +1,7 @@
 import AllCountries from "@/components/Countries/AllCountries";
 import OptionSelect from "@/components/OptionSelect/OptionSelect";
-import PhoneNumberInput from "@/components/PhoneNumberInput/PhoneNumberInput";
+import PhoneCountry from "@/components/PhoneNumberInput/PhoneCountry";
+
 import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -45,7 +46,7 @@ export default function BusinessInfo() {
           </div>
           <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
             <AllCountries />
-            <PhoneNumberInput />
+            <PhoneCountry />
             <Input
               type="text"
               placeholder="City"
