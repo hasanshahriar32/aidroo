@@ -25,7 +25,7 @@ const CustomInput = ({
     <>
       {type === "select" ? (
         <select
-          className="h-10 w-full border rounded-md focus-visible:outline-none px-2"
+          className={`h-10 w-full ${className} rounded-md focus-visible:outline-none px-2`}
           {...control.register(name)}
         >
           <option value="" className={`${font14}`}>
@@ -45,7 +45,7 @@ const CustomInput = ({
           className={`w-full flex items-center border gap-2 h-10 rounded-sm overflow-hidden ${className}`}
         >
           {Icon && (
-            <Icon className="text-2xl bg-gray-200 h-10 p-[10px] w-14 rounded-r-sm" />
+            <Icon className="text-2xl bg-gray-100 h-10 p-[10px] w-14 rounded-r-sm" />
           )}
 
           <Input
@@ -66,7 +66,7 @@ const CustomInput = ({
               {showPassword ? (
                 <IoEye className="text-xl text-primary_color " />
               ) : (
-                <IoEyeOffSharp className="text-xl text-gray-00 " />
+                <IoEyeOffSharp className="text-xl text-gray-400 " />
               )}
             </button>
           )}

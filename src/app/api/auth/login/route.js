@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 
-import db from "@/config/model";
-import bcrypt from "bcrypt";
-import { generateToken } from "@/utils/jwt";
-import { Op } from "sequelize";
 import connectToDatabase from "@/config/db/db";
+import db from "@/config/model";
+import ApiError from "@/utils/ApiError";
+import { generateToken } from "@/utils/jwt";
+import bcrypt from "bcrypt";
+import { Op } from "sequelize";
 
 export async function POST(req) {
   try {
@@ -22,20 +23,18 @@ export async function POST(req) {
     });
 
     if (!user) {
-      return NextResponse.json(
-        { message: "Invalid credentials" },
-        { status: 401 }
-      );
+      return new NextResponse(JSON.stringify({ message: "User not found" }), {
+        status: 404,
+      });
     }
 
     // Compare passwords
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return NextResponse.json(
-        { message: "Invalid password" },
-        { status: 401 }
-      );
+      return new NextResponse(JSON.stringify({ message: "Invalid password" }), {
+        status: 401,
+      });
     }
 
     // Generate JWT token
@@ -45,20 +44,23 @@ export async function POST(req) {
     const options = {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production", // Use secure cookies only in production
+      sameSite: "strict",
+      path: "/",
+      maxAge: 60 * 60 * 24, // 1 day
     };
 
     // Create a response
     const response = NextResponse.json({
       message: "User logged in successfully",
     });
-    response.cookie("token", token, options);
+    response.headers.set(
+      "Set-Cookie",
+      `token=${token}; HttpOnly; Secure=${options.secure}; SameSite=${options.sameSite}; Path=${options.path}; Max-Age=${options.maxAge}`
+    );
 
     return response;
   } catch (error) {
     console.error("Error in POST /api/auth/login:", error);
-    return NextResponse.json(
-      { error: "Internal Server Error" },
-      { status: 500 }
-    );
+    throw new ApiError(501, "something went wrong");
   }
 }

@@ -1,7 +1,4 @@
-
-
 import { sign, verify } from "jsonwebtoken";
- 
 
 const JWT_SECRET = process.env.TOKEN_SECRET;
 

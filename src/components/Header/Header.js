@@ -157,9 +157,12 @@ export default function Header() {
                                 size={27}
                                 alt="notification icon"
                               />
-                              <span className={`${font16} text-gray-700`}>
+                              <Link
+                                href="/signup/business"
+                                className={`${font16} text-gray-700`}
+                              >
                                 Add Business
-                              </span>
+                              </Link>
                             </span>
                           </Link>
                           <Link href="/notifications">

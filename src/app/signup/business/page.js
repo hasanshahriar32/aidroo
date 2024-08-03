@@ -1,30 +1,29 @@
 // pages/signup/business.js
 "use client";
 import Heading from "@/components/Heading";
+import IconImage from "@/components/IconImage/IconImage";
 import CustomInput from "@/components/InputComponent/CustomInput";
 import PhoneCountry from "@/components/PhoneNumberInput/PhoneCountry";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { categories, countries } from "@/constant";
+import { category } from "@/exportImage";
+import axios from "axios";
 // import useDebounce from "@/hooks/useDebaunce";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { BsCheckCircleFill } from "react-icons/bs";
 import { LuUser2 } from "react-icons/lu";
+
+import { MdOutlineMail } from "react-icons/md";
+import { SlLock } from "react-icons/sl";
 export default function BusinessSignup() {
-  const {
-    register,
-    handleSubmit,
-    control,
-    setError,
-    clearErrors,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, control } = useForm();
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState("");
+  const [error, setError] = useState("");
   const router = useRouter();
 
   // const debouncedUsername = useDebounce(username, 1000);
@@ -56,9 +55,6 @@ export default function BusinessSignup() {
   // }, [debouncedUsername, clearErrors, setError]);
 
   const onSubmit = async (data) => {
-    setLoading(true);
-    clearErrors();
-
     data.phoneNumber = phone;
     data.role = "business";
     data.username = username;
@@ -66,30 +62,25 @@ export default function BusinessSignup() {
 
     const { confirmPassword, ...validData } = data;
     if (data.password !== confirmPassword) {
-      setError("confirmPassword", {
-        type: "manual",
-        message: "Passwords do not match",
-      });
+      setError("password does not match");
       setLoading(false);
       return;
+    } else if (confirmPassword === data.password) {
+      setError("");
     }
 
     try {
-      const response = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(validData),
-      });
-      if (response.ok) {
-        router.push("/");
+      setLoading(true);
+      const response = await axios.post("/api/auth/register", validData);
+      console.log(response);
+
+      if (response.status === 201) {
+        router.push("/"); // Redirect to the homepage or any other page
+      } else {
+        setError(response.data.message || "Something went wrong");
       }
     } catch (error) {
-      setError("form", {
-        type: "manual",
-        message: "Something went wrong!",
-      });
+      console.log("error", error);
     } finally {
       setLoading(false);
     }
@@ -109,7 +100,7 @@ export default function BusinessSignup() {
         <div
           className={`w-full flex items-center border gap-2 h-10 rounded-sm overflow-hidden `}
         >
-          <LuUser2 className="text-2xl bg-gray-200 h-10 p-[10px] w-14 rounded-r-sm" />
+          <LuUser2 className="text-2xl bg-gray-100 h-10 p-[10px] w-14 rounded-r-sm" />
 
           <Input
             type="text"
@@ -118,46 +109,60 @@ export default function BusinessSignup() {
             required
             onChange={(e) => setUsername(e.target.value)}
           />
-
-          {!errors.username && username !== "" && (
+          {/* username exit*/}
+          {/* {!error&& username !== "" && (
             <BsCheckCircleFill className="text-primary_color text-2xl mr-2" />
-          )}
+          )} */}
         </div>
         <CustomInput
           type="email"
           control={control}
           register={register}
           className="mb-4"
-          placeholder="email"
+          icon={MdOutlineMail}
+          placeholder="Email"
           name="email"
         />
       </div>
       <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
-        <CustomInput
-          type="select"
-          name="category"
-          placeholder="Select your language"
-          control={control}
-          register={register}
-          options={categories}
-          label="Chose Category"
-        />
-        <CustomInput
-          type="select"
-          name="subcategory"
-          placeholder="Select your language"
-          control={control}
-          register={register}
-          options={categories}
-          label="Chose Subcategory"
-        />
+        <div className="flex items-center border rounded-md ">
+          <div className="text-2xl bg-gray-100 h-10 p-[10px] w-14 rounded-r-sm flex items-center justify-center">
+            <IconImage src={category} size={24} alt="icon" />
+          </div>
+          <CustomInput
+            type="select"
+            name="category"
+            placeholder="Select your language"
+            control={control}
+            register={register}
+            options={categories}
+            className="border"
+            label="Category"
+          />
+        </div>
+        <div className="flex items-center border rounded-md ">
+          <div className="text-2xl bg-gray-100 h-10 p-[10px] w-14 rounded-r-sm flex items-center justify-center">
+            <IconImage src={category} size={24} alt="icon" />
+          </div>
+          <CustomInput
+            type="select"
+            name="subcategory"
+            placeholder="Select your category"
+            control={control}
+            register={register}
+            options={categories}
+            className="border-none"
+            label=" Sub category"
+          />
+        </div>
       </div>
       <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
         <CustomInput
           type="password"
           control={control}
           register={register}
-          className="mb-4"
+          icon={SlLock}
+          className={`mb-4  `}
           placeholder="Create password"
           name="password"
         />
@@ -165,16 +170,13 @@ export default function BusinessSignup() {
           type="password"
           control={control}
           register={register}
-          className="mb-4"
+          icon={SlLock}
+          className={`mb-4 `}
           placeholder="Confirm password"
           name="confirmPassword"
         />
       </div>
-      {errors.confirmPassword && (
-        <p className="text-red-400 bg-red-100 p-1 rounded-md -mt-6">
-          {errors.confirmPassword.message}
-        </p>
-      )}
+
       <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
         <PhoneCountry setPhone={setPhone} />
         <CustomInput
@@ -205,15 +207,16 @@ export default function BusinessSignup() {
           name="state"
         />
       </div>
-      {errors.form && (
-        <p className="text-red-400 bg-red-100 p-2 rounded-md">
-          {errors.form.message}
-        </p>
+      {error && (
+        <p className="text-red-400 bg-red-100 p-2 rounded-md">{error}</p>
       )}
 
-      {loading && <p>Loading...</p>}
       <div className="flex items-center justify-center pt-2">
-        <Button variant="fillButton" className="h-10  max-w-64 mx-auto">
+        <Button
+          variant="fillButton"
+          className="h-10  max-w-64 mx-auto"
+          disabled={loading}
+        >
           Sign Up
         </Button>
       </div>
