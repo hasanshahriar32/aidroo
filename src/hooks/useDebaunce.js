@@ -1,7 +1,7 @@
-// hooks/useDebounce.js
-import { useEffect, useState } from "react";
+"use clinet";
+import { useState, useEffect } from "react";
 
-export default function useDebounce(value, delay) {
+export const useDebounce = (value, delay) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
@@ -15,4 +15,4 @@ export default function useDebounce(value, delay) {
   }, [value, delay]);
 
   return debouncedValue;
-}
+};

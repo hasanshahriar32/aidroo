@@ -4,7 +4,8 @@ import connectToDatabase from "@/config/db/db";
 import db from "@/config/model";
 import ApiError from "@/utils/ApiError";
 import { generateToken } from "@/utils/jwt";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
+
 import { Op } from "sequelize";
 
 export async function POST(req) {
@@ -23,18 +24,14 @@ export async function POST(req) {
     });
 
     if (!user) {
-      return new NextResponse(JSON.stringify({ message: "User not found" }), {
-        status: 404,
-      });
+      return NextResponse.json({ status: 404, message: "user not found" });
     }
 
     // Compare passwords
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return new NextResponse(JSON.stringify({ message: "Invalid password" }), {
-        status: 401,
-      });
+      return NextResponse.json({ status: 401, message: "Invalid password" });
     }
 
     // Generate JWT token
@@ -51,6 +48,7 @@ export async function POST(req) {
 
     // Create a response
     const response = NextResponse.json({
+      status: 200,
       message: "User logged in successfully",
     });
     response.headers.set(
@@ -61,6 +59,6 @@ export async function POST(req) {
     return response;
   } catch (error) {
     console.error("Error in POST /api/auth/login:", error);
-    throw new ApiError(501, "something went wrong");
+    throw new ApiError(501, error.message);
   }
 }

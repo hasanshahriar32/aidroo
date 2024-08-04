@@ -1,4 +1,6 @@
+// pages/signup/business.js
 "use client";
+import Heading from "@/components/Heading";
 import IconImage from "@/components/IconImage/IconImage";
 import CustomInput from "@/components/InputComponent/CustomInput";
 import PhoneCountry from "@/components/PhoneNumberInput/PhoneCountry";
@@ -7,17 +9,18 @@ import { Input } from "@/components/ui/input";
 import { categories, countries } from "@/constant";
 import { category } from "@/exportImage";
 import { useDebounce } from "@/hooks/useDebaunce";
-import apiService from "@/lib/apiService";
+import axios from "axios";
+// import useDebounce from "@/hooks/useDebaunce";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { LuUser2 } from "react-icons/lu";
+
 import { MdOutlineMail } from "react-icons/md";
 import { SlLock } from "react-icons/sl";
-
-export default function BusinessPage() {
+export default function BusinessSignup({ initialUsers }) {
   const {
     register,
     handleSubmit,
@@ -26,24 +29,32 @@ export default function BusinessPage() {
     clearErrors,
     formState: { errors },
   } = useForm();
-
   const [phone, setPhone] = useState("");
-  const [apiError, setApiError] = useState("");
-  const [username, setUsername] = useState("");
-  const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const debouncedUsername = useDebounce(username, 1000);
+  const [username, setUsername] = useState("");
+  const [apiError, setApiError] = useState("");
   const router = useRouter();
 
+  const debouncedUsername = useDebounce(username, 1000);
+
   useEffect(() => {
-    const fetchuser = async () => {
-      const user = await apiService.getData(
-        debouncedUsername ? `/api/user?username=${debouncedUsername}` : null
+    if (debouncedUsername) {
+      const userExists = initialUsers?.some(
+        (user) => user.username === debouncedUsername
       );
-      setUserData(user);
-    };
-    fetchuser();
-  }, [debouncedUsername]);
+
+      // If user exists, display error message and clear previous error
+      if (userExists) {
+        setError("username", {
+          type: "manual",
+          message: "Username is not available",
+        });
+      } else {
+        clearErrors("username");
+        setApiError("");
+      }
+    }
+  }, [debouncedUsername, clearErrors, initialUsers, setError]);
 
   const onSubmit = async (data) => {
     clearErrors();
@@ -59,20 +70,20 @@ export default function BusinessPage() {
         type: "manual",
         message: "Passwords do not match",
       });
-      setLoading(false);
       return;
     }
 
     try {
-      const response = await apiService.addData("/api/user", validData);
+      setLoading(true);
 
+      const response = await axios.post("/api/user", validData);
       if (response.status === 201) {
         router.push("/");
       } else {
-        setApiError(response.message || "Something went wrong");
+        setApiError(response.data.message || "Something went wrong");
       }
     } catch (error) {
-      setApiError("Error occurred during registration try again");
+      setApiError("Error occurred during registration");
     } finally {
       setLoading(false);
     }
@@ -101,7 +112,7 @@ export default function BusinessPage() {
             required
             onChange={(e) => setUsername(e.target.value)}
           />
-          {username !== "" && !userData?.user && (
+          {username !== "" && !errors.username && (
             <BsCheckCircleFill className="text-primary_color text-2xl mr-2" />
           )}
         </div>
@@ -153,7 +164,7 @@ export default function BusinessPage() {
           control={control}
           register={register}
           icon={SlLock}
-          className={`mb-4 ${errors.confirmPassword ? " border-red-300" : ""}`}
+          className={`mb-4  `}
           placeholder="Create password"
           name="password"
         />
@@ -162,12 +173,14 @@ export default function BusinessPage() {
           control={control}
           register={register}
           icon={SlLock}
-          className={`mb-4 ${errors.confirmPassword ? " border-red-300" : ""}`}
+          className={`mb-4 `}
           placeholder="Confirm password"
           name="confirmPassword"
         />
       </div>
-
+      {errors.confirmPassword && (
+        <p className="text-red-400">{errors.confirmPassword.message}</p>
+      )}
       <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
         <PhoneCountry setPhone={setPhone} />
         <CustomInput
@@ -198,13 +211,10 @@ export default function BusinessPage() {
           name="state"
         />
       </div>
-
-      {errors.confirmPassword && (
-        <p className="text-red-400">{errors.confirmPassword.message}</p>
-      )}
       {apiError && (
         <p className="text-red-400 bg-red-100 p-2 rounded-md">{apiError}</p>
       )}
+
       <div className="flex items-center justify-center pt-2">
         <Button
           variant="fillButton"
@@ -215,12 +225,12 @@ export default function BusinessPage() {
         </Button>
       </div>
       <div className=" w-full flex flex-col items-center justify-center ">
-        <p className="text-sm">
+        <Heading className="text-sm">
           Already have an account?
           <Link href="/login" className=" text-primary_color">
             Login
           </Link>
-        </p>
+        </Heading>
       </div>
     </form>
   );

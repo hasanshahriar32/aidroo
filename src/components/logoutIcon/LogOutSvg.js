@@ -2,7 +2,6 @@
 
 export default function LogOutSvg({
   isHovered,
-  initialColor = "#00000",
   hoverColor = "white",
   size = 24,
 }) {

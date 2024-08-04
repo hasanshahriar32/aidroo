@@ -1,23 +1,22 @@
-// app/signup/personal/PersonalSignup.js (or .jsx)
 "use client";
-import Heading from "@/components/Heading";
+import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+
 import CustomInput from "@/components/InputComponent/CustomInput";
 import PhoneCountry from "@/components/PhoneNumberInput/PhoneCountry";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { countries } from "@/constant";
 import { BsCheckCircleFill } from "react-icons/bs";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { LuUser2 } from "react-icons/lu";
 import { MdOutlineMail } from "react-icons/md";
 import { SlLock } from "react-icons/sl";
-import apiService from "@/lib/apiService";
+import Link from "next/link";
+import { countries } from "@/constant";
 import { useDebounce } from "@/hooks/useDebaunce";
 
-export default function PersonalSignup() {
+export default function PersonalSignup({ initialUsers }) {
   const {
     register,
     handleSubmit,
@@ -27,51 +26,57 @@ export default function PersonalSignup() {
     formState: { errors },
   } = useForm();
   const [phone, setPhone] = useState("");
-  const [apiError, setApierror] = useState("");
-  const [username, setUsername] = useState("");
-  const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const debouncedUsername = useDebounce(username, 1000);
-
+  const [username, setUsername] = useState("");
+  const [apiError, setApierror] = useState("");
+  const debouncedUsername = useDebounce(username, 500);
   const router = useRouter();
 
+  // check username is exit and mounted
   useEffect(() => {
-    const fetchuser = async () => {
-      const user = await apiService.getData(
-        debouncedUsername ? `/api/user?username=${debouncedUsername}` : null
+    if (debouncedUsername) {
+      const userExists = initialUsers?.some(
+        (user) => user.username === debouncedUsername
       );
-      setUserData(user);
-    };
-    fetchuser();
-  }, [debouncedUsername]);
+
+      // If user exists, display error message and clear previous error
+      if (userExists) {
+        setError("username", {
+          type: "manual",
+          message: "Username is not available",
+        });
+      } else {
+        clearErrors("username");
+      }
+    }
+  }, [debouncedUsername, clearErrors, initialUsers, setError]);
 
   const onSubmit = async (data) => {
     data.phoneNumber = phone;
     data.role = "personal";
     data.username = username;
-    setLoading(true);
-    clearErrors();
-    setApierror("");
+
     const { confirmPassword, ...validData } = data;
     if (data.password !== confirmPassword) {
       setError("confirmPassword", {
         type: "manual",
         message: "Passwords do not match",
       });
-      setLoading(false);
       return;
     }
 
     try {
-      const response = await apiService.addData("/api/user", validData);
-
+      clearErrors();
+      setLoading(true);
+      setApierror("");
+      const response = await axios.post("/api/user", validData);
       if (response.status === 201) {
         router.push("/");
       } else {
-        setApierror(response.message || "Something went wrong");
+        setApierror(response.data.message || "Something went wrong");
       }
     } catch (error) {
-      setApierror("Error occurred during registration try again");
+      setApierror("Error occurred during registration");
     } finally {
       setLoading(false);
     }
@@ -104,12 +109,15 @@ export default function PersonalSignup() {
           placeholder="Username"
           className="bg-white dark:bg-gray-800 border-none focus-visible:ring-0 flex-grow"
           required
-          onChange={(e) => setUsername(e.target.value)}
+          {...register("username", {
+            onChange: (e) => setUsername(e.target.value),
+          })}
         />
-        {username !== "" && !userData?.user && (
+        {username !== "" && !errors.username && (
           <BsCheckCircleFill className="text-primary_color text-2xl mr-2" />
         )}
       </div>
+
       <CustomInput
         type="email"
         placeholder="Email"
@@ -126,19 +134,21 @@ export default function PersonalSignup() {
           icon={SlLock}
           control={control}
           register={register}
-          className={`mb-4 ${errors.confirmPassword ? " border-red-300" : ""}`}
           name="password"
         />
         <CustomInput
           type="password"
           placeholder="Confirm Password"
           icon={SlLock}
-          className={`mb-4 ${errors.confirmPassword ? " border-red-300" : ""}`}
+          className="mb-4"
           name="confirmPassword"
           control={control}
           register={register}
         />
       </div>
+      {errors.confirmPassword && (
+        <p className="text-red-400">{errors.confirmPassword.message}</p>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <PhoneCountry setPhone={setPhone} />
         <CustomInput
@@ -170,9 +180,6 @@ export default function PersonalSignup() {
           register={register}
         />
       </div>
-      {errors.confirmPassword && (
-        <p className="text-red-400">{errors.confirmPassword.message}</p>
-      )}
       {apiError && (
         <p className="text-red-400 bg-red-100 p-2 rounded-md">{apiError}</p>
       )}
@@ -186,12 +193,12 @@ export default function PersonalSignup() {
         </Button>
       </div>
       <div className="w-full flex flex-col items-center justify-center">
-        <Heading className="text-sm">
+        <p className="text-sm">
           Already have an account?{" "}
           <Link href="/login" className="text-primary_color">
             Login
           </Link>
-        </Heading>
+        </p>
       </div>
     </form>
   );

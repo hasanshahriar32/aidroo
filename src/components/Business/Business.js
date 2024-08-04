@@ -1,7 +1,7 @@
 import heroImage from "@/asserts/business-image.svg";
 
 import Image from "next/image";
-import Heading from "../Heading";
+
 import { Button } from "../ui/button";
 import { font14, font16, font18bold } from "@/constant";
 

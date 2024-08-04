@@ -59,7 +59,7 @@ import { Input } from "../ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 export default function Header() {
-  const [serachtext, setSearchText] = useState("");
+  const [setSearchText] = useState("");
   const [open, setOpen] = useState(false);
   const [humberOpen, setHumberOpen] = useState(false);
 

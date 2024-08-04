@@ -2,7 +2,7 @@ import { DataTypes, Op } from "sequelize";
 import sequelize from "../sequalize";
 import CryptoJS from "crypto-js";
 import ApiError from "@/utils/ApiError";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 const User = sequelize.define(
   "User",
   {

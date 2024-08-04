@@ -22,12 +22,7 @@ const Map = ({ center, zoom, markers, ...props }) => {
   }, [map, markers]);
   return <div ref={ref} id="map" {...props} />;
 };
-const GoogleMap = ({
-  children,
-  showMarker = true,
-  className,
-  ...restProps
-}) => {
+const GoogleMap = ({ showMarker = true, className, ...restProps }) => {
   const [currentLocation, setLocation] = React.useState({ lat: 0, lng: 0 });
   React.useEffect(() => {
     navigator?.geolocation.getCurrentPosition(

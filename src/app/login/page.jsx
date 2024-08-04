@@ -2,18 +2,15 @@
 import logo from "@/asserts/aidroo-logo.svg";
 import Heading from "@/components/Heading";
 import CustomInput from "@/components/InputComponent/CustomInput";
-
 import Layout from "@/components/Layout/Layout";
 import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import axios from "axios";
-
+import apiService from "@/lib/apiService";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-
 import { MdOutlineMail } from "react-icons/md";
 import { SlLock } from "react-icons/sl";
 
@@ -26,15 +23,15 @@ export default function Login() {
     // submit the form
     try {
       setLoading(true);
-      const response = await axios.post("/api/auth/login", data);
+      const response = await apiService.addData("/api/auth/login", data);
 
       if (response.status === 201 || response.status === 200) {
         router.push("/");
       } else {
-        setError(response.data.message || "Something went wrong");
+        setError(response?.message || "Something went wrong");
       }
     } catch (error) {
-      setError(error.response?.data?.message || "Something went wrong");
+      setError(error.data?.message || "Something went wrong");
     } finally {
       setLoading(false);
     }

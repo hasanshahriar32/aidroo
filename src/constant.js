@@ -20,6 +20,11 @@ import Sports from "@/asserts/categories-icons/Sports.svg";
 import TravelsandHotels from "@/asserts/categories-icons/TravelsandHotels.svg";
 import applePlay from "@/public/icons/apple.svg";
 import googlePlay from "@/public/icons/google.svg";
+
+// TOKEN_SECRET=srikanto
+// TOKEN_SECRET_EXPIRE=1d
+
+// DATABASE_URL=mysql://root:password@localhost:3306/db
 import {
   crossmark,
   guaranteedbadge,
