@@ -1,6 +1,5 @@
 import connectToDatabase from "@/config/db/db";
 import db from "@/config/model";
-import ApiError from "@/utils/ApiError";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 import { Op } from "sequelize";
@@ -23,7 +22,7 @@ export async function POST(req) {
     street,
     city,
     state,
-    postalCode,
+    zipCode,
     country,
     category,
     subcategory,
@@ -78,11 +77,11 @@ export async function POST(req) {
         }
 
         await db.Address.create({
-          userId: user.id,
+          profileId: user.id,
           street,
           city,
           state,
-          postalCode,
+          zipCode,
           country,
         });
       } catch (error) {
@@ -106,38 +105,20 @@ export async function GET(req) {
   const username = searchParams.get("username");
 
   try {
-    let response;
+    const response = await db.User.findOne({
+      where: { username: username },
+      attributes: ["email", "username"],
+    });
 
-    if (username) {
-      response = await db.User.findOne({
-        where: { username },
-        attributes: ["email", "username"],
-      });
-
-      if (!response) {
-        return NextResponse.json("User not found", 404);
-      }
-
-      return NextResponse.json({
-        user: response,
-        status: 200,
-        message: "User fetched successfully",
-      });
-    } else {
-      response = await db.User.findAll({
-        attributes: ["email", "username"],
-      });
-
-      if (!response.length) {
-        throw new ApiError("No users found", 404);
-      }
-
-      return NextResponse.json({
-        users: response,
-        status: 200,
-        message: "Users fetched successfully",
-      });
+    if (!response) {
+      return NextResponse.json("User not found", 404);
     }
+
+    return NextResponse.json({
+      user: response,
+      status: 200,
+      message: "User fetched successfully",
+    });
   } catch (error) {
     console.error("Error fetching user(s):", error);
     return NextResponse.json({

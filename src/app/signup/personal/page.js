@@ -32,7 +32,7 @@ export default function PersonalSignup() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
   const debouncedUsername = useDebounce(username, 1000);
-
+  console.log(debouncedUsername);
   const router = useRouter();
 
   useEffect(() => {
@@ -170,6 +170,14 @@ export default function PersonalSignup() {
           register={register}
         />
       </div>
+      <CustomInput
+        type="text"
+        placeholder="State"
+        className="mb-4"
+        name="zipCode"
+        control={control}
+        register={register}
+      />
       {errors.confirmPassword && (
         <p className="text-red-400">{errors.confirmPassword.message}</p>
       )}

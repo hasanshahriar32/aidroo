@@ -1,9 +1,25 @@
+// models/schedule.js
 import { DataTypes } from "sequelize";
 import sequelize from "../sequalize";
 
 const Schedule = sequelize.define(
   "Schedule",
   {
+    // Define attributes
+    personalProfileId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "PersonalProfiles",
+        key: "id",
+      },
+    },
+    businessProfileId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "BusinessProfiles",
+        key: "id",
+      },
+    },
     day: {
       type: DataTypes.ENUM(
         "Monday",
@@ -30,4 +46,4 @@ const Schedule = sequelize.define(
   }
 );
 
-module.exports = Schedule;
+export default Schedule;

@@ -32,13 +32,13 @@ export default function BusinessPage() {
   const [username, setUsername] = useState("");
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const debouncedUsername = useDebounce(username, 1000);
+  const debouncedUsername = useDebounce(username, 500);
   const router = useRouter();
 
   useEffect(() => {
     const fetchuser = async () => {
       const user = await apiService.getData(
-        debouncedUsername ? `/api/user?username=${debouncedUsername}` : null
+        debouncedUsername ? `/api/user?username=${debouncedUsername}` : ""
       );
       setUserData(user);
     };
@@ -198,6 +198,14 @@ export default function BusinessPage() {
           name="state"
         />
       </div>
+      <CustomInput
+        type="text"
+        control={control}
+        register={register}
+        className="mb-4"
+        placeholder="State"
+        name="zipCode"
+      />
 
       {errors.confirmPassword && (
         <p className="text-red-400">{errors.confirmPassword.message}</p>

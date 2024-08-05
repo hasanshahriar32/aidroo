@@ -9,5 +9,8 @@ export function generateToken(userId) {
 }
 
 export function verifyToken(token) {
-  return verify(token, JWT_SECRET);
+  console.log(JWT_SECRET);
+  if (token) {
+    return verify(token, JWT_SECRET);
+  }
 }

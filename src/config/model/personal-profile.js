@@ -1,9 +1,19 @@
+// models/personal-profile.js
 import { DataTypes } from "sequelize";
 import sequelize from "../sequalize";
 
 const PersonalProfile = sequelize.define(
   "PersonalProfile",
   {
+    // Define attributes
+    userId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Users",
+        key: "id",
+      },
+      allowNull: false,
+    },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -11,14 +21,6 @@ const PersonalProfile = sequelize.define(
     lastName: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    dob: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
-    gender: {
-      type: DataTypes.ENUM(["Male", "Female", "Other"]),
-      allowNull: true,
     },
     phoneNumber: {
       type: DataTypes.STRING,
@@ -54,4 +56,4 @@ const PersonalProfile = sequelize.define(
   }
 );
 
-module.exports = PersonalProfile;
+export default PersonalProfile;

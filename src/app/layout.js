@@ -21,7 +21,9 @@ export default function RootLayout({ children }) {
           themes={["light", "dark"]}
           disableTransitionOnChange
         > */}
+
         <main className="w-full ">{children}</main>
+
         {/* </ThemeProvider> */}
       </body>
     </html>

@@ -1,11 +1,19 @@
-// Ensure the correct path to your database configuration
-
+// models/business-profile.js
 import { DataTypes } from "sequelize";
 import sequelize from "../sequalize";
 
 const BusinessProfile = sequelize.define(
   "BusinessProfile",
   {
+    // Define attributes
+    userId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Users",
+        key: "id",
+      },
+      allowNull: false,
+    },
     businessName: {
       type: DataTypes.STRING,
       allowNull: false,

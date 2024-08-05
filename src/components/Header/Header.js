@@ -65,7 +65,7 @@ export default function Header() {
 
   const [isHovered, setIsHovered] = useState(false);
 
-  const { currentUser } = useAuth();
+  const { currentUser = true, logout } = useAuth();
 
   const handleInputChange = (event) => {
     setSearchText(event.target.value);
@@ -308,7 +308,7 @@ export default function Header() {
                               </span>
                             </span>
                           </Link>{" "}
-                          <Link href="/notifications">
+                          <div onClick={logout}>
                             <span className="flex items-center gap-6     ">
                               <IconImage
                                 src={singoutIcon}
@@ -319,7 +319,7 @@ export default function Header() {
                                 Logout
                               </span>
                             </span>
-                          </Link>
+                          </div>
                         </div>
                       </PopoverContent>
                     </Popover>

@@ -1,12 +1,18 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../sequalize"; // Ensure the correct path to your database configuration
+import sequelize from "../sequalize";
 
 const SubCategory = sequelize.define(
   "SubCategory",
   {
+    categoryId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Categories",
+        key: "id",
+      },
+    },
     name: {
       type: DataTypes.STRING,
-      unique: true,
       allowNull: false,
     },
   },

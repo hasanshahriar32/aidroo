@@ -30,6 +30,7 @@ export default function Login() {
       } else {
         setError(response?.message || "Something went wrong");
       }
+      localStorage.setItem("token", response.token);
     } catch (error) {
       setError(error.data?.message || "Something went wrong");
     } finally {

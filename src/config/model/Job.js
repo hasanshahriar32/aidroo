@@ -1,33 +1,35 @@
-// models/address.js
+// models/job-post.js
 import { DataTypes } from "sequelize";
 import sequelize from "../sequalize";
-// Ensure the path is correct
 
-const Address = sequelize.define(
-  "Address",
+const Job = sequelize.define(
+  "Job",
   {
     // Define attributes
-    profileId: {
+    personalProfileId: {
       type: DataTypes.INTEGER,
       references: {
         model: "PersonalProfiles",
         key: "id",
       },
     },
+    businessProfileId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "BusinessProfiles",
+        key: "id",
+      },
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
 
-    city: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    state: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    zipCode: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    country: {
+    location: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -37,4 +39,4 @@ const Address = sequelize.define(
   }
 );
 
-export default Address;
+export default Job;
