@@ -69,10 +69,7 @@ export async function POST(req) {
       status: 200,
       message: "User logged in successfully",
     });
-    response.headers.set(
-      "Set-Cookie",
-      `token=${token}; HttpOnly; Secure=${options.secure}; SameSite=${options.sameSite}; Path=${options.path}; Max-Age=${options.maxAge}`
-    );
+    response.cookies.set("token", token, options);
     return response;
   } catch (error) {
     console.error("Error in POST /api/auth/login:", error);
