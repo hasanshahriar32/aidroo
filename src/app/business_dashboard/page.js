@@ -1,3 +1,6 @@
-export default function page() {
-  return <div> </div>;
+// app/page.js
+import { redirect } from "next/navigation";
+
+export default function Home() {
+  redirect("/business_dashboard/business_info");
 }

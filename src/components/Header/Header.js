@@ -244,7 +244,9 @@ export default function Header() {
                         <div className="bg-[#002A64] p-4 flex items-center gap-4 rounded-t-md ">
                           <div className="text-white flex gap-4   ">
                             <div>
-                              <h1 className={`${font18}`}>Profile name</h1>
+                              <h1 className={`${font18}`}>
+                                {currentUser.name}
+                              </h1>
                               <p className="text-sm">@companyname</p>
                             </div>
 
@@ -309,7 +311,7 @@ export default function Header() {
                             </span>
                           </Link>{" "}
                           <div onClick={logout}>
-                            <span className="flex items-center gap-6     ">
+                            <div className="flex items-center gap-6 cursor-pointer     ">
                               <IconImage
                                 src={singoutIcon}
                                 size={27}
@@ -318,7 +320,7 @@ export default function Header() {
                               <span className={`${font16} text-gray-700`}>
                                 Logout
                               </span>
-                            </span>
+                            </div>
                           </div>
                         </div>
                       </PopoverContent>
@@ -424,7 +426,7 @@ export default function Header() {
                       </Avatar>
                       <div className="text-white flex gap-4   ">
                         <div>
-                          <Heading size="sm">Profile Name</Heading>
+                          <Heading size="sm">{currentUser.name}</Heading>
                           <Heading size="xs">@companyname</Heading>
                         </div>
 

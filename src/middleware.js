@@ -17,6 +17,7 @@ export function middleware(request) {
     }
 
     const decodedToken = verifyToken(token);
+
     if (!decodedToken) {
       return NextResponse.redirect(new URL("/login", request.nextUrl));
     }

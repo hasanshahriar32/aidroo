@@ -6,7 +6,8 @@ import ApiError from "@/utils/ApiError";
 import { generateToken } from "@/utils/jwt";
 import bcrypt from "bcryptjs";
 
-import { Op } from "sequelize";
+import BusinessProfile from "@/config/model/business-profile";
+import PersonalProfile from "@/config/model/personal-profile";
 
 export async function POST(req) {
   try {
@@ -14,13 +15,22 @@ export async function POST(req) {
     await connectToDatabase();
 
     // Parse request body
-    const { email, username, password } = await req.json();
+    const { email, password } = await req.json();
 
-    // Find the user
     const user = await db.User.findOne({
-      where: {
-        [Op.or]: [email ? { email } : {}, username ? { username } : {}],
-      },
+      where: { email },
+      include: [
+        {
+          model: BusinessProfile,
+          as: "businessProfile",
+          required: false,
+        },
+        {
+          model: PersonalProfile,
+          as: "personalProfile",
+          required: false,
+        },
+      ],
     });
 
     if (!user) {
@@ -45,10 +55,17 @@ export async function POST(req) {
       path: "/",
       maxAge: 60 * 60 * 24, // 1 day
     };
-
+    const userData = {
+      userId: user?.id,
+      username: user?.username,
+      name:
+        user.personalProfile?.firstName +
+          " " +
+          user.personalProfile?.lastName || user?.businessProfile?.businessName,
+    };
     // Create a response
     const response = NextResponse.json({
-      token: token,
+      user: userData,
       status: 200,
       message: "User logged in successfully",
     });
@@ -56,7 +73,6 @@ export async function POST(req) {
       "Set-Cookie",
       `token=${token}; HttpOnly; Secure=${options.secure}; SameSite=${options.sameSite}; Path=${options.path}; Max-Age=${options.maxAge}`
     );
-
     return response;
   } catch (error) {
     console.error("Error in POST /api/auth/login:", error);

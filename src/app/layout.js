@@ -1,5 +1,6 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import { AuthContextProvider } from "@/context/AuthContext";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -21,8 +22,9 @@ export default function RootLayout({ children }) {
           themes={["light", "dark"]}
           disableTransitionOnChange
         > */}
-
-        <main className="w-full ">{children}</main>
+        <AuthContextProvider>
+          <main className="w-full ">{children}</main>
+        </AuthContextProvider>
 
         {/* </ThemeProvider> */}
       </body>

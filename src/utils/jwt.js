@@ -13,6 +13,10 @@ export async function generateToken(userId) {
 }
 
 export async function verifyToken(token) {
+  if (!JWT_SECRET) {
+    console.error("JWT_SECRET is not defined");
+    return null;
+  }
   try {
     const { payload } = await jwtVerify(token, JWT_SECRET);
     return payload;

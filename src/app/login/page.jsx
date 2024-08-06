@@ -6,6 +6,7 @@ import Layout from "@/components/Layout/Layout";
 import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useAuth } from "@/hooks/useAuth";
 import apiService from "@/lib/apiService";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -19,20 +20,23 @@ export default function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  const { setCurrentUser } = useAuth();
   const onSubmit = async (data) => {
     // submit the form
+
     try {
       setLoading(true);
       const response = await apiService.addData("/api/auth/login", data);
-
+      console.log(response);
       if (response.status === 201 || response.status === 200) {
-        router.push("/");
-      } else {
-        setError(response?.message || "Something went wrong");
+        localStorage.setItem("user", JSON.stringify(response.user));
+
+        setCurrentUser(response.user);
       }
-      localStorage.setItem("token", response.token);
+      router.push("/");
     } catch (error) {
-      setError(error.data?.message || "Something went wrong");
+      setError(error.data?.message);
     } finally {
       setLoading(false);
     }
