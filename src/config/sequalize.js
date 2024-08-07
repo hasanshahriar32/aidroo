@@ -2,21 +2,16 @@
 
 import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize(
-  process.env.DATABASE_NAME,
-  process.env.DATABASE_USER,
-  process.env.DATABASE_PASSWORD,
-  {
-    dialect: "mysql", // Change this according to your database type
-    dialectModule: require("mysql2"),
-    host: process.env.DATABASE_HOST, // Database host
-    port: 3306, // Database port
-    logging: false,
-    define: {
-      timestamps: true, // Add timestamps (createdAt, updatedAt) to models
-    },
-  }
-);
+const sequelize = new Sequelize("aidroo_db", "aidroo_admin", "Aidroo@#_3", {
+  dialect: "mysql", // Change this according to your database type
+  dialectModule: require("mysql2"),
+  host: "38.45.71.124", // Database host
+  port: 3306, // Database port
+  logging: false,
+  define: {
+    timestamps: true, // Add timestamps (createdAt, updatedAt) to models
+  },
+});
 // import { Sequelize } from "sequelize";
 
 // const sequelize = new Sequelize(process.env.DATABASE_URL, {

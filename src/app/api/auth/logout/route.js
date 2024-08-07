@@ -2,7 +2,6 @@ import connectToDatabase from "@/config/db/db";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  console.log("first");
   try {
     // Connect to the database
     await connectToDatabase();
