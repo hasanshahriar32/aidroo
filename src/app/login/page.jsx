@@ -27,14 +27,17 @@ export default function Login() {
 
     try {
       setLoading(true);
-      const response = await axiosInstance.post("/auth/login", data);
+      setError("");
+      const response = await axiosInstance.post("/api/auth/login", data);
 
-      if (response.status === 201 || response.status === 200) {
-        localStorage.setItem("user", JSON.stringify(response.user));
+      if (response?.data.status === 201 || response.data.status === 200) {
+        localStorage.setItem("user", JSON.stringify(response?.data?.user));
 
-        setCurrentUser(response.user);
+        setCurrentUser(response?.data.user);
+        router.push("/");
+      } else {
+        setError(response.data.message);
       }
-      router.push("/");
     } catch (error) {
       setError(error.data?.message);
     } finally {

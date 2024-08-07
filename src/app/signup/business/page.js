@@ -10,7 +10,7 @@ import { useDebounce } from "@/hooks/useDebaunce";
 import apiService from "@/lib/apiService";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { LuUser2 } from "react-icons/lu";
@@ -34,13 +34,13 @@ export default function BusinessPage() {
   const [loading, setLoading] = useState(false);
   const debouncedUsername = useDebounce(username, 500);
   const router = useRouter();
-
+  // user checking with debounce
   useEffect(() => {
     const fetchuser = async () => {
       const user = await apiService.getData(
-        debouncedUsername ? `/api/user?username=${debouncedUsername}` : ""
+        debouncedUsername ? `/api/user?username=${debouncedUsername}` : null
       );
-      setUserData(user);
+      setUserData(user?.data?.message);
     };
     fetchuser();
   }, [debouncedUsername]);
@@ -52,7 +52,7 @@ export default function BusinessPage() {
     data.role = "business";
     data.username = username;
     data.businessType = "IT";
-
+    // checking password and confirm password match
     const { confirmPassword, ...validData } = data;
     if (data.password !== confirmPassword) {
       setError("confirmPassword", {
@@ -67,7 +67,7 @@ export default function BusinessPage() {
       const response = await apiService.addData("/api/user", validData);
 
       if (response.status === 201) {
-        router.push("/");
+        router.push("/login");
       } else {
         setApiError(response.message || "Something went wrong");
       }
@@ -101,7 +101,7 @@ export default function BusinessPage() {
             required
             onChange={(e) => setUsername(e.target.value)}
           />
-          {username !== "" && !userData?.user && (
+          {username !== "" && !userData?.data?.user && (
             <BsCheckCircleFill className="text-primary_color text-2xl mr-2" />
           )}
         </div>

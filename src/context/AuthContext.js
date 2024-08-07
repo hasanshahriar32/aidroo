@@ -1,6 +1,5 @@
 "use client";
-import apiService from "@/lib/apiService";
-
+import axiosInstance from "@/lib/axios";
 import { createContext, useEffect, useState } from "react";
 
 // Create the AuthContext with default values
@@ -12,21 +11,22 @@ export const AuthContext = createContext({
 
 // Create the AuthContextProvider component
 export const AuthContextProvider = ({ children }) => {
-  // Define the state for currentUser
   const [currentUser, setCurrentUser] = useState(null);
 
-  // Define the logout function
   const logout = async () => {
-    await apiService.addData("/api/auth/logout");
-    localStorage.removeItem("user");
-    setCurrentUser(null);
+    try {
+      await axiosInstance.get("/api/auth/logout");
+      localStorage.removeItem("user");
+      setCurrentUser(null);
+    } catch (error) {
+      console.error("Failed to log out:", error);
+    }
   };
 
-  // Use an effect to sync the state with localStorage on mount
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
 
-    if (!storedUser === undefined) {
+    if (storedUser) {
       setCurrentUser(JSON.parse(storedUser));
     }
   }, []);

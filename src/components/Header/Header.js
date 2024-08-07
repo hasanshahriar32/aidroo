@@ -58,7 +58,7 @@ export default function Header() {
 
   const [isHovered, setIsHovered] = useState(false);
 
-  const { currentUser = true } = useAuth();
+  const { currentUser, logout } = useAuth();
 
   const handleInputChange = (event) => {
     setSearchText(event.target.value);
@@ -217,7 +217,7 @@ export default function Header() {
                     </Link>
                   </>
                 ) : (
-                  <h1>Profile </h1>
+                  <div onClick={logout}>Logout </div>
                   // <>
                   //   <IconImage src={messageIcon} size={32} alt="message icon" />
                   //   <IconImage

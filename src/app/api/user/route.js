@@ -106,7 +106,7 @@ export async function GET(req) {
 
   try {
     const response = await db.User.findOne({
-      where: { username: username },
+      where: { username },
       attributes: ["email", "username"],
     });
 
@@ -120,7 +120,6 @@ export async function GET(req) {
       message: "User fetched successfully",
     });
   } catch (error) {
-    console.error("Error fetching user(s):", error);
     return NextResponse.json({
       error: error.message || "Internal Server Error",
       status: error.status || 500,

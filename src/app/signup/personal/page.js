@@ -6,16 +6,16 @@ import PhoneCountry from "@/components/PhoneNumberInput/PhoneCountry";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { countries } from "@/constant";
-import { BsCheckCircleFill } from "react-icons/bs";
+import { useDebounce } from "@/hooks/useDebaunce";
+import apiService from "@/lib/apiService";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { BsCheckCircleFill } from "react-icons/bs";
 import { LuUser2 } from "react-icons/lu";
 import { MdOutlineMail } from "react-icons/md";
 import { SlLock } from "react-icons/sl";
-import apiService from "@/lib/apiService";
-import { useDebounce } from "@/hooks/useDebaunce";
 
 export default function PersonalSignup() {
   const {
@@ -32,7 +32,6 @@ export default function PersonalSignup() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
   const debouncedUsername = useDebounce(username, 1000);
-  console.log(debouncedUsername);
   const router = useRouter();
 
   useEffect(() => {
@@ -52,6 +51,7 @@ export default function PersonalSignup() {
     setLoading(true);
     clearErrors();
     setApierror("");
+
     const { confirmPassword, ...validData } = data;
     if (data.password !== confirmPassword) {
       setError("confirmPassword", {
@@ -66,7 +66,7 @@ export default function PersonalSignup() {
       const response = await apiService.addData("/api/user", validData);
 
       if (response.status === 201) {
-        router.push("/");
+        router.push("/login");
       } else {
         setApierror(response.message || "Something went wrong");
       }
@@ -106,7 +106,7 @@ export default function PersonalSignup() {
           required
           onChange={(e) => setUsername(e.target.value)}
         />
-        {username !== "" && !userData?.user && (
+        {username !== "" && !userData?.data?.user && (
           <BsCheckCircleFill className="text-primary_color text-2xl mr-2" />
         )}
       </div>

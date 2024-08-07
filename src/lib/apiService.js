@@ -1,25 +1,40 @@
-// lib/apiService.js
 import axiosInstance from "./axios";
 
 const apiService = {
-  getData: (endpoint) => {
-    if (!endpoint) {
-      axiosInstance.get(endpoint).then((res) => res.data);
+  getData: async (endpoint) => {
+    try {
+      const res = await axiosInstance.get(endpoint);
+
+      return res;
+    } catch (error) {
+      return error;
     }
   },
-  addData: (endpoint, data) => {
-    if (!endpoint) {
-      axiosInstance.post(endpoint, data).then((res) => res.data);
+  addData: async (endpoint, data) => {
+    try {
+      const res = await axiosInstance.post(endpoint, data);
+      return res.data;
+    } catch (error) {
+      console.error("Error adding data:", error);
+      throw error;
     }
   },
-  updateData: (endpoint, id, data) => {
-    if (!endpoint) {
-      axiosInstance.put(`${endpoint}/${id}`, data).then((res) => res.data);
+  updateData: async (endpoint, id, data) => {
+    try {
+      const res = await axiosInstance.put(`${endpoint}/${id}`, data);
+      return res.data;
+    } catch (error) {
+      console.error("Error updating data:", error);
+      throw error;
     }
   },
-  deleteData: (endpoint, id) => {
-    if (!endpoint) {
-      axiosInstance.delete(`${endpoint}/${id}`).then((res) => res.data);
+  deleteData: async (endpoint, id) => {
+    try {
+      const res = await axiosInstance.delete(`${endpoint}/${id}`);
+      return res.data;
+    } catch (error) {
+      console.error("Error deleting data:", error);
+      throw error;
     }
   },
 };
