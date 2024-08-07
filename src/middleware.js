@@ -1,3 +1,4 @@
+// middleware.js
 import { NextResponse } from "next/server";
 import { verifyToken } from "./utils/jwt";
 
@@ -17,7 +18,6 @@ export function middleware(request) {
     }
 
     const decodedToken = verifyToken(token);
-
     if (!decodedToken) {
       return NextResponse.redirect(new URL("/login", request.nextUrl));
     }
@@ -26,7 +26,6 @@ export function middleware(request) {
   return NextResponse.next();
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
   matcher: ["/admin_dashboard/:path*"], // Protect /admin_dashboard and all its sub-routes
 };

@@ -13,12 +13,7 @@ export async function POST() {
     });
 
     // Clear the token cookie
-    response.cookies.set("token", "", {
-      path: "/",
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-    });
+    response.cookies.delete("token");
 
     return response;
   } catch (error) {

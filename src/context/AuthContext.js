@@ -25,8 +25,8 @@ export const AuthContextProvider = ({ children }) => {
   // Use an effect to sync the state with localStorage on mount
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
-    console.log(storedUser);
-    if (storedUser) {
+
+    if (!storedUser === undefined) {
       setCurrentUser(JSON.parse(storedUser));
     }
   }, []);

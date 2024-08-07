@@ -1,12 +1,11 @@
 import { SignJWT, jwtVerify } from "jose";
 
 const JWT_SECRET = new TextEncoder().encode(process.env.TOKEN_SECRET);
-const EXPIRES_IN = process.env.TOKEN_SECRET_EXPIRE;
 
 export async function generateToken(userId) {
   const jwt = await new SignJWT({ userId })
     .setProtectedHeader({ alg: "HS256" })
-    .setExpirationTime(EXPIRES_IN)
+    .setExpirationTime(Math.floor(Date.now() / 1000) + 60 * 60 * 24)
     .sign(JWT_SECRET);
 
   return jwt;

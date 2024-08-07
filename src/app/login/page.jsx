@@ -7,7 +7,7 @@ import ResponsiveImage from "@/components/ResponsiveImage/ResponsiveImage";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useAuth } from "@/hooks/useAuth";
-import apiService from "@/lib/apiService";
+import axiosInstance from "@/lib/axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -27,8 +27,8 @@ export default function Login() {
 
     try {
       setLoading(true);
-      const response = await apiService.addData("/api/auth/login", data);
-      console.log(response);
+      const response = await axiosInstance.post("/auth/login", data);
+
       if (response.status === 201 || response.status === 200) {
         localStorage.setItem("user", JSON.stringify(response.user));
 
@@ -96,7 +96,7 @@ export default function Login() {
           </Button>
         </form>
         <div className=" w-full flex flex-col items-center justify-center ">
-          <Link href="#" className="  text-primary_color">
+          <Link href="/" className="  text-primary_color">
             Forgot Password?
           </Link>
         </div>

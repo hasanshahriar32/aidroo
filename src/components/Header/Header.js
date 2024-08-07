@@ -7,8 +7,6 @@ import category from "@/asserts/mobile-icons/categories.svg";
 import pageIcon from "@/asserts/mobile-icons/page_icon.svg";
 import businessIcon from "@/asserts/mobile-icons/pricing-plan.svg";
 import helpIcon from "@/asserts/mobile-icons/support.svg";
-import messageIcon from "@/public/icons/messages.svg";
-import notificationIcon from "@/public/icons/notifications.svg";
 import whitesearch from "@/public/icons/whitesearch.svg";
 import profilePic from "@/public/images/profile.jpg";
 import Image from "next/image";
@@ -25,20 +23,16 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { font16, font18 } from "@/constant";
+import { font16 } from "@/constant";
 import {
   addyourbusiness,
   brifcaseIcon,
   claimWithBusiness,
   loginIcon,
   logo,
-  myorder,
-  myprofile,
   myReview,
   pricingPlan,
-  singoutIcon,
   user,
-  userdashboard,
   verifiedIcon,
 } from "@/exportImage";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
@@ -56,7 +50,6 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 export default function Header() {
   const [setSearchText] = useState("");
@@ -65,7 +58,7 @@ export default function Header() {
 
   const [isHovered, setIsHovered] = useState(false);
 
-  const { currentUser = true, logout } = useAuth();
+  const { currentUser = true } = useAuth();
 
   const handleInputChange = (event) => {
     setSearchText(event.target.value);
@@ -150,7 +143,7 @@ export default function Header() {
                     {isHovered && (
                       <div className="absolute    -left-8 top-8 pt-4  w-[230px] ">
                         <ul className=" z-50 shadow rounded-md    p-4 bg-white flex flex-col gap-4 mt-3">
-                          <Link href="/notifications">
+                          <Link href="/">
                             <span className="flex items-center gap-6  border-b pb-2 ">
                               <IconImage
                                 src={addyourbusiness}
@@ -165,7 +158,7 @@ export default function Header() {
                               </Link>
                             </span>
                           </Link>
-                          <Link href="/notifications">
+                          <Link href="/">
                             <span className="flex items-center gap-6  border-b pb-2 ">
                               <IconImage
                                 src={claimWithBusiness}
@@ -177,7 +170,7 @@ export default function Header() {
                               </span>
                             </span>
                           </Link>
-                          <Link href="/notifications">
+                          <Link href="/">
                             <span className="flex items-center gap-6  border-b pb-2 ">
                               <IconImage
                                 src={myReview}
@@ -189,7 +182,7 @@ export default function Header() {
                               </span>
                             </span>
                           </Link>
-                          <Link href="/notifications">
+                          <Link href="/">
                             <span className="flex items-center gap-6  pb-2 ">
                               <IconImage
                                 src={pricingPlan}
@@ -224,108 +217,109 @@ export default function Header() {
                     </Link>
                   </>
                 ) : (
-                  <>
-                    <IconImage src={messageIcon} size={32} alt="message icon" />
-                    <IconImage
-                      src={notificationIcon}
-                      size={28}
-                      alt="message icon"
-                    />
-                    <Popover>
-                      <PopoverTrigger>
-                        <Avatar>
-                          <AvatarImage src={profilePic} alt="profile pic" />
-                          <AvatarFallback>
-                            <IconImage src={user} />
-                          </AvatarFallback>
-                        </Avatar>
-                      </PopoverTrigger>
-                      <PopoverContent className=" mt-3  ">
-                        <div className="bg-[#002A64] p-4 flex items-center gap-4 rounded-t-md ">
-                          <div className="text-white flex gap-4   ">
-                            <div>
-                              <h1 className={`${font18}`}>
-                                {currentUser.name}
-                              </h1>
-                              <p className="text-sm">@companyname</p>
-                            </div>
+                  <h1>Profile </h1>
+                  // <>
+                  //   <IconImage src={messageIcon} size={32} alt="message icon" />
+                  //   <IconImage
+                  //     src={notificationIcon}
+                  //     size={28}
+                  //     alt="message icon"
+                  //   />
+                  //   <Popover>
+                  //     <PopoverTrigger>
+                  //       <Avatar>
+                  //         <AvatarImage src={profilePic} alt="profile pic" />
+                  //         <AvatarFallback>
+                  //           <IconImage src={user} />
+                  //         </AvatarFallback>
+                  //       </Avatar>
+                  //     </PopoverTrigger>
+                  //     <PopoverContent className=" mt-3  ">
+                  //       <div className="bg-[#002A64] p-4 flex items-center gap-4 rounded-t-md ">
+                  //         <div className="text-white flex gap-4   ">
+                  //           <div>
+                  //             <h1 className={`${font18}`}>
+                  //               {currentUser.name}
+                  //             </h1>
+                  //             <p className="text-sm">@companyname</p>
+                  //           </div>
 
-                            <IconImage src={verifiedIcon} size={28} />
-                            {/* <IconImage src={ver} /> */}
-                          </div>
+                  //           <IconImage src={verifiedIcon} size={28} />
+                  //           {/* <IconImage src={ver} /> */}
+                  //         </div>
 
-                          <Avatar>
-                            <AvatarImage src={profilePic} alt="@shadcn" />
-                            <AvatarFallback>
-                              <IconImage src={user} />
-                            </AvatarFallback>
-                          </Avatar>
-                        </div>
-                        <div className="flex flex-col     space-y-3 p-4">
-                          <Link href="/business_profile">
-                            <span className="flex items-center gap-6  border-b pb-2 ">
-                              <IconImage
-                                src={myprofile}
-                                size={27}
-                                alt="notification icon"
-                              />
-                              <span className={`${font16} text-gray-700`}>
-                                My Profile
-                              </span>
-                            </span>
-                          </Link>
-                          <Link href="/business_profile">
-                            <span className="flex items-center gap-6  border-b pb-2   ">
-                              <IconImage
-                                src={myReview}
-                                size={28}
-                                alt="notification icon"
-                              />
-                              <span className={`${font16} text-gray-700`}>
-                                My Reviews
-                              </span>
-                            </span>
-                          </Link>
-                          <Link href="/business_dashboard/business_info">
-                            <span className="flex items-center gap-6 border-b pb-2    ">
-                              <IconImage
-                                src={myorder}
-                                size={27}
-                                alt="notification icon"
-                              />
-                              <span className={`${font16} text-gray-700`}>
-                                My Order
-                              </span>
-                            </span>
-                          </Link>
-                          <Link href="/business_dashboard/business_info">
-                            <span className="flex items-center gap-6 border-b pb-2   ">
-                              <IconImage
-                                src={userdashboard}
-                                size={27}
-                                alt="notification icon"
-                              />
-                              <span className={`${font16} text-gray-700`}>
-                                Dashboard
-                              </span>
-                            </span>
-                          </Link>{" "}
-                          <div onClick={logout}>
-                            <div className="flex items-center gap-6 cursor-pointer     ">
-                              <IconImage
-                                src={singoutIcon}
-                                size={27}
-                                alt="notification icon"
-                              />
-                              <span className={`${font16} text-gray-700`}>
-                                Logout
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </PopoverContent>
-                    </Popover>
-                  </>
+                  //         <Avatar>
+                  //           <AvatarImage src={profilePic} alt="@shadcn" />
+                  //           <AvatarFallback>
+                  //             <IconImage src={user} />
+                  //           </AvatarFallback>
+                  //         </Avatar>
+                  //       </div>
+                  //       <div className="flex flex-col     space-y-3 p-4">
+                  //         <Link href="/business_profile">
+                  //           <span className="flex items-center gap-6  border-b pb-2 ">
+                  //             <IconImage
+                  //               src={myprofile}
+                  //               size={27}
+                  //               alt="notification icon"
+                  //             />
+                  //             <span className={`${font16} text-gray-700`}>
+                  //               My Profile
+                  //             </span>
+                  //           </span>
+                  //         </Link>
+                  //         <Link href="/business_profile">
+                  //           <span className="flex items-center gap-6  border-b pb-2   ">
+                  //             <IconImage
+                  //               src={myReview}
+                  //               size={28}
+                  //               alt="notification icon"
+                  //             />
+                  //             <span className={`${font16} text-gray-700`}>
+                  //               My Reviews
+                  //             </span>
+                  //           </span>
+                  //         </Link>
+                  //         <Link href="/business_dashboard/business_info">
+                  //           <span className="flex items-center gap-6 border-b pb-2    ">
+                  //             <IconImage
+                  //               src={myorder}
+                  //               size={27}
+                  //               alt="notification icon"
+                  //             />
+                  //             <span className={`${font16} text-gray-700`}>
+                  //               My Order
+                  //             </span>
+                  //           </span>
+                  //         </Link>
+                  //         <Link href="/business_dashboard/business_info">
+                  //           <span className="flex items-center gap-6 border-b pb-2   ">
+                  //             <IconImage
+                  //               src={userdashboard}
+                  //               size={27}
+                  //               alt="notification icon"
+                  //             />
+                  //             <span className={`${font16} text-gray-700`}>
+                  //               Dashboard
+                  //             </span>
+                  //           </span>
+                  //         </Link>
+                  //         <div onClick={logout}>
+                  //           <div className="flex items-center gap-6 cursor-pointer     ">
+                  //             <IconImage
+                  //               src={singoutIcon}
+                  //               size={27}
+                  //               alt="notification icon"
+                  //             />
+                  //             <span className={`${font16} text-gray-700`}>
+                  //               Logout
+                  //             </span>
+                  //           </div>
+                  //         </div>
+                  //       </div>
+                  //     </PopoverContent>
+                  //   </Popover>
+                  // </>
                 )}
               </div>
             </div>

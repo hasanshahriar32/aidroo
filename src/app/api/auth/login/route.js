@@ -1,11 +1,12 @@
-import { NextResponse } from "next/server";
+// app/api/auth/login/route.js
 import connectToDatabase from "@/config/db/db";
 import db from "@/config/model";
+import BusinessProfile from "@/config/model/business-profile";
+import PersonalProfile from "@/config/model/personal-profile";
 import ApiError from "@/utils/ApiError";
 import { generateToken } from "@/utils/jwt";
 import bcrypt from "bcryptjs";
-import BusinessProfile from "@/config/model/business-profile";
-import PersonalProfile from "@/config/model/personal-profile";
+import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
@@ -48,7 +49,6 @@ export async function POST(req) {
 
     // Generate JWT token
     const token = await generateToken(user.id);
-
     if (!token) {
       throw new ApiError(500, "Failed to generate token");
     }
@@ -56,19 +56,19 @@ export async function POST(req) {
     // Set cookie options
     const options = {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // Use secure cookies only in production
+      secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       path: "/",
-      maxAge: 60 * 60 * 24, // 1 day
+      maxAge: 60 * 60 * 24,
     };
 
     const userData = {
-      userId: user?.id,
-      username: user?.username,
+      userId: user.id,
+      username: user.username,
       name:
         user.personalProfile?.firstName +
           " " +
-          user.personalProfile?.lastName || user?.businessProfile?.businessName,
+          user.personalProfile?.lastName || user.businessProfile?.businessName,
     };
 
     // Create a response
@@ -84,6 +84,6 @@ export async function POST(req) {
     return response;
   } catch (error) {
     console.error("Error in POST /api/auth/login:", error);
-    throw new ApiError(501, error.message);
+    return NextResponse.json({ status: 501, message: error.message });
   }
 }
